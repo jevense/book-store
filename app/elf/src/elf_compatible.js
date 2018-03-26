@@ -1,0 +1,80 @@
+/*
+ * 兼容2.0
+ * */
+Elf.utils={
+	"getParams":Elf.getParams,
+	"getParam":Elf.getParam,
+	"type":Elf.type,
+	"isWindow":Elf.isWindow,
+	"isArrayLike":Elf.isArrayLike,
+	"isNumeric":Elf.isNumeric,
+	"isPercent":Elf.isPercent,
+	"isImage":Elf.isImage,
+	"concat":Elf.concat,
+	"reject":Elf.reject,
+	"isFunction":Elf.isFunction,
+	"isPlainObject":Elf.isPlainObject,
+	"isEmptyObject":Elf.isEmptyObject,
+	"isEmpty":Elf.isEmpty,
+	"extend":Elf.extend,
+	"each":function(obj,callback,params){
+		return Elf.each(obj,function(item,index,params){
+			callback.call(item,index,item,params);
+		},params);
+	},
+	"iterate":Elf.iterate,
+	"trim":Elf.trim,
+	"makeArray":Elf.makeArray,
+	"inArray":Elf.inArray,
+	"isInArray":Elf.isInArray,
+	"merge":Elf.merge,
+	"grep":Elf.grep,
+    "deepCopy":Elf.deepCopy,    
+	"siblings":Elf.siblings,
+	"hasClass":Elf.hasClass,
+	"addClass":Elf.addClass,
+	"removeClass":Elf.removeClass,
+	"remove":Elf.remove,
+	"closest":Elf.closest,
+	"index":Elf.index,
+	"getValue":Elf.getValue,
+	"attr":Elf.attr,
+	"removeAttr":Elf.removeAttr,
+	"css":Elf.css,
+	"object2requestSting":Elf.object2requestSting,
+	"requestSting2object":Elf.requestSting2object,
+	"toDocumentFragment":Elf.toDocumentFragment,
+	"makeUrl":Elf.makeUrl,
+	"encode":Elf.encode,
+	"decode":Elf.decode,
+	"perser":Elf.perser,
+	"perserHTML":Elf.perserHTML,
+	"perserXML":Elf.perserXML,
+	"xml2Json":Elf.xml2Json,
+    "array2tree":Elf.array2tree,
+	"openURL":Elf.openURL,
+	"getMatchedData":Elf.getMatchedData,
+	"templateDataMapping":Elf.templateDataMapping,
+	"replace":Elf.replace,
+	"replaceAll":Elf.replaceAll,
+	"support":Elf.support
+};
+/*
+ * 一下方法从工具库迁移而来，补充2.0兼容处理
+ */
+Elf.utils.validity=Elf.form.validity;
+Elf.utils.serialize=Elf.form.serialize;
+Elf.utils.serializeObject=Elf.form.serializeObject;
+Elf.utils.serializeArray=Elf.form.serializeArray;
+Elf.utils.deserialize=Elf.form.deserialize;
+Elf.utils.formInitialization=Elf.form.initialization;
+/*
+ * 兼容2.0
+ * */
+Elf.controls={
+	createElement:Elf.createElement,
+	appendTo:Elf.appendTo,
+	append:Elf.append,
+	prependTo:Elf.prependTo,
+	prepend:Elf.prepend
+};

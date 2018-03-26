@@ -1,0 +1,51 @@
+﻿._010_contentZone {
+    width:100%;
+    height:100%;
+    overflow: auto;
+}
+
+._010_leftZone {
+    width:25%;
+    height:100%;
+    overflow: auto;
+    background-color: #fafafa;
+}
+
+._010_rightZone {
+    width:75%;
+    height:100%;
+    overflow: auto;
+}
+
+._010_leftRow {
+    /*padding: .5rem .75rem .5rem .75rem;*/
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border: solid 1px #efefef;
+    margin-left: 0.08rem;
+    /* display: block; */
+    text-align: center;
+}
+
+._010_rightCol {
+    height: 2rem;
+    border: solid 1px #efefef;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    width: 33.3%;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+._010_selectedleftRow {
+    color:#de635d;
+    background-color: #ffffff;
+    border-left: solid 2px red;
+}
+
+._010_selectedRightCol {
+    color:#de635d;
+    background-color: #ffffff;
+    border: solid 1px #e0726d;
+}

@@ -1,0 +1,61 @@
+﻿._041_discountRowInfo {
+    width:100%;
+    height: 110px;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    background-color: white;
+    margin-top: 5px;
+}
+
+._041_leftZone {
+    /*width:65%;*/
+    width:100%;
+    background-color: #ffffdd;
+    margin-left: 1rem;
+    padding-left: 0.5rem;
+    /*margin-right: 1rem;*/
+    border-left: solid 1px #efefef;
+    border-right: solid 1px #efefef;
+}
+
+._041_rightZone {
+    width:35%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+._041_rightImage {
+    /*width:2rem;*/
+    /*height:2rem;*/
+    width: 80%;
+}
+
+._041_leftRow1 {
+    color:#de5a52;
+    font-size: 1rem;
+    padding-bottom: 0.1rem;
+    padding-top: 0.1rem;
+}
+._041_leftRow2 {
+    font-size: 0.6rem;
+    padding-bottom: 0.1rem;
+}
+._041_leftRow3 {
+    color:#747470;
+    font-size: 0.6rem;
+    padding-bottom: 0.1rem;
+}
+
+._041_leftRow4 {
+    color:#747470;
+    font-size: 0.6rem;
+    padding-bottom: 0.1rem;
+    margin-bottom: 0.4rem;
+}
+
+._041_cardAmount {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

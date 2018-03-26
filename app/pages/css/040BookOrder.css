@@ -1,0 +1,75 @@
+﻿._040_bookName {
+    font-size: 0.8rem;
+    margin-bottom: 0.1rem;
+    color: #333;
+}
+
+._040_bookTxt {
+    font-size: 0.72rem;
+    margin-bottom: 0.1rem;
+    color: #666;
+}
+
+._040_orderRowArea {
+    /*height: auto;*/
+    /*background-color: white;*/
+    margin-top: .3rem;
+    /*padding-bottom: 2px;*/
+}
+
+._040_paymentTxt {
+    margin-left: .3rem;
+}
+
+._040_pointLowTxt {
+    font-size: 0.6rem;
+}
+
+._040_pointColor {
+    color:red;
+}
+
+._040_bookTitle {
+    padding-bottom: 0.1rem;
+    color: #333;
+}
+
+._040_bookType {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+._040_bookTypeMargin {
+    margin-top: 0.28rem;
+}
+
+._040_bookTypeMargin2 {
+    margin-top: 0.15rem;
+}
+
+._040_image {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+._040_toRightImage {
+    margin-left: 0.3rem;
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+._040_disCountTxt {
+   color:#999999;
+}
+
+._040_paymentLeftTitle {
+     width:58%;
+ }
+._040_paymentPoint {
+    width:30%;
+    text-align: right;
+    padding-right: 0.2rem;
+}
+._040_paymentUnit {
+    width:12%;
+}

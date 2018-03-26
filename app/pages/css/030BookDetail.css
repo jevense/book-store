@@ -1,0 +1,152 @@
+﻿._030_bookInfoZone {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+._030_bookImageZone {
+    width: 5.4rem;
+    height: 6.8rem;
+    /*margin: 0.75rem;*/
+    margin-left: 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+    border-radius: 50%;
+}
+._030_bookImageZone img {
+    width: 100%;
+    height: 100%;
+}
+
+._030_bookInfoRightZone {
+    /*width: 5rem;*/
+    height: 6.8rem;
+    /*margin: 0.77rem;*/
+    margin-left: 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+    border-radius: 50%;
+}
+
+
+.rltop-col2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.justifyCenter {
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+._030_bookBrief_title {
+    /*color: #8d8d8d;*/
+    color: #d94239;
+    min-height: 2.3rem;
+    line-height: 2.3rem;
+    /*background-color: #ececec;*/
+    padding-left: 0.75rem;
+}
+
+._030_bookBrief_content {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    margin-bottom: 1rem;
+    /*margin-top: 1rem;*/
+    color: #666;
+}
+
+._030_bookColor {
+     color:#ff0000;
+     font-size: 0.75rem;
+ }
+._030_bookPoint {
+    text-decoration: line-through;
+}
+
+._030_addBottomZone {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    table-layout: fixed;
+    position: absolute;
+    height: 2.5rem;
+}
+
+._030_downloadBtnTxt {
+    height: 100%;
+    border-radius: 1vw;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    /*background: #197fe8;*/
+    background-color: #d94239;
+    color: white;
+    width: 100%;
+    font-size: 0.8rem;
+    line-height: 2.5rem;
+}
+
+._030_book_content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+._030_bookContentBottom {
+    bottom: 1.8rem;
+}
+
+.bar-nav ~ ._030_book_content {
+    top: 3.36rem;
+}
+
+._030_bookName {
+    font-size: 0.78rem;
+    color: #333;
+}
+
+._030_bookAuthor {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+._030_bookMargin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+._030_confirmTxt{
+    font-size: 0.9rem;
+    color: #333;
+}
+
+
+
+._030_bookImageZone2 {
+    width: 5.4rem;
+    height: 6.8rem;
+    margin-left: 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+    border-radius: 50%;
+}
+
+._030_bookInfoRightZone2 {
+    /*width: 5rem;*/
+    /*height: 6.8rem;*/
+    margin-left: 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.75rem;
+    border-radius: 50%;
+    width: 65.5%;
+}

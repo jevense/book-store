@@ -1,0 +1,129 @@
+/*层级页面*/
+.ebook_container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /*横坐标隐藏滚动条*/
+    /*overflow-y: auto;*/
+    overflow-y: hidden;
+    position: relative;
+}
+
+.current_container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.waiting_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #ffffff;
+    z-index: 100;
+}
+
+/*云书城,最新*/
+.mine_bookZone {
+    width:33vw;
+}
+.mine_bookName {
+    font-size: 3vw;
+    /*font-weight: bold;*/
+}
+.mine_author {
+    font-size: 3vw;
+}
+.mine_bookImgeZone {
+    margin-bottom: 2vw;
+    font-size: 2.2vw;
+    text-align: center;
+}
+
+.mine_bookImge {
+    height: 30vw;
+    width: 25vw;
+}
+
+.mine_bookTxtZone{
+    width: 25vw;
+}
+
+.mine_bookTxtZone2{
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+
+/*更多，精品推荐列表或最新上架列表*/
+.mine_quality_bookZone{
+    margin-top: 2vw;
+    /*width: 99vw;*/
+    height: 40vw;
+    font-size: 4.0vw;
+    border: 0.4vw solid gainsboro;
+    background-color: ghostwhite;
+}
+.mine_quality_bookImage {
+    width: 35vw;
+    height: 100%;
+    border: 0.2vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+.mine_quality_image {
+    width: 25vw;
+}
+.mine_quality_bookTextInfo{
+    width: 65vw;
+    padding-top: 2vw;
+}
+
+.mine_quality_bookName {
+    font-size: 4vw;
+    margin-bottom: 1vw;
+}
+
+.mine_quality_bookAuthor {
+    font-size: 0.7rem;
+    /*margin-bottom: 1vw;*/
+    color: #666;
+}
+
+/*分类列表 医学杂志、西医教材*/
+.mine_category_tab {
+    width: 33%;
+    height: 10vw;
+    border-bottom: 0.8vw solid ghostwhite;
+}
+
+.mine_category_searchImg {
+    width: 5vw;
+    height: 5vw;
+}
+
+/*书籍详情*/
+.mine_detail_bookTextInfo{
+     width: 65vw;
+     padding-top: 1vw;
+     padding-left: 3vw;
+     height: 45vw;
+ }
+.mine_detail_bookZone{
+    width: 35vw;
+    height: 100%;
+    border: 0.2vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+.mine_detail_bookImage{
+    width: 65vw;
+    height: 45vw;
+}
+
+/*书籍详情下的精品推荐*/
+
+

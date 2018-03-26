@@ -1,0 +1,279 @@
+﻿.book_container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*background-color: white;*/
+    background-color: #f3f3f3;
+    position: relative;
+}
+
+
+.book_background {
+    background-color: white;
+}
+
+
+
+
+
+header .icon {
+    width: 1rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* ReSharper disable once InvalidValue */
+    display: grid;
+}
+
+.book_bar {
+    bottom: 0;
+    /*width: 99%;*/
+    width: 100%;
+    height: 2.5rem;
+    padding: 0;
+    table-layout: fixed;
+    background-color: #197fe8;
+    margin-left: auto;
+    margin-right: auto;
+}
+.book_bar_tab {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    height: 2.2rem;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    background-color: #d94239;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    height: 2.5rem;
+}
+.book_btnTxt {
+    position: relative;
+    display: table-cell;
+    width: 1%;
+    height: 2.5rem;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: .8rem;
+}
+
+
+
+.book_content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.bar-nav ~ .book_content {
+    /*top: 3.36rem;*/
+    top: 3rem;
+}
+.book_bar_tab ~ .book_content {
+    bottom: 2.5rem;
+}
+
+.book_tips {
+    height: 4%;
+    font-size: 0.75rem;
+    margin-top: 0.35rem;
+    /*border-top: 0.05rem solid gainsboro;*/
+    background-color: #ffffff;
+    width: 100%;
+    padding-left: 0.25rem;
+    padding-bottom: 0.45rem;
+    padding-top: 0.45rem;
+}
+.book_tipsLeft {
+    width: 50%;
+    color: #d94239;
+    margin-left: 0.2rem;
+    font-size: 0.72rem;
+}
+.book_tipsRight {
+    width: 50%;
+    /*margin-right: 0.5rem;*/
+    margin-right: 0.7rem;
+}
+
+.book_rowInfos {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    background-color: #ffffff;
+}
+.book_bookZone {
+    width: 33vw;
+}
+.mine_bookImgeZone {
+    margin-bottom: 2vw;
+    font-size: 2.2vw;
+    text-align: center;
+}
+.mine_bookImge {
+    height: 30vw;
+    width: 25vw;
+}
+.book_price {
+    /*width: 50%;*/
+    color:#ff0000;
+}
+.book_point{
+    padding-left: 0.3rem;
+    color: #dfdfdf;
+    text-decoration: line-through;
+}
+.book_fontSize{
+    font-size: 0.65rem;
+}
+.book_fontSmallSize{
+    font-size: 0.6rem;
+}
+
+/*行的数据*/
+.book_row_container {
+    width: 100%;
+    background-color: white;
+    padding: .5rem .75rem .5rem .75rem;
+    min-height: 2.2rem;
+    border-top: solid 1px #efefef;
+    border-bottom: solid 1px #efefef;
+}
+.justifySpaceBetween {
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+}
+
+.icon-left2 {
+    background-image: url(../img/zhu_img39.png);
+    background-repeat: no-repeat;
+    /*background-size: 90% 90%;*/
+    background-size: 90% 60%;
+    width: 1.2rem !important;
+    padding-top: 0.95rem !important; /* 在iPad 4 &10.3.2 图片偏上 */
+}
+.icon-mydetail {
+    background-image: url(../img/zhu_img38.png);
+    width: 1.5rem !important;
+    padding-top: 0.95rem !important; /* 在iPad 4 &10.3.2 图片偏上 */
+}
+
+.icon-category {
+    background-image: url(../img/zhu_img37.png);
+    width: 1.5rem !important;
+    padding-top: 1.2rem !important; /* 在iPad 4 &10.3.2 图片偏上 */
+}
+
+
+
+
+/*首页面种类类型*/
+.home-category-row {
+    text-align: center;
+    padding-top: .55rem;
+    padding-bottom: .55rem;
+    background-color: #ffffff;
+}
+.icon-item {
+    position: relative;
+    display: table-cell;
+    color: #929292;
+    text-align: center;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+}
+.home-category-row .icon {
+    width: 2.5rem;
+    height: 2.8rem;
+}
+.icon-item .icon {
+    margin-top: 10px;
+}
+.icon-text {
+    clear: both;
+    display: block;
+    color: #333;
+    margin-top: .4rem;
+    font-size: 0.7rem;
+}
+.bookRow {
+    overflow: hidden;
+}
+.bookRow .col-33 {
+    width: 25%;
+}
+.bookRow > [class*="col-"], .row > [class*="tablet-"] {
+    box-sizing: border-box;
+    float: left;
+}
+.icon-teachingMaterial {
+    background-image: url(../img/zhu_img40.png);
+    width: 2.8rem !important;
+}
+.icon-bookPackage {
+    background-image: url(../img/zhu_img47.png);
+}
+.icon-westernMedicineBooks {
+    background-image: url(../img/zhu_img41.png);
+}
+.icon-chineseMedicineBooks {
+    background-image: url(../img/zhu_img43.png);
+}
+.icon-freeZone {
+    background-image: url(../img/zhu_img44.png);
+}
+.icon-surgery {
+    background-image: url(../img/zhu_img45.png);
+}
+.icon-magazine {
+    background-image: url(../img/zhu_img46.png);
+}
+.icon-exam-pack {
+    background-image: url(../img/zhu_img46.png);
+}
+
+
+.icon-westernGrayMedicineBooks {
+    background-image: url(../img/zhu_img63@2x.png);
+}
+.icon-chineseGrayMedicineBooks {
+    background-image: url(../img/zhu_img61@2x.png);
+}
+.icon-freeGrayZone {
+    background-image: url(../img/zhu_img62@2x.png);
+}
+
+.icon-delete {
+    background-image: url(../img/toDelete.svg);
+}
+
+
+.book_hidden {
+    display: none;
+}
+
+.book_titleTxt {
+    color: #d94239;
+}
+
+.book_border {
+    border: solid 1px #efefef;
+}
+
+.book_border_bottom {
+    border-bottom: 0.05rem solid #efefef;
+}
+
+.icon-more {
+    background-image: url(../img/icon_more.png);
+    width: 1.2rem;
+}
+
