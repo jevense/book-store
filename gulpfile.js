@@ -76,7 +76,7 @@ gulp.task('useref', function () {
         //     //保留所有特殊前缀 当你用autoprefixer生成的浏览器前缀，如果不加这个参数，有可能将会删除你的部分前缀
         // })))
         // .pipe(gulpIf('**.css', csso()))
-        // .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulpIf('*.js', uglify()))
         .pipe(useref())
         .pipe(gulp.dest(DEST));
 });

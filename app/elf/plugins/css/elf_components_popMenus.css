@@ -1,5 +1,0 @@
-@charset "utf-8";
-.elf-popMenus{position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;}
-.elf-popMenus-bg{background-color:rgba(0,0,0,.25);position: absolute;left:0;top:0;right:0;bottom:0;}
-.elf-popMenus-bg~div{z-index: 2;}
-.elf-popMenus .ui-media-list{position:absolute;min-width: 10rem;}
