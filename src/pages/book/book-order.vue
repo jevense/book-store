@@ -16,26 +16,28 @@
             </div>
         </div>
         <section>
-            <span class="imed-title">简介</span>
-            <article v-html=""></article>
+            <span class="imed-title">支付金额</span>
         </section>
         <footer>
-            <a class="button button-fill button-big button-danger">Fill Button </a>
+            <router-link to="/book/10/order/pay-success" class="button button-fill button-big button-danger">
+                确认付款
+            </router-link>
         </footer>
     </imed-nav>
 </template>
 
 <script>
-    import ImedNav from '../components/imed-nav'
+    import ImedNav from '../../components/imed-nav'
 
     export default {
-        name: "book-item",
+        name: "book-order",
         data() {
             return {
-                title: '图书详情',
+                title: '图书订单',
+                own: false,
             }
         },
-        components: {ImedNav},
+        components: {ImedNav}
     }
 </script>
 

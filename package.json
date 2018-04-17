@@ -15,13 +15,17 @@
   "license": "ISC",
   "dependencies": {
     "animate.css": "^3.6.1",
+    "axios": "^0.18.0",
     "vue": "^2.5.16",
+    "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "browserify": "^16.2.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.10",
     "csv-loader": "^2.1.1",
