@@ -1,7 +1,7 @@
 <template>
     <div>
         <header class="imed-bar">
-            <router-link to="/exam" class="item-content item-link">
+            <router-link to="/exam/123" class="item-content item-link">
                 <div class="icon icon-left"></div>
             </router-link>
             <h1 v-text="title"></h1>
