@@ -15,9 +15,11 @@
                 </div>
             </div>
         </div>
-        <section>
-            <span class="imed-title">支付金额</span>
-        </section>
+        <footer>
+            <router-link to="/exam/guide" class="button button-fill button-big button-danger">
+                马上去学习
+            </router-link>
+        </footer>
     </imed-nav>
 </template>
 

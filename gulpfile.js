@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
-// const cleanCSS = require('gulp-clean-css');
 const cssver = require('gulp-make-css-url-version');
 const imagemin = require('gulp-imagemin');
 const cache = require('gulp-cache');
@@ -15,22 +14,18 @@ const wrap = require('gulp-wrap');
 const declare = require('gulp-declare');
 const modernizr = require('gulp-modernizr');
 const csso = require('gulp-csso');
-// const critical = require('critical');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const changed = require('gulp-changed');
 const babel = require('gulp-babel');
 const sprity = require('sprity');
-
-gulp.task('images', function () {
-    return gulp.src('template/phone/img/**/*.+(png|jpg|gif|svg)')
-        .pipe(cache(imagemin({
-            interlaced: true
-        })))
-        .pipe(imagemin())
-        .pipe(gulp.dest('template/dist/images'))
-});
+const server = require('gulp-express');
+const imacss = require('imacss');
+var buffer = require('vinyl-buffer');
+var merge = require('merge-stream');
+var spritesmith = require('gulp.spritesmith');
+var plato = require('plato');
 
 // gulp.task('jscompress', function () {
 //     return gulp.src('template/phone/js/**/*.js')
@@ -67,22 +62,54 @@ const DEST = 'template/dist';
 gulp.task('useref', function () {
     return gulp.src(['template/phone/index.html', 'template/phone/main.html'])
         .pipe(changed(DEST))
-        // .pipe(gulpIf('*.css', cssver()))
-        // .pipe(gulpIf('**.css', cssmin({
-        //     advanced: false,//类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]
-        //     compatibility: 'ie7',//保留ie7及以下兼容写法 类型：String 默认：''or'*' [启用兼容模式； 'ie7'：IE7兼容模式，'ie8'：IE8兼容模式，'*'：IE9+兼容模式]
-        //     keepBreaks: true,//类型：Boolean 默认：false [是否保留换行]
-        //     keepSpecialComments: '*'
-        //     //保留所有特殊前缀 当你用autoprefixer生成的浏览器前缀，如果不加这个参数，有可能将会删除你的部分前缀
-        // })))
-        // .pipe(gulpIf('**.css', csso()))
-        .pipe(gulpIf('*.js', uglify()))
         .pipe(useref())
+        .pipe(gulpIf('*.css', csso()))
+        .pipe(gulpIf('*.js', uglify()))
         .pipe(gulp.dest(DEST));
 });
 
+gulp.task('images', function () {
+    return gulp.src('template/phone/img/*.*')
+        .pipe(cache(imagemin({
+            interlaced: true
+        })))
+        .pipe(imagemin())
+        .pipe(gulp.dest('template/dist/img'))
+});
+
+
+gulp.task('sprite', function () {
+    // Generate our spritesheet
+    var spriteData = gulp.src('template/phone/img/*.png')
+        .pipe(spritesmith({
+            imgName: 'sprite.png',
+            cssName: 'icon.new.css',
+            imgPath: '../img/sprite.png',
+            // padding: 2,// 每个图片之间的间距，默认为0px
+        }))
+
+    // Pipe image stream through image optimizer and onto disk
+    var imgStream = spriteData.img
+    // DEV: We must buffer our stream into a Buffer for `imagemin`
+        .pipe(buffer())
+        .pipe(cache(imagemin({
+            interlaced: true
+        })))
+        .pipe(imagemin())
+        .pipe(gulp.dest('template/dist/img'));
+
+    // Pipe CSS stream through CSS optimizer and onto disk
+    var cssStream = spriteData.css
+    // .pipe(csso())
+        .pipe(gulp.dest('template/dist/css'));
+
+    // Return a merged stream to handle both `end` events
+    return merge(imgStream, cssStream);
+});
+
+
 gulp.task('clean:dist', function (callback) {
-    del(['template/dist/**/*', '!template/dist/images', '!template/dist/images/**/*'], callback)
+    del(['template/dist/**/*', '!template/dist/img', '!template/dist/img/**/*'], callback)
 });
 
 gulp.task('clean:cache', function (callback) {
@@ -91,10 +118,7 @@ gulp.task('clean:cache', function (callback) {
 });
 
 gulp.task('build', function (callback) {
-    runSequence('clean:dist',
-        ['useref', 'images'],
-        callback
-    )
+    runSequence(['clean:dist', 'images', 'useref'], callback)
 });
 
 gulp.task('default', function (callback) {
@@ -103,39 +127,7 @@ gulp.task('default', function (callback) {
     )
 });
 
-gulp.task('!sprites', function () {
-    return sprity.src({
-        src: 'template/dist/images/**/*.+(png|jpg|gif|svg)',
-        style: 'template/dist/css/all.css',
-        // ... other optional options
-        // for example if you want to generate scss instead of css
-        // processor: 'sass', // make sure you have installed sprity-sass
-    }).pipe(gulpif('*.png', gulp.dest('template/dist/img-release'), gulp.dest('./dist/css-release')))
-});
-
-gulp.task('browserify', function(){
-    //定义多个入口文件
-    const entityFiles = [
-        './src/main/nodejs/index.js',
-        './src/main/nodejs/a.js',
-    ];
-    //遍历映射这些入口文件
-    const tasks = entityFiles.map(function(entity){
-        return browserify({entries: [entry]})
-            .bundle()
-            .pipe(source(entry))
-            .pipe(rename({
-                extname: '.bundle.js',
-                dirname: ''
-            }))
-            .pipe(gulp.dest('./src/main/webapp/js'));
-    });
-
-    //创建一个合并流
-    return es.merge.apply(null, tasks);
-});
-
-gulp.task('templates', function(){
+gulp.task('templates', function () {
     gulp.src('source/templates/*.hbs')
         .pipe(handlebars())
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
@@ -147,18 +139,32 @@ gulp.task('templates', function(){
         .pipe(gulp.dest('build/js/'));
 });
 
-gulp.task('modernizr', function() {
-    return gulp.src('./js/*.js')
-        .pipe(modernizr())
-        .pipe(gulp.dest("build/"))
+gulp.task('server', function () {
+    // Start the server at the beginning of the task
+    server.run(['app.js']);
+
+    // Restart the server when file changes
+    // gulp.watch(['app/**/*.html'], server.notify);
+    // gulp.watch(['app/styles/**/*.scss'], ['styles:scss']);
+    //gulp.watch(['{.tmp,app}/styles/**/*.css'], ['styles:css', server.notify]);
+    //Event object won't pass down to gulp.watch's callback if there's more than one of them.
+    //So the correct way to use server.notify is as following:
+    // gulp.watch(['{.tmp,app}/styles/**/*.css'], function(event){
+    //     gulp.run('styles:css');
+    //     server.notify(event);
+    //     //pipe support is added for server.notify since v0.1.5,
+    //     //see https://github.com/gimm/gulp-express#servernotifyevent
+    // });
+    //
+    // gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+    // gulp.watch(['app/images/**/*'], server.notify);
+    // gulp.watch(['app.js', 'routes/**/*.js'], [server.run]);
 });
 
-
-// critical.generate({
-//     inline: true,
-//     base: 'test/',
-//     src: 'index.html',
-//     dest: 'index-critical.html',
-//     width: 1300,
-//     height: 900
-// });
+gulp.task('imacss', function () {
+    imacss.transform('/path/to/your/images/*.png')
+        .on('error', function onError(err) {
+            console.error('Transforming images failed: ' + err);
+        })
+        .pipe(process.stdout);
+});

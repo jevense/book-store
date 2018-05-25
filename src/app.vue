@@ -14,9 +14,10 @@
         },
         watch: {
             '$route'(to, from) {
-                const fromDepth = from.path.split('/').length
-                const toDepth = to.path.split('/').length
-                this.transitionName = fromDepth < toDepth ? 'slide-left' : 'slide-right'
+                // const fromDepth = from.path.split('/').length
+                // const toDepth = to.path.split('/').length
+                // this.transitionName = fromDepth < toDepth ? 'slide-left' : 'slide-right'
+                this.transitionName = 'slide-left'
             }
         }
     }
