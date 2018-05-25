@@ -20,13 +20,13 @@
                                 <div class="imed-item-sub-title">时长：18学时</div>
                                 <div class="imed-item-sub-title">名师：刘老师</div>
                             </div>
-                            <router-link to="/exam/course/list"
+                            <router-link to="/exam/123/course/1"
                                          class="button button-fill button-warning">开始学习
                             </router-link>
                         </div>
                     </li>
                     <li>
-                        <div to="/exam/course/list" class="item-content">
+                        <div class="item-content">
                             <div class="item-media">
                                 <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
                             </div>
@@ -35,13 +35,13 @@
                                 <div class="imed-item-sub-title">时长：18学时</div>
                                 <div class="imed-item-sub-title">名师：刘老师</div>
                             </div>
-                            <router-link to="/exam/course/list"
+                            <router-link to="/exam/123/course/2"
                                          class="button button-fill button-warning">开始学习
                             </router-link>
                         </div>
                     </li>
                     <li>
-                        <div to="/exam/course/list" class="item-content">
+                        <div class="item-content">
                             <div class="item-media">
                                 <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
                             </div>
@@ -50,13 +50,13 @@
                                 <div class="imed-item-sub-title">时长：18学时</div>
                                 <div class="imed-item-sub-title">名师：刘老师</div>
                             </div>
-                            <router-link to="/exam/course/list"
+                            <router-link to="/exam/123/course/3"
                                          class="button button-fill button-warning">开始学习
                             </router-link>
                         </div>
                     </li>
                     <li>
-                        <div to="/exam/course/list" class="item-content">
+                        <div class="item-content">
                             <div class="item-media">
                                 <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
                             </div>
@@ -65,7 +65,7 @@
                                 <div class="imed-item-sub-title">时长：18学时</div>
                                 <div class="imed-item-sub-title">名师：刘老师</div>
                             </div>
-                            <router-link to="/exam/course/list"
+                            <router-link to="/exam/123/course/4"
                                          class="button button-fill button-warning">开始学习
                             </router-link>
                         </div>

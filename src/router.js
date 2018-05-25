@@ -15,18 +15,18 @@ import ExamExamination from './pages/exam/exam-examination'
 Vue.use(VueRouter)
 
 const routes = [
-    {path: '/', redirect: '/exam'},
+    {path: '/', redirect: '/exam/1'},
     {path: '/book', component: BookList},
     {path: '/book/:id', component: BookItem},
     {path: '/book/:id/order', component: BookOrder},
     {path: '/book/:id/order/pay-success', component: PaySuccess},
     {path: '/course', component: CourseMain},
-    {path: '/exam', component: Exam},
-    {path: '/exam/guide', component: ExamGuide},
-    {path: '/exam/course', component: ExamCourse},
-    {path: '/exam/course/list', component: ExamCourseList},
-    {path: '/exam/course/item', component: ExamCourseItem},
-    {path: '/exam/examination', component: ExamExamination},
+    {path: '/exam/:eid', component: Exam},
+    {path: '/exam/:eid/guide', component: ExamGuide},
+    {path: '/exam/:eid/course', component: ExamCourse},
+    {path: '/exam/:eid/course/:cid', component: ExamCourseList},
+    {path: '/exam/:eid/course/:cid/item/:iid', component: ExamCourseItem},
+    {path: '/exam/:eid/examination', component: ExamExamination},
 ]
 
 export default new VueRouter({

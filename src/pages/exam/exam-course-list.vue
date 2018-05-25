@@ -1,7 +1,7 @@
 <template>
     <div>
         <header class="imed-bar">
-            <router-link to="/exam" class="item-content item-link">
+            <router-link to="/exam/course" class="item-content item-link">
                 <div class="icon icon-left"></div>
             </router-link>
             <h1 v-text="title"></h1>
@@ -22,7 +22,7 @@
                             </div>
                             <div class="card-footer">
                                 <a href="#" class="link">时长：45：00</a>
-                                <router-link to="/exam/course/item" class="link">观看</router-link>
+                                <router-link to="/exam/123/course/1/item/1" class="link">观看</router-link>
                             </div>
                         </div>
                     </li>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="card-footer">
                                 <a href="#" class="link">时长：45：00</a>
-                                <router-link to="/exam/course/item" class="link">观看</router-link>
+                                <router-link to="/exam/123/course/1/item/2" class="link">观看</router-link>
                             </div>
                         </div>
                     </li>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="card-footer">
                                 <a href="#" class="link">时长：45：00</a>
-                                <router-link to="/exam/course/item" class="link">观看</router-link>
+                                <router-link to="/exam/123/course/1/item/3" class="link">观看</router-link>
                             </div>
                         </div>
                     </li>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="card-footer">
                                 <a href="#" class="link">时长：45：00</a>
-                                <router-link to="/exam/course/item" class="link">观看</router-link>
+                                <router-link to="/exam/123/course/1/item/4" class="link">观看</router-link>
                             </div>
                         </div>
                     </li>

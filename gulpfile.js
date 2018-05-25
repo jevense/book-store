@@ -64,6 +64,7 @@ gulp.task('useref', function () {
         .pipe(changed(DEST))
         .pipe(useref())
         .pipe(gulpIf('*.css', csso()))
+        .pipe(gulpIf('*.js', babel()))
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulp.dest(DEST));
 });

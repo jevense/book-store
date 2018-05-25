@@ -1,5 +1,12 @@
 <template>
-    <imed-nav :title="title">
+    <div>
+        <header class="imed-bar">
+            <a class="item-content item-link" @click="back">
+                <div class="icon icon-left"></div>
+            </a>
+            <h1 v-text="title"></h1>
+            <a class="icon" style="width: 0.8rem">&nbsp;</a>
+        </header>
         <div class="content" style="margin:3rem 0 0 0;">
             <div class="card demo-card-header-pic">
                 <div valign="bottom" class="card-header color-white no-border no-padding">
@@ -52,8 +59,10 @@
                                         <span style="color: red">2990</span> 阅点
                                     </span>
                                     <span style="display: flex;justify-content: space-between; width: 60%">
-                                        <router-link to="/exam/course" class="button button-fill button-warning">试看</router-link>
-                                        <router-link to="/exam/course" class="button button-fill button-warning">购买</router-link>
+                                        <router-link to="/exam/123/preview"
+                                                     class="button button-fill button-warning">试看</router-link>
+                                        <router-link to="/exam/123/course"
+                                                     class="button button-fill button-warning">购买</router-link>
                                     </span>
                                 </div>
                             </div>
@@ -73,7 +82,8 @@
                                     <span>
                                         <span style="color: red">2990</span> 阅点
                                     </span>
-                                    <router-link to="/exam/examination" class="button button-fill button-warning">开始考试</router-link>
+                                    <router-link to="/exam/123/examination" class="button button-fill button-warning">开始考试
+                                    </router-link>
                                 </div>
                             </div>
                             <div style="margin: .5rem">
@@ -153,7 +163,7 @@
                 </router-link>
             </footer>
         </div>
-    </imed-nav>
+    </div>
 </template>
 
 <script>
@@ -170,12 +180,39 @@
         methods: {
             search() {
                 console.log('======')
+            },
+            back() {
+                let main = document.getElementById('main')
+                let subContent = document.getElementById('sub')
+                main.className = main.className.replace('page-from-center-to-left', 'page-from-left-to-center')
+                subContent.className = subContent.className.replace('page-from-right-to-center', 'page-from-center-to-right')
             }
         }
     }
 </script>
 
 <style scoped>
+
+    .imed-bar {
+        height: 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: red;
+        background-color: #ffffff;
+    }
+
+    .imed-bar > a {
+        color: red;
+    }
+
+    h1 {
+        font-size: 1rem;
+    }
+
+    .icon {
+        margin: 0.5rem;
+    }
 
     .list-block {
         margin: 0.1rem 0 2rem;

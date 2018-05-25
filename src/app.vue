@@ -14,10 +14,13 @@
         },
         watch: {
             '$route'(to, from) {
-                // const fromDepth = from.path.split('/').length
-                // const toDepth = to.path.split('/').length
-                // this.transitionName = fromDepth < toDepth ? 'slide-left' : 'slide-right'
-                this.transitionName = 'slide-left'
+                if (to.path === '/exam' || from.path.includes('pay-success')) {
+                    this.transitionName = 'slide-right'
+                } else {
+                    const fromDepth = from.path.split('/').length
+                    const toDepth = to.path.split('/').length
+                    this.transitionName = fromDepth <= toDepth ? 'slide-left' : 'slide-right'
+                }
             }
         }
     }

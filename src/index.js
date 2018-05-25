@@ -11,7 +11,7 @@ axios.defaults.baseURL = 'https://api.example.com'
 Vue.use(VueAxios, axios)
 
 new Vue({
-    el: '#sub-content',
+    el: '#content',
     template: '<App/>',
     router,
     components: {App},
