@@ -1086,6 +1086,14 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
+babel-polyfill@6.23.0:
+  version "6.23.0"
+  resolved "http://registry.npm.taobao.org/babel-polyfill/download/babel-polyfill-6.23.0.tgz#8364ca62df8eafb830499f699177466c3b03499d"
+  dependencies:
+    babel-runtime "^6.22.0"
+    core-js "^2.4.0"
+    regenerator-runtime "^0.10.0"
+
 babel-polyfill@^6.26.0:
   version "6.26.0"
   resolved "http://registry.npm.taobao.org/babel-polyfill/download/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
@@ -1444,6 +1452,21 @@ boom@5.x.x:
   resolved "http://registry.npm.taobao.org/boom/download/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
   dependencies:
     hoek "4.x.x"
+
+bootstrap-vue@^2.0.0-rc.11:
+  version "2.0.0-rc.11"
+  resolved "http://registry.npm.taobao.org/bootstrap-vue/download/bootstrap-vue-2.0.0-rc.11.tgz#47aaa6d2a8d390477de75e636d8ea652b1d03f59"
+  dependencies:
+    bootstrap "^4.1.1"
+    lodash.get "^4.4.2"
+    lodash.startcase "^4.4.0"
+    opencollective "^1.0.3"
+    popper.js "^1.12.9"
+    vue-functional-data-merge "^2.0.5"
+
+bootstrap@^4.1.1:
+  version "4.1.1"
+  resolved "http://registry.npm.taobao.org/bootstrap/download/bootstrap-4.1.1.tgz#3aec85000fa619085da8d2e4983dfd67cf2114cb"
 
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.11"
@@ -1834,7 +1857,7 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
+chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "http://registry.npm.taobao.org/chalk/download/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
   dependencies:
@@ -3106,6 +3129,12 @@ encodeurl@~1.0.2:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/encodeurl/download/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
+encoding@^0.1.11:
+  version "0.1.12"
+  resolved "http://registry.npm.taobao.org/encoding/download/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
+  dependencies:
+    iconv-lite "~0.4.13"
+
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/end-of-stream/download/end-of-stream-1.4.1.tgz#ed29634d19baba463b6ce6b80a37213eab71ec43"
@@ -3596,7 +3625,7 @@ extend@^3.0.0, extend@^3.0.1, extend@~3.0.0, extend@~3.0.1:
   version "3.0.1"
   resolved "http://registry.npm.taobao.org/extend/download/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
 
-external-editor@^2.0.4, external-editor@^2.1.0:
+external-editor@^2.0.1, external-editor@^2.0.4, external-editor@^2.1.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/external-editor/-/external-editor-2.2.0.tgz#045511cfd8d133f3846673d1047c154e214ad3d5"
   dependencies:
@@ -5262,7 +5291,7 @@ iconv-lite@0.4.19:
   version "0.4.19"
   resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
-iconv-lite@0.4.23:
+iconv-lite@0.4.23, iconv-lite@~0.4.13:
   version "0.4.23"
   resolved "http://registry.npm.taobao.org/iconv-lite/download/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
@@ -5420,6 +5449,24 @@ inline-source-map@~0.6.0:
   resolved "http://registry.npm.taobao.org/inline-source-map/download/inline-source-map-0.6.2.tgz#f9393471c18a79d1724f863fa38b586370ade2a5"
   dependencies:
     source-map "~0.5.3"
+
+inquirer@3.0.6:
+  version "3.0.6"
+  resolved "http://registry.npm.taobao.org/inquirer/download/inquirer-3.0.6.tgz#e04aaa9d05b7a3cb9b0f407d04375f0447190347"
+  dependencies:
+    ansi-escapes "^1.1.0"
+    chalk "^1.0.0"
+    cli-cursor "^2.1.0"
+    cli-width "^2.0.0"
+    external-editor "^2.0.1"
+    figures "^2.0.0"
+    lodash "^4.3.0"
+    mute-stream "0.0.7"
+    run-async "^2.2.0"
+    rx "^4.1.0"
+    string-width "^2.0.0"
+    strip-ansi "^3.0.0"
+    through "^2.3.6"
 
 inquirer@^0.12.0:
   version "0.12.0"
@@ -6456,6 +6503,10 @@ lodash.flatten@^4.2.0:
   version "4.4.0"
   resolved "http://registry.npm.taobao.org/lodash.flatten/download/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
 
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "http://registry.npm.taobao.org/lodash.get/download/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/lodash.isarguments/download/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -6503,6 +6554,10 @@ lodash.pick@^4.2.1:
 lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "http://registry.npm.taobao.org/lodash.restparam/download/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
+
+lodash.startcase@^4.4.0:
+  version "4.4.0"
+  resolved "http://registry.npm.taobao.org/lodash.startcase/download/lodash.startcase-4.4.0.tgz#9436e34ed26093ed7ffae1936144350915d9add8"
 
 lodash.template@^3.0.0:
   version "3.6.2"
@@ -6921,13 +6976,13 @@ minimist@0.0.8:
   version "0.0.8"
   resolved "http://registry.npm.taobao.org/minimist/download/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
+minimist@1.2.0, minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/minimist/download/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
+
 minimist@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/minimist/-/minimist-0.1.0.tgz#99df657a52574c21c9057497df742790b2b4c0de"
-
-minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
-  version "1.2.0"
-  resolved "http://registry.npm.taobao.org/minimist/download/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
 minimist@~0.0.1:
   version "0.0.10"
@@ -7143,6 +7198,13 @@ node-bitmap@0.0.1:
 node-dir@0.1.8:
   version "0.1.8"
   resolved "https://registry.npmjs.org/node-dir/-/node-dir-0.1.8.tgz#55fb8deb699070707fb67f91a460f0448294c77d"
+
+node-fetch@1.6.3:
+  version "1.6.3"
+  resolved "http://registry.npm.taobao.org/node-fetch/download/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
 
 node-forge@0.7.1:
   version "0.7.1"
@@ -7506,6 +7568,24 @@ onetime@^2.0.0:
   resolved "https://registry.npmjs.org/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
   dependencies:
     mimic-fn "^1.0.0"
+
+opencollective@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/opencollective/download/opencollective-1.0.3.tgz#aee6372bc28144583690c3ca8daecfc120dd0ef1"
+  dependencies:
+    babel-polyfill "6.23.0"
+    chalk "1.1.3"
+    inquirer "3.0.6"
+    minimist "1.2.0"
+    node-fetch "1.6.3"
+    opn "4.0.2"
+
+opn@4.0.2:
+  version "4.0.2"
+  resolved "http://registry.npm.taobao.org/opn/download/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
+  dependencies:
+    object-assign "^4.0.1"
+    pinkie-promise "^2.0.0"
 
 opn@^5.1.0:
   version "5.3.0"
@@ -7990,6 +8070,10 @@ pngjs-nozlib@^1.0.0:
 pngjs@^2.0.0:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/pngjs/download/pngjs-2.3.1.tgz#11d1e12b9cb64d63e30c143a330f4c1f567da85f"
+
+popper.js@^1.12.9:
+  version "1.14.3"
+  resolved "http://registry.npm.taobao.org/popper.js/download/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
 
 portfinder@^1.0.9:
   version "1.0.13"
@@ -8697,7 +8781,7 @@ regenerate@^1.2.1:
   version "1.3.3"
   resolved "http://registry.npm.taobao.org/regenerate/download/regenerate-1.3.3.tgz#0c336d3980553d755c39b586ae3b20aa49c82b7f"
 
-regenerator-runtime@^0.10.5:
+regenerator-runtime@^0.10.0, regenerator-runtime@^0.10.5:
   version "0.10.5"
   resolved "http://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
 
@@ -9127,6 +9211,10 @@ rx-lite@*, rx-lite@^4.0.8:
 rx-lite@^3.1.2:
   version "3.1.2"
   resolved "http://registry.npm.taobao.org/rx-lite/download/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
+
+rx@^4.1.0:
+  version "4.1.0"
+  resolved "http://registry.npm.taobao.org/rx/download/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
 rxjs@^5.4.2, rxjs@^5.5.2:
   version "5.5.9"
@@ -10932,6 +11020,10 @@ vm-browserify@^1.0.0:
 vue-axios@^2.1.1:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/vue-axios/download/vue-axios-2.1.1.tgz#6167f2db93065d9bcfc90e65d063ccf34f8b1d63"
+
+vue-functional-data-merge@^2.0.5:
+  version "2.0.6"
+  resolved "http://registry.npm.taobao.org/vue-functional-data-merge/download/vue-functional-data-merge-2.0.6.tgz#f08055adfb92458debcf2ad10c3aa712277f7fc2"
 
 vue-hot-reload-api@^2.2.0:
   version "2.3.0"

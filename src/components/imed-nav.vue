@@ -33,26 +33,6 @@
     }
 </script>
 
-<style scoped>
+<style>
 
-    .imed-bar {
-        height: 3rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: red;
-        background-color: #ffffff;
-    }
-
-    .imed-bar > a {
-        color: red;
-    }
-
-    h1 {
-        font-size: 1rem;
-    }
-
-    .icon {
-        margin: 0.5rem;
-    }
 </style>

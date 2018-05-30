@@ -8,75 +8,26 @@
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content" style="margin:3rem 0 0 0;">
-            <div class="list-block media-list">
-                <ul>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media">
-                                <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
-                            </div>
-                            <div class="item-inner">
-                                <div class="imed-item-title">消化系统</div>
-                                <div class="imed-item-sub-title">时长：18学时</div>
-                                <div class="imed-item-sub-title">名师：刘老师</div>
-                            </div>
-                            <router-link to="/exam/123/course/1"
-                                         class="button button-fill button-warning">开始学习
+            <b-container class="imed-item-content">
+                <template v-for="n in 10">
+                    <b-row class="imed-group">
+                        <b-col cols="4">
+                            <b-img fluid :src='require("../../assets/img/vedio-list.png")' />
+                        </b-col>
+                        <b-col cols="4" class="imed-item-info">
+                            <div class="imed-item-title">消化系统</div>
+                            <div class="imed-item-sub-title">名师：刘老师</div>
+                            <div class="imed-item-sub-title">时长：28学时</div>
+                        </b-col>
+                        <b-col cols="4" class="imed-button-group">
+                            <router-link to="/exam/123/course/1">
+                                <div class="imed-button">开始学习</div>
                             </router-link>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media">
-                                <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
-                            </div>
-                            <div class="item-inner">
-                                <div class="imed-item-title">女性生殖系统</div>
-                                <div class="imed-item-sub-title">时长：18学时</div>
-                                <div class="imed-item-sub-title">名师：刘老师</div>
-                            </div>
-                            <router-link to="/exam/123/course/2"
-                                         class="button button-fill button-warning">开始学习
-                            </router-link>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media">
-                                <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
-                            </div>
-                            <div class="item-inner">
-                                <div class="imed-item-title">心血管系统</div>
-                                <div class="imed-item-sub-title">时长：18学时</div>
-                                <div class="imed-item-sub-title">名师：刘老师</div>
-                            </div>
-                            <router-link to="/exam/123/course/3"
-                                         class="button button-fill button-warning">开始学习
-                            </router-link>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content">
-                            <div class="item-media">
-                                <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
-                            </div>
-                            <div class="item-inner">
-                                <div class="imed-item-title">儿科</div>
-                                <div class="imed-item-sub-title">时长：18学时</div>
-                                <div class="imed-item-sub-title">名师：刘老师</div>
-                            </div>
-                            <router-link to="/exam/123/course/4"
-                                         class="button button-fill button-warning">开始学习
-                            </router-link>
-                        </div>
-                    </li>
-                </ul>
-                <footer>
-                    <router-link to="/book/10/order" class="button button-fill button-big button-danger">
-                        全部购买（9990阅点）
-                    </router-link>
-                </footer>
-            </div>
+                        </b-col>
+                    </b-row>
+                    <hr>
+                </template>
+            </b-container>
         </div>
     </div>
 </template>
@@ -102,74 +53,43 @@
 
 <style scoped>
 
-    .list-block {
-        margin: 0.1rem 0 2rem;
+    div, span {
+        color: black;
     }
 
-    .list-block .item-content {
-        padding-left: 0.5rem;
-    }
-
-    .list-block.media-list .item-inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
-    }
-
-    .card {
-        margin: 0;
+    .imed-item-title {
+        font-size: .75rem;
     }
 
     .imed-item-sub-title {
+        font-size: .65rem;
+        color: #868686;
+    }
+
+    .imed-item-content {
+        padding: .5rem .7rem;
+    }
+
+    .imed-item-info {
         display: flex;
-        width: 100%;
-        justify-content: space-between;
-        font-size: 0.8rem;
-        color: #666;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: -1rem;
     }
 
-    .item-media > img {
-        width: 5.5rem;
+    .imed-button {
+        color: #D54443;
+        border: 1px solid #D54443;
+        padding: .2rem .2rem;
+        text-align: center;
+        border-radius: 20px;
+        font-size: .665rem;
     }
 
-    footer {
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-    }
-
-    .list-block .item-inner:after {
-        width: 0;
-    }
-
-    .list-block ul:after {
-        width: 0;
-    }
-
-    .imed-bar {
-        height: 3rem;
+    .imed-button-group {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: red;
-        background-color: #ffffff;
-    }
-
-    .imed-bar > a {
-        color: red;
-    }
-
-    h1 {
-        font-size: 1rem;
-    }
-
-    .icon {
-        margin: 0.5rem;
-    }
-
-    .button.button-fill.button-warning {
-        margin: 0 1rem 0 0;
+        justify-content: space-around;
+        flex-direction: column;
     }
 
 </style>

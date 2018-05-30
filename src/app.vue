@@ -26,7 +26,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     .router-view {
         position: absolute;
         left: 0;
@@ -49,6 +49,39 @@
 
     .slide-left-leave-active, .slide-right-enter-active {
         transition: all 0.5s ease;
+    }
+
+    .imed-bar {
+        height: 3.2rem;
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #D54443;
+        background-color: #FFFFFF;
+        border-bottom: 2px solid #F9F9F9;
+    }
+
+    .imed-bar > a {
+        color: #D54443;
+    }
+
+    .imed-bar > h1 {
+        font-size: .855rem;
+    }
+
+    .imed-bar .icon {
+        margin-left: 0.575rem;
+        margin-top: -0.7rem;
+    }
+
+    .icon-left:before {
+        content: "\e614";
+        font-size: 0.855rem;
+    }
+
+    .button.button-fill.button-big {
+        background-color: #D54443;
     }
 
 </style>

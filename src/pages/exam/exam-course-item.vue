@@ -1,26 +1,17 @@
 <template>
     <imed-nav :title="title">
-        <div class="card demo-card-header-pic">
-            <div valign="bottom" class="card-header color-white no-border no-padding">
-                <video src="http://www.w3school.com.cn/i/movie.ogg" controls="controls">
-                    your browser does not support the video tag
-                </video>
-            </div>
-        </div>
+        <video style="width: 100%" src="http://www.w3school.com.cn/i/movie.ogg" controls="controls">
+            your browser does not support the video tag
+        </video>
         <div class="buttons-tab">
             <div class="tab-link active button">讲义</div>
-            <div href="#tab2" class="tab-link button">课后测试</div>
+            <div href="#tab2" class="tab-link button"></div>
         </div>
         <div class="content-block">
             <div class="tabs">
                 <div id="tab1" class="tab active">
                     <div class="content-block">
                         <p>This is tab 1 content</p>
-                    </div>
-                </div>
-                <div id="tab2" class="tab">
-                    <div class="content-block">
-                        <p>This is tab 2 content</p>
                     </div>
                 </div>
             </div>
@@ -35,7 +26,7 @@
         name: "book-order",
         data() {
             return {
-                title: '购买成功',
+                title: '第一课时：甲状腺腺叶切除术',
                 own: false,
             }
         },
