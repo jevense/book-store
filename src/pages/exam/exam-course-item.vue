@@ -1,6 +1,13 @@
 <template>
-    <imed-nav :title="title">
-        <video style="width: 100%" src="http://www.w3school.com.cn/i/movie.ogg" controls="controls">
+    <imed-nav :title="video.title">
+        <video preload
+               width="100%"
+               @click="control"
+               controls
+               :poster="preUrl + video.cover"
+               controls="controls">
+            <source :src="preUrl + video.path"
+                    type="video/mp4">
             your browser does not support the video tag
         </video>
         <div class="buttons-tab">
@@ -11,7 +18,7 @@
             <div class="tabs">
                 <div id="tab1" class="tab active">
                     <div class="content-block">
-                        <p>This is tab 1 content</p>
+                        <p v-text="video.introduce"></p>
                     </div>
                 </div>
             </div>
@@ -26,62 +33,57 @@
         name: "book-order",
         data() {
             return {
-                title: '第一课时：甲状腺腺叶切除术',
-                own: false,
+                preUrl: 'http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/',
+                videos: {
+                    'z000030': {
+                        title: '辅助检查导学',
+                        introduce: '',
+                        cover: 'z000030.jpg',
+                        path: 'z000030.mp4',
+                    },
+                    'z000031': {
+                        title: '病史采集和病例分析导学',
+                        introduce: '',
+                        cover: 'z000031.jpg',
+                        path: 'z000031.mp4',
+                    },
+                    'z000032': {
+                        title: '综合导学',
+                        introduce: '',
+                        cover: 'z000032.jpg',
+                        path: 'z000032.mp4',
+                    }
+                }
             }
         },
-        components: {ImedNav}
+        components: {ImedNav},
+        computed: {
+            video() {
+                if (this.videos[this.$route.params.iid]) {
+                    return this.videos[this.$route.params.iid]
+                } else {
+                    return {
+                        title: '辅助检查导学',
+                        introduce: '',
+                        cover: 'z000030.jpg',
+                        path: 'z000030.mp4',
+                    };
+                }
+
+            },
+        },
+        methods: {
+            control(event) {
+                if (event.target.paused) {
+                    event.target.play();
+                } else {
+                    event.target.pause();
+                }
+            },
+        }
     }
 </script>
 
 <style scoped>
 
-    .list-block {
-        margin: 0.5rem 0;
-    }
-
-    .list-block .item-content {
-        padding-left: 0.5rem;
-        background-color: white;
-    }
-
-    .list-block.media-list .item-inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
-
-    }
-
-    .imed-item-title {
-        font-size: 0.9rem;
-    }
-
-    .imed-item-sub-title {
-        font-size: 0.8rem;
-        color: #666;
-    }
-
-    .item-media > img {
-        width: 5.5rem;
-    }
-
-    .imed-title {
-        color: red;
-    }
-
-    section {
-        padding: 0.5rem;
-        background-color: white;
-    }
-
-    footer {
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-    }
-
-    .button {
-        border-radius: 0;
-    }
 </style>

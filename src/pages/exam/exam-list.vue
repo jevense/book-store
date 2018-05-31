@@ -1,167 +1,76 @@
 <template>
     <div>
         <header class="imed-bar">
-            <a @click="back">
+            <router-link to="/exam" class="item-content item-link">
                 <div class="icon icon-left"></div>
-            </a>
+            </router-link>
             <h1 v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content" style="margin:3rem 0 0 0;">
             <div class="imed-content">
-                <b-img fluid :src='require("../../assets/img/banner.png")'/>
-                <div style="padding: 0.7rem;">
-                    执医医师考试综合理论鄙视通关包包含考试指南、模拟试卷、视频课程、考前精华、试卷答疑等...
-                </div>
+                <router-link :to="`/exam/1/course/1/item/${banner.videoId}`" v-if="banner">
+                    <b-img fluid :src='banner.cover'/>
+                </router-link>
+                <div style="padding: 0.7rem;" v-text="introduce"></div>
                 <div class="imed-tips">
                     <span style="border-right: 2px solid #F9F9F9;">
                         <b-img :src='require("../../assets/img/time.png")'/>
-                        <span>上线试卷：</span>2018-6-2
+                        <span>上线试卷：</span>{{time}}
                     </span>
                     <span>
                         <b-img :src='require("../../assets/img/people.png")'/>
-                        <span>学习人数：</span>405
+                        <span>学习人数：</span>{{people}}
                     </span>
                 </div>
             </div>
             <div class="imed-content" style="margin-top: .5rem;">
                 <div class="imed-title">综合理论笔试</div>
                 <b-container class="imed-item-content">
-                    <b-row class="imed-group">
-                        <b-col cols="3">
-                            <img style="width: 5rem;" :src='require("../../assets/img/exam-cover.png")'>
-                        </b-col>
-                        <b-col cols="6" class="imed-item-info">
-                            <div class="imed-item-title">考试指南</div>
-                            <div class="imed-item-sub-title">复习重点精讲</div>
-                            <div class="imed-item-sub-title">
-                                <span class="imed-price">2990</span> 阅点
-                                <s>
-                                    <span class="imed-price">2990</span> 阅点
-                                </s>
-                            </div>
-                        </b-col>
-                        <b-col cols="3" class="imed-button-group">
-                            <router-link to="/book/10/order">
-                                <div class="imed-button">购买</div>
-                            </router-link>
-                        </b-col>
-                    </b-row>
-                    <hr>
-                    <b-row class="imed-group">
-                        <b-col cols="3">
-                            <img style="width: 5rem;" :src='require("../../assets/img/exam-cover.png")'>
-                        </b-col>
-                        <b-col cols="6" class="imed-item-info">
-                            <div class="imed-item-title">视频课程</div>
-                            <div class="imed-item-sub-title">符合考试大纲的视频课程</div>
-                            <div class="imed-item-sub-title">
-                                <span class="imed-price">2990</span> 阅点
-                                <s>
-                                    <span class="imed-price">2990</span> 阅点
-                                </s>
-                            </div>
-                        </b-col>
-                        <b-col cols="3" class="imed-button-group">
-                            <router-link to="/exam/123/preview">
-                                <div class="imed-button">试看</div>
-                            </router-link>
-                            <router-link to="/exam/123/course">
-                                <div class="imed-button">购买</div>
-                            </router-link>
-                        </b-col>
-                    </b-row>
-                    <hr>
-                    <b-row class="imed-group">
-                        <b-col cols="3">
-                            <img style="width: 5rem;" :src='require("../../assets/img/exam-cover.png")'>
-                        </b-col>
-                        <b-col cols="6" class="imed-item-info">
-                            <div class="imed-item-title">模拟测试题</div>
-                            <div class="imed-item-sub-title">各专业练习题及2套模拟题</div>
-                            <div class="imed-item-sub-title">
-                                <span class="imed-price">2990</span> 阅点
-                                <s>
-                                    <span class="imed-price">2990</span> 阅点
-                                </s>
-                            </div>
-                        </b-col>
-                        <b-col cols="3" class="imed-button-group">
-                            <router-link to="/exam/123/examination">
-                                <div class="imed-button">购买</div>
-                            </router-link>
-                        </b-col>
-                    </b-row>
-                    <hr>
-                    <b-row class="imed-group">
-                        <b-col cols="3">
-                            <img style="width: 5rem;" :src='require("../../assets/img/exam-cover.png")'>
-                        </b-col>
-                        <b-col cols="6" class="imed-item-info">
-                            <div class="imed-item-title">交流答疑</div>
-                            <div class="imed-item-sub-title">知识点及错题反馈</div>
-                            <div class="imed-item-sub-title">
-                                <span class="imed-price">2990</span> 阅点
-                                <s>
-                                    <span class="imed-price">2990</span> 阅点
-                                </s>
-                            </div>
-                        </b-col>
-                        <b-col cols="3" class="imed-button-group">
-                            <router-link to="/exam/123/examination">
-                                <div class="imed-button">购买</div>
-                            </router-link>
-                        </b-col>
-                    </b-row>
-                    <hr>
-                    <b-row class="imed-group">
-                        <b-col cols="3">
-                            <img style="width: 5rem;" :src='require("../../assets/img/exam-cover.png")'>
-                        </b-col>
-                        <b-col cols="6" class="imed-item-info">
-                            <div class="imed-item-title">考前精讲</div>
-                            <div class="imed-item-sub-title">考前划重点和考点</div>
-                            <div class="imed-item-sub-title">
-                                <span class="imed-price">2990</span> 阅点
-                                <s>
-                                    <span class="imed-price">2990</span> 阅点
-                                </s>
-                            </div>
-                        </b-col>
-                        <b-col cols="3" class="imed-button-group">
-                            <router-link to="/exam/123/examination">
-                                <div class="imed-button">购买</div>
-                            </router-link>
-                        </b-col>
-                    </b-row>
-                    <hr>
-                    <b-row class="imed-group">
-                        <b-col cols="3">
-                            <img style="width: 5rem;" :src='require("../../assets/img/exam-cover.png")'>
-                        </b-col>
-                        <b-col cols="6" class="imed-item-info">
-                            <div class="imed-item-title">考试大纲</div>
-                            <div class="imed-item-sub-title">执医考试大纲</div>
-                            <div class="imed-item-sub-title">
-                                <span class="imed-price">2990</span> 阅点
-                                <s>
-                                    <span class="imed-price">2990</span> 阅点
-                                </s>
-                            </div>
-                        </b-col>
-                        <b-col cols="3" class="imed-button-group">
-                            <router-link to="/exam/123/examination">
-                                <div class="imed-button">购买</div>
-                            </router-link>
-                        </b-col>
-                    </b-row>
+                    <template v-for="item in list">
+                        <b-row class="imed-group">
+                            <b-col cols="3">
+                                <img style="width: 5rem;" :src='item.cover'>
+                            </b-col>
+                            <b-col cols="6" class="imed-item-info">
+                                <div class="imed-item-title" v-text="item.title"></div>
+                                <div class="imed-item-sub-title" v-text="item.subTitle"></div>
+                                <div class="imed-item-sub-title">
+                                    <span class="imed-price" v-text="item.price"></span> 阅点
+                                    <s>
+                                        <span class="imed-price" v-text="item.originPrice"></span> 阅点
+                                    </s>
+                                </div>
+                            </b-col>
+                            <b-col cols="3" class="imed-button-group">
+                                <router-link :to="`/exam/1/course/1/item/${item.guide.videoId}`" v-if="item.guide">
+                                    <div class="imed-button">导学</div>
+                                </router-link>
+
+                                <template v-if="!item.buyStatus">
+                                    <router-link to="/book/10/order">
+                                        <div class="imed-button">购买</div>
+                                    </router-link>
+                                </template>
+                                <template v-else>
+                                    <router-link to="/exam/123/examination" v-if="item.type==='examination'">
+                                        <div class="imed-button">学习</div>
+                                    </router-link>
+                                    <router-link to="/exam/123/course" v-if="item.type==='video'">
+                                        <div class="imed-button">学习</div>
+                                    </router-link>
+                                </template>
+                            </b-col>
+                        </b-row>
+                        <hr>
+                    </template>
                 </b-container>
             </div>
-            <footer>
-                <router-link to="/book/10/order" class="button button-fill button-big">
-                    全部购买（9990阅点）
-                </router-link>
-            </footer>
+            <!--<footer>-->
+                <!--<router-link to="/book/10/order" class="button button-fill button-big">-->
+                    <!--全部购买（9990阅点）-->
+                <!--</router-link>-->
+            <!--</footer>-->
         </div>
     </div>
 </template>
@@ -173,7 +82,48 @@
         name: "book-list",
         data() {
             return {
-                title: '执业医师考试综合理论笔试通关包',
+                title: '临床执业医师资格考试实践技能通关包',
+                introduce: '贴近新版考试大纲，资深专家进行编著，重点难点深入剖析，解决考生学习痛点。内含：专家导读+操作视频+精品题库。\n',
+                time: '2018-6-1',
+                people: '405',
+                banner: {
+                    cover: require("../../assets/img/bannerPic.png"),
+                    videoId: 'z000032',
+                },
+                list: [
+                    {
+                        cover: require("../../assets/img/picKaoshi.png"),
+                        title: '第一站 病史采集及病例分析',
+                        subTitle: '答题技巧和要点',
+                        price: '0',
+                        originPrice: '500',
+                        buyStatus: true,
+                        guide: {videoId: 'z000031'},
+                        type: 'examination',
+
+                    },
+                    {
+                        cover: require("../../assets/img/picShipin.png"),
+                        title: '第二站 体格检查与基本操作',
+                        subTitle: '高清示教视频操作',
+                        price: '0',
+                        originPrice: '780',
+                        buyStatus: true,
+                        type: 'video',
+
+                    },
+                    {
+                        cover: require("../../assets/img/picMuni.png"),
+                        title: '第三站 辅助检查',
+                        subTitle: 'B超、CT、心电图、X线',
+                        price: '0',
+                        originPrice: '600',
+                        buyStatus: true,
+                        guide: {videoId: 'z000030'},
+                        type: 'examination',
+
+                    }
+                ],
             }
         },
         components: {ImedNav},
@@ -181,12 +131,6 @@
             search() {
                 console.log('======')
             },
-            back() {
-                let main = document.getElementById('main')
-                let subContent = document.getElementById('sub')
-                main.className = main.className.replace('page-from-center-to-left', 'page-from-left-to-center')
-                subContent.className = subContent.className.replace('page-from-right-to-center', 'page-from-center-to-right')
-            }
         }
     }
 </script>
@@ -269,7 +213,7 @@
         flex-direction: column
     }
 
-    .imed-button-group div{
+    .imed-button-group div {
         margin: 2px;
     }
 

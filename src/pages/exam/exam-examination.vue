@@ -8,35 +8,38 @@
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content" style="margin:3rem 0 0 0;">
-            <div class="content-block-title">模拟练习</div>
-            <div class="list-block">
-                <div>
-                    <div>执业医师练习题</div>
-                    <div>
-                        <span>题数：300</span>
-                        <span>学科：15个</span>
-                    </div>
-                </div>
-            </div>
-            <div class="content-block-title">模拟试卷</div>
-            <div class="list-block">
-                <div>
-                    <div>特训试卷一</div>
-                    <div>
-                        <span>时长：05：00</span>
-                        <span>总分：600分</span>
-                        <span>合计：4个单元</span>
-                    </div>
-                </div>
-                <div>
-                    <div>特训试卷二</div>
-                    <div>
-                        <span>时长：05：00</span>
-                        <span>总分：600分</span>
-                        <span>合计：4个单元</span>
-                    </div>
-                </div>
-            </div>
+            <iframe style="width: 100%; height: 100%;border: 0"
+                    src="http://47.94.206.185:3003/pc/student/student.html?token=59d931291a05463599661ff502018e9b&platform=ebook&newebook=1&paperId=4028882263b058430163b06c545d0001">
+            </iframe>
+            <!--<div class="content-block-title">模拟练习</div>-->
+            <!--<div class="list-block">-->
+            <!--<div>-->
+            <!--<div>执业医师练习题</div>-->
+            <!--<div>-->
+            <!--<span>题数：300</span>-->
+            <!--<span>学科：15个</span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="content-block-title">模拟试卷</div>-->
+            <!--<div class="list-block">-->
+            <!--<div>-->
+            <!--<div>特训试卷一</div>-->
+            <!--<div>-->
+            <!--<span>时长：05：00</span>-->
+            <!--<span>总分：600分</span>-->
+            <!--<span>合计：4个单元</span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div>-->
+            <!--<div>特训试卷二</div>-->
+            <!--<div>-->
+            <!--<span>时长：05：00</span>-->
+            <!--<span>总分：600分</span>-->
+            <!--<span>合计：4个单元</span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
 </template>

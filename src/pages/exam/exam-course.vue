@@ -9,15 +9,15 @@
         </header>
         <div class="content" style="margin:3rem 0 0 0;">
             <b-container class="imed-item-content">
-                <template v-for="n in 10">
-                    <b-row class="imed-group">
+                <template v-for="item in list">
+                    <b-row>
                         <b-col cols="4">
-                            <b-img fluid :src='require("../../assets/img/vedio-list.png")' />
+                            <b-img fluid :src='require("../../assets/img/vedio-list.png")'/>
                         </b-col>
                         <b-col cols="4" class="imed-item-info">
-                            <div class="imed-item-title">消化系统</div>
-                            <div class="imed-item-sub-title">名师：刘老师</div>
-                            <div class="imed-item-sub-title">时长：28学时</div>
+                            <div class="imed-item-title" v-text="item.title"></div>
+                            <div class="imed-item-sub-title" v-if="item.teacher">名师：{{item.teacher}}</div>
+                            <div class="imed-item-sub-title" v-if="item.time">时长：{{item.time}}</div>
                         </b-col>
                         <b-col cols="4" class="imed-button-group">
                             <router-link to="/exam/123/course/1">
@@ -40,6 +40,20 @@
         data() {
             return {
                 title: '视频课程',
+                list: [
+                    {
+                        courseId: '1',
+                        title: '体格检查',
+                        teacher: '刘老师',
+                        time: '28学时',
+                    },
+                    {
+                        courseId: '2',
+                        title: '基本操作',
+                        teacher: '刘老师',
+                        time: '28学时',
+                    }
+                ]
             }
         },
         components: {ImedNav},
