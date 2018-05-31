@@ -9,7 +9,7 @@
         </header>
         <div class="content" style="margin:3rem 0 0 0;">
             <iframe style="width: 100%; height: 100%;border: 0"
-                    src="http://47.94.206.185:3003/pc/student/student.html?token=59d931291a05463599661ff502018e9b&platform=ebook&newebook=1&paperId=4028882263b058430163b06c545d0001">
+                    src="https://exam.mvwchina.com/pc/student/student.html?token=e5860323ec3044fcb9f2bfea59446efe&platform=ebook&newebook=1&paperId=4028882263b058430163b06c545d0001">
             </iframe>
             <!--<div class="content-block-title">模拟练习</div>-->
             <!--<div class="list-block">-->

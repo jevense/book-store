@@ -39,7 +39,7 @@
         name: "exam-guide",
         data() {
             return {
-                title: '视频课程',
+                title: '体格检查与基本操作',
                 list: [
                     {
                         courseId: '1',
