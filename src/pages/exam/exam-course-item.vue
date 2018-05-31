@@ -17,8 +17,8 @@
         <div class="content-block">
             <div class="tabs">
                 <div id="tab1" class="tab active">
-                    <div class="content-block">
-                        <p v-text="video.introduce"></p>
+                    <div class="content-block" style="overflow:scroll;">
+                        <p v-html="video.introduce"></p>
                     </div>
                 </div>
             </div>
@@ -37,26 +37,28 @@
                 videos: {
                     'z000030': {
                         title: '辅助检查导学',
-                        introduce: '',
+                        introduce: require('../../assets/z000030.htm'),
                         cover: 'z000030.jpg',
                         path: 'z000030.mp4',
                     },
                     'z000031': {
                         title: '病史采集和病例分析导学',
-                        introduce: '',
+                        introduce: require('../../assets/z000031.htm'),
                         cover: 'z000031.jpg',
                         path: 'z000031.mp4',
                     },
                     'z000032': {
                         title: '综合导学',
-                        introduce: '',
+                        introduce: require('../../assets/z000032.htm'),
                         cover: 'z000032.jpg',
                         path: 'z000032.mp4',
                     }
                 }
             }
         },
-        components: {ImedNav},
+        components: {
+            ImedNav
+        },
         computed: {
             video() {
                 if (this.videos[this.$route.params.iid]) {
@@ -64,7 +66,7 @@
                 } else {
                     return {
                         title: '辅助检查导学',
-                        introduce: '',
+                        introduce: require('../../assets/z000030.htm'),
                         cover: 'z000030.jpg',
                         path: 'z000030.mp4',
                     };
@@ -85,5 +87,8 @@
 </script>
 
 <style scoped>
-
+    .content-block {
+        margin: 0;
+        height: 16rem;
+    }
 </style>

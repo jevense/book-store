@@ -3,7 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     // entry: ["babel-polyfill", "./src/index"],
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
@@ -45,6 +45,11 @@ module.exports = {
                 use: [
                     'file-loader'
                 ]
+            }, {
+                test: /\.(htm)$/,
+                use: {
+                    loader: 'html-loader',
+                }
             }, {
                 test: /\.(csv|tsv)$/,
                 use: [

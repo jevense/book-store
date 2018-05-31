@@ -3,11 +3,11 @@
         <div class="list-block media-list">
             <div class="item-content">
                 <div class="item-media">
-                    <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
+                    <img :src='require("../../assets/img/pic0531.jpg")'>
                 </div>
                 <div class="item-inner">
-                    <div class="imed-item-title">中医科</div>
-                    <div class="imed-item-sub-title"><span style="color: red">2990</span> 阅点</div>
+                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能</div>
+                    <div class="imed-item-sub-title"><span style="color: red">0</span> 阅点</div>
                     <div class="imed-item-sub-title">作者：医视界</div>
                     <div class="imed-item-sub-title">图书类型：通关包</div>
                     <div class="imed-item-sub-title">大小：2M</div>
@@ -16,12 +16,12 @@
             </div>
         </div>
         <section>
-            <span class="imed-title">支付金额</span>
+            <span class="imed-title">支付金额:0元</span>
         </section>
         <footer>
-            <router-link to="/book/10/order/pay-success" class="button button-fill button-big button-danger">
+            <a @click="buy($route.params.id)" class="button button-fill button-big button-danger">
                 确认付款
-            </router-link>
+            </a>
         </footer>
     </imed-nav>
 </template>
@@ -37,7 +37,42 @@
                 own: false,
             }
         },
-        components: {ImedNav}
+        components: {ImedNav},
+        methods: {
+            search() {
+                console.log('======');
+            },
+            buy(cid) {
+                if (typeof BOOK !== 'undefined') {
+                    let args = {
+                        "serviceModule": "BS-Service",
+                        "serviceNumber": "0301500",
+                        "token": BOOK.token,
+                        "args": {
+                            "token": BOOK.token,
+                            "bookId": cid,
+                            "platform": BOOK.platform,
+                            "discountId": ""
+                        },
+                        "TerminalType": "A"
+                    }
+
+                    this.$http.post(Config.busUrl, encodeURIComponent(JSON.stringify(args))).then(res => {
+                        let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
+                        if (result["opFlag"] == false) {
+                            //alert(Elf.constants.E008 + result["errorMessage"]);
+                            if (result["errorMessage"].indexOf("E012-") >= 0) {
+                                WebCallApp("UserLogout", {logoutType: "E012"});
+                            }
+                        } else {
+                            this.$router.push(`/book/${this.$route.params.id}/order/pay-success`)
+                        }
+                    })
+                } else {
+                    this.$router.push(`/book/${this.$route.params.id}/order/pay-success`)
+                }
+            },
+        }
     }
 </script>
 

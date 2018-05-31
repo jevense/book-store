@@ -3,11 +3,11 @@
         <div class="list-block media-list">
             <div class="item-content">
                 <div class="item-media">
-                    <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
+                    <img :src='require("../../assets/img/pic0531.jpg")'>
                 </div>
                 <div class="item-inner">
-                    <div class="imed-item-title">中医科</div>
-                    <div class="imed-item-sub-title"><span style="color: red">2990</span> 阅点</div>
+                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能</div>
+                    <div class="imed-item-sub-title"><span style="color: red">0</span> 阅点</div>
                     <div class="imed-item-sub-title">作者：医视界</div>
                     <div class="imed-item-sub-title">图书类型：通关包</div>
                     <div class="imed-item-sub-title">大小：2M</div>
@@ -16,9 +16,10 @@
             </div>
         </div>
         <footer>
-            <router-link to="/exam/guide" class="button button-fill button-big button-danger">
+            <a @click="main($route.params.id)"
+               class="button button-fill button-big button-danger">
                 马上去学习
-            </router-link>
+            </a>
         </footer>
     </imed-nav>
 </template>
@@ -34,7 +35,18 @@
                 own: false,
             }
         },
-        components: {ImedNav}
+        components: {ImedNav},
+        methods: {
+            main(eid) {
+                if (typeof BOOK !== 'undefined') {
+                    this.$store.dispatch('login',{eid,}).then(() => {
+                        this.$router.push(`/exam/${eid}`)
+                    })
+                } else {
+                    this.$router.push(`/exam/${eid}`)
+                }
+            },
+        }
     }
 </script>
 

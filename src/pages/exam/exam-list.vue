@@ -16,7 +16,7 @@
                 <div class="imed-tips">
                     <span style="border-right: 2px solid #F9F9F9;">
                         <b-img :src='require("../../assets/img/time.png")'/>
-                        <span>上线试卷：</span>{{time}}
+                        <span>上线时间：</span>{{time}}
                     </span>
                     <span>
                         <b-img :src='require("../../assets/img/people.png")'/>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="imed-content" style="margin-top: .5rem;">
-                <div class="imed-title">综合理论笔试</div>
+                <div class="imed-title">实践技能考试</div>
                 <b-container class="imed-item-content">
                     <template v-for="item in list">
                         <b-row class="imed-group">
@@ -46,19 +46,35 @@
                                 <router-link :to="`/exam/1/course/1/item/${item.guide.videoId}`" v-if="item.guide">
                                     <div class="imed-button">导学</div>
                                 </router-link>
-
-                                <template v-if="!item.buyStatus">
-                                    <router-link to="/book/10/order">
-                                        <div class="imed-button">购买</div>
-                                    </router-link>
+                                <template v-if="$store.state.loginInfo.ownList.includes(item.id)">
+                                    <template v-if="item.enable">
+                                        <a v-if="item.type==='examination'" @click="examination(item.id)">
+                                            <div class="imed-button">学习</div>
+                                        </a>
+                                        <router-link to="/exam/123/course" v-if="item.type==='video'">
+                                            <div class="imed-button">学习</div>
+                                        </router-link>
+                                    </template>
+                                    <template v-else>
+                                        <div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">
+                                            学习
+                                        </div>
+                                    </template>
                                 </template>
                                 <template v-else>
-                                    <router-link to="/exam/123/examination" v-if="item.type==='examination'">
-                                        <div class="imed-button">学习</div>
-                                    </router-link>
-                                    <router-link to="/exam/123/course" v-if="item.type==='video'">
-                                        <div class="imed-button">学习</div>
-                                    </router-link>
+                                    <!--<template v-if="item.enable">-->
+                                    <!--<router-link :to="`/book/${item.id}/order`">-->
+                                    <!--<div class="imed-button">购买</div>-->
+                                    <!--</router-link>-->
+                                    <!--</template>-->
+                                    <!--<template v-else>-->
+                                    <!--<div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">-->
+                                    <!--购买-->
+                                    <!--</div>-->
+                                    <!--</template>-->
+                                    <div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">
+                                        购买
+                                    </div>
                                 </template>
                             </b-col>
                         </b-row>
@@ -66,11 +82,11 @@
                     </template>
                 </b-container>
             </div>
-            <!--<footer>-->
-                <!--<router-link to="/book/10/order" class="button button-fill button-big">-->
-                    <!--全部购买（9990阅点）-->
-                <!--</router-link>-->
-            <!--</footer>-->
+            <footer v-if="$store.getters.loginInfo.ownList.length!==list.length">
+                <router-link :to="`/book/${$route.params.eid}/order`" class="button button-fill button-big">
+                    全部购买（{{$store.state.loginInfo.remainPrice}}阅点）
+                </router-link>
+            </footer>
         </div>
     </div>
 </template>
@@ -80,9 +96,12 @@
 
     export default {
         name: "book-list",
+        created() {
+            // console.log(this.$store.state.loginInfo)
+        },
         data() {
             return {
-                title: '临床执业医师资格考试实践技能通关包',
+                title: '临床执业医师考试实践技能通关包',
                 introduce: '贴近新版考试大纲，资深专家进行编著，重点难点深入剖析，解决考生学习痛点。内含：专家导读+操作视频+精品题库。\n',
                 time: '2018-6-1',
                 people: '405',
@@ -92,6 +111,7 @@
                 },
                 list: [
                     {
+                        id: "40288810624e037d01624e03979d0358",
                         cover: require("../../assets/img/picKaoshi.png"),
                         title: '第一站 病史采集及病例分析',
                         subTitle: '答题技巧和要点',
@@ -100,9 +120,11 @@
                         buyStatus: true,
                         guide: {videoId: 'z000031'},
                         type: 'examination',
+                        enable: true,
 
                     },
                     {
+                        id: "40288810624e037d01624e03979d0359",
                         cover: require("../../assets/img/picShipin.png"),
                         title: '第二站 体格检查与基本操作',
                         subTitle: '高清示教视频操作',
@@ -110,9 +132,11 @@
                         originPrice: '780',
                         buyStatus: true,
                         type: 'video',
+                        enable: true,
 
                     },
                     {
+                        id: "40288810624e037d01624e03979d035a",
                         cover: require("../../assets/img/picMuni.png"),
                         title: '第三站 辅助检查',
                         subTitle: 'B超、CT、心电图、X线',
@@ -121,7 +145,7 @@
                         buyStatus: true,
                         guide: {videoId: 'z000030'},
                         type: 'examination',
-
+                        enable: false,
                     }
                 ],
             }
@@ -129,7 +153,11 @@
         components: {ImedNav},
         methods: {
             search() {
-                console.log('======')
+                console.log('======');
+            },
+            examination(cid) {
+                let url = 'http://47.94.206.185:3003/pc/student/student.html'
+                WebCallApp("CmdOpenUrl", {url: `${url}?token=${BOOK.token}&platform=ebook&newebook=1&packageId=${cid}`})
             },
         }
     }
@@ -222,6 +250,5 @@
         width: 100%;
         bottom: 0;
     }
-
 
 </style>

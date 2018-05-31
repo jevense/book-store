@@ -12,7 +12,7 @@
                 <template v-for="item in list">
                     <b-row>
                         <b-col cols="4">
-                            <b-img fluid :src='require("../../assets/img/vedio-list.png")'/>
+                            <b-img fluid :src='item.cover'/>
                         </b-col>
                         <b-col cols="4" class="imed-item-info">
                             <div class="imed-item-title" v-text="item.title"></div>
@@ -44,14 +44,16 @@
                     {
                         courseId: '1',
                         title: '体格检查',
-                        teacher: '刘老师',
-                        time: '28学时',
+                        teacher: '医视界',
+                        time: '6课时',
+                        cover: require("../../assets/img/picxz.png"),
                     },
                     {
                         courseId: '2',
                         title: '基本操作',
-                        teacher: '刘老师',
-                        time: '28学时',
+                        teacher: '医视界',
+                        time: '23课时',
+                        cover: require("../../assets/img/picjz.png"),
                     }
                 ]
             }

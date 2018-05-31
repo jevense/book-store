@@ -61,12 +61,20 @@ const DEST = 'template/dist';
 
 gulp.task('useref', function () {
     return gulp.src(['template/phone/index.html', 'template/phone/main.html'])
-        .pipe(changed(DEST))
+        // .pipe(changed(DEST))
         .pipe(useref())
         .pipe(gulpIf('*.css', csso()))
-        .pipe(gulpIf('*.js', babel()))
+        // .pipe(gulpIf('*.js', babel()))
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulp.dest(DEST));
+});
+
+gulp.task('bridge', function () {
+    return gulp.src('template/phone/js/bridge.js')
+        // .pipe(changed(DEST))
+        .pipe(gulpIf('*.js', babel()))
+        .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulp.dest('template/dist/js'));
 });
 
 gulp.task('images', function () {
@@ -119,7 +127,7 @@ gulp.task('clean:cache', function (callback) {
 });
 
 gulp.task('build', function (callback) {
-    runSequence(['clean:dist', 'images', 'useref'], callback)
+    runSequence(['clean:dist', 'images', 'bridge', 'useref',], callback)
 });
 
 gulp.task('default', function (callback) {
