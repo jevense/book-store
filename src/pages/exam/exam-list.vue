@@ -269,6 +269,10 @@
         flex-direction: column
     }
 
+    .imed-button-group div{
+        margin: 2px;
+    }
+
     footer {
         position: fixed;
         width: 100%;
