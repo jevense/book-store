@@ -27,6 +27,7 @@
 </script>
 
 <style lang="less">
+
     .router-view {
         position: absolute;
         left: 0;
@@ -82,6 +83,10 @@
 
     .button.button-fill.button-big {
         background-color: #D54443;
+    }
+
+    a:active {
+        color: white;
     }
 
 </style>

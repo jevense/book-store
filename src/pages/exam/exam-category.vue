@@ -12,13 +12,13 @@
                 <div style="width: 95%; margin: 1rem auto;">
                     <b-img fluid :src='item.cover'/>
                 </div>
-                <b-container class="imed-item-content">
+                <div class="imed-item-content">
                     <template v-for="it in item.list">
-                        <b-row>
-                            <b-col cols="4">
-                                <b-img style="margin:.5rem" fluid :src='it.cover'/>
-                            </b-col>
-                            <b-col cols="5" class="imed-item-info">
+                        <div style="display: flex;">
+                            <div style="width: 30%;padding: .25rem;">
+                                <b-img fluid :src='it.cover'/>
+                            </div>
+                            <div style="width: 40%" class="imed-item-info">
                                 <div class="imed-item-title" v-text="it.title"></div>
                                 <div class="imed-item-sub-title">
                                     <span class="imed-price" v-text="it.price"></span> 阅点
@@ -26,8 +26,8 @@
                                         <span class="imed-price" v-text="it.originPrice"></span> 阅点
                                     </s>
                                 </div>
-                            </b-col>
-                            <b-col cols="3" class="imed-button-group">
+                            </div>
+                            <div style="width: 30%;padding: .25rem;" class="imed-button-group">
                                 <template v-if="it.type==='free'">
                                     <router-link :to="`/exam/${it.id}`">
                                         <div class="imed-button">学习</div>
@@ -45,11 +45,11 @@
                                         </div>
                                     </template>
                                 </template>
-                            </b-col>
-                        </b-row>
+                            </div>
+                        </div>
                         <div style="height: .5rem;background-color: #F5F5F5"></div>
                     </template>
-                </b-container>
+                </div>
             </template>
         </div>
     </div>
@@ -60,6 +60,9 @@
 
     export default {
         name: "exam-guide",
+        created() {
+            this.$store.dispatch('login')
+        },
         data() {
             return {
                 title: '医师资格考试考前辅导',
@@ -151,13 +154,11 @@
     }
 
     .imed-item-content {
-        padding: 0;
         background-color: #FFFFFF;
     }
 
     .imed-item-info {
         margin-top: .5rem;
-        margin-left: -.5rem;
     }
 
     .imed-button {

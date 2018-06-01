@@ -57,7 +57,6 @@
             },
             changedShow(state) {
                 this.show = state
-                console.log(state)
             }
         }
     }

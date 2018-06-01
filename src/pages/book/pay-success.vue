@@ -38,13 +38,12 @@
         components: {ImedNav},
         methods: {
             main(eid) {
-                if (typeof BOOK !== 'undefined') {
-                    this.$store.dispatch('login',{eid,}).then(() => {
-                        this.$router.push(`/exam/${eid}`)
-                    })
-                } else {
+                if (typeof BOOK === 'undefined') {
                     this.$router.push(`/exam/${eid}`)
                 }
+                this.$store.dispatch('login', {eid,}).then(() => {
+                    this.$router.push(`/exam/${eid}`)
+                })
             },
         }
     }

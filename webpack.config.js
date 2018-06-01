@@ -3,7 +3,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
+    // mode: 'production',
     // entry: ["babel-polyfill", "./src/index"],
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
@@ -46,6 +47,11 @@ module.exports = {
                     'file-loader'
                 ]
             }, {
+                test: /\.(eot|woff)$/,
+                use: {
+                    loader: "file-loader"
+                }
+            }, {
                 test: /\.(htm)$/,
                 use: {
                     loader: 'html-loader',
@@ -67,6 +73,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Hello World app',
+            // filename: '../../index.html',
             template: 'src/assets/index.html',
         }),
     ],

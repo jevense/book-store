@@ -7,7 +7,7 @@ export default new Vuex.Store({
     state: {
         loginInfo: {
             remainPrice: 0,
-            ownList: [],
+            ownList: ['40288810624e037d01624e03979d0358', '40288810624e037d01624e03979d0359', '40288810624e037d01624e03979d035a'],
         },//当前用户简要信息
     },
     getters: {
@@ -17,18 +17,24 @@ export default new Vuex.Store({
     },
     mutations: {
         loginInfo(state, data) {
-            state.userInfo = data.data
+            state.loginInfo = data
         }
     },
     actions: {
         login(context, data) {
+            if (typeof BOOK === 'undefined') {
+                context.commit('loginInfo', {
+                    remainPrice: 0,
+                    ownList: ['40288810624e037d01624e03979d0358'],
+                });
+                return
+            }
             let args = {
                 "serviceModule": "BS-Service",
                 "serviceNumber": "getBuyedExam",
                 "token": BOOK.token,
                 "args": {
                     "token": BOOK.token,
-                    "bookId": data.eid,
                     "platform": BOOK.platform,
                 },
                 "TerminalType": "A"
@@ -42,7 +48,7 @@ export default new Vuex.Store({
                     }
                 } else {
                     //登录成功，保存当前用户信息到 state 里面，以便其他组建获取
-                    context.commit('loginInfo', result);
+                    context.commit('loginInfo', JSON.parse(result.serviceResult).result);
                     return res;
                 }
             })

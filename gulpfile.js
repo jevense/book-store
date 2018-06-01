@@ -64,18 +64,18 @@ gulp.task('useref', function () {
         // .pipe(changed(DEST))
         .pipe(useref())
         .pipe(gulpIf('*.css', csso()))
-        // .pipe(gulpIf('*.js', babel()))
+        .pipe(gulpIf('*.js', babel()))
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulp.dest(DEST));
 });
 
-gulp.task('bridge', function () {
-    return gulp.src('template/phone/js/bridge.js')
-        // .pipe(changed(DEST))
-        .pipe(gulpIf('*.js', babel()))
-        .pipe(gulpIf('*.js', uglify()))
-        .pipe(gulp.dest('template/dist/js'));
-});
+// gulp.task('bridge', function () {
+//     return gulp.src('template/phone/js/bridge.js')
+//         .pipe(changed(DEST))
+//         .pipe(gulpIf('*.js', babel()))
+//         .pipe(gulpIf('*.js', uglify()))
+//         .pipe(gulp.dest('template/dist/js'));
+// });
 
 gulp.task('images', function () {
     return gulp.src('template/phone/img/*.*')
