@@ -6,7 +6,7 @@
                     <img :src='require("../../assets/img/pic0531.jpg")'>
                 </div>
                 <div class="item-inner">
-                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能</div>
+                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能考试</div>
                     <div class="imed-item-sub-title"><span style="color: red">0</span> 阅点</div>
                     <div class="imed-item-sub-title">作者：医视界</div>
                     <div class="imed-item-sub-title">图书类型：通关包</div>
@@ -20,7 +20,7 @@
         </section>
         <footer>
             <a @click="buy($route.params.id)" class="button button-fill button-big button-danger">
-                确认付款
+                <span style="color: white">确认付款</span>
             </a>
         </footer>
     </imed-nav>
@@ -110,6 +110,7 @@
 
     .imed-title {
         color: red;
+        font-size: 80%;
     }
 
     section {

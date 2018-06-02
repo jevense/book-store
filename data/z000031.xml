@@ -1,0 +1,45 @@
+<div>
+    <table>
+        <tr>
+            <td>一、心肺听诊</td>
+            <td>二、普通X线影像诊断</td>
+            <td>三、腹部平片</td>
+        </tr>
+        <tr>
+            <td>四、骨折</td>
+            <td>五、心电图 数格</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>六、CT影响的识别</p>
+    <table class="imed-border">
+        <tr>
+            <td>肝癌</td>
+            <td>急性硬膜外血肿</td>
+        </tr>
+        <tr>
+            <td>急性胰腺炎</td>
+            <td>急性硬膜下血肿</td>
+        </tr>
+        <tr>
+            <td>肝、脾、肾损伤</td>
+            <td>脑出血</td>
+        </tr>
+        <tr>
+            <td>颅骨骨折</td>
+            <td>脑梗死</td>
+        </tr>
+    </table>
+    <p>七、超声诊断</p>
+    <table class="imed-border">
+        <tr>
+            <td>肝硬化</td>
+            <td>胆囊结石</td>
+        </tr>
+        <tr>
+            <td>急性胆囊炎</td>
+            <td>肾结石</td>
+        </tr>
+    </table>
+    <p>八、医德医风</p>
+</div>

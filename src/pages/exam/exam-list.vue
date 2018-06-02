@@ -7,21 +7,28 @@
             <h1 v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content" style="margin:3rem 0 2.4rem 0;">
+        <div class="content"
+             :style="{margin: loginInfo.ownList.length==list.length?'3rem 0 0 0':'3rem 0 2.4rem 0'}">
             <div class="imed-content">
-                <router-link :to="`/exam/1/course/1/item/${banner.videoId}`" v-if="banner">
+                <div @click="courseItem(banner.videoId,banner.videoName)" v-if="banner">
                     <b-img fluid :src='banner.cover'/>
-                </router-link>
+                </div>
                 <div style="padding: 0.7rem;" v-text="introduce"></div>
                 <div class="imed-tips">
-                    <span style="border-right: 2px solid #F9F9F9;">
-                        <b-img :src='require("../../assets/img/time.png")'/>
-                        <span>上线时间：</span>{{time}}
-                    </span>
-                    <span>
-                        <b-img :src='require("../../assets/img/people.png")'/>
-                        <span>学习人数：</span>{{people}}
-                    </span>
+                    <div style=" border-right: 2px solid #F9F9F9;">
+                        <div>
+                            <b-img :src='require("../../assets/img/time.png")'/>
+                        </div>
+                        <div style="color: #868686;">上线时间：</div>
+                        <div>{{time}}</div>
+                    </div>
+                    <div>
+                        <div>
+                            <b-img fluid :src='require("../../assets/img/people.png")'/>
+                        </div>
+                        <div style="color: #868686;">学习人数：</div>
+                        <div>{{people}}</div>
+                    </div>
                 </div>
             </div>
             <div class="imed-content" style="margin-top: .5rem;">
@@ -32,7 +39,7 @@
                             <div style="width: 30%;padding: .25rem;">
                                 <b-img fluid :src='item.cover'/>
                             </div>
-                            <div style="width: 40%;" class="imed-item-info">
+                            <div style="width: 50%;" class="imed-item-info">
                                 <div class="imed-item-title" v-text="item.title"></div>
                                 <div class="imed-item-sub-title" v-text="item.subTitle"></div>
                                 <div class="imed-item-sub-title">
@@ -42,16 +49,16 @@
                                     </s>
                                 </div>
                             </div>
-                            <div style="width: 30%;padding: .25rem;" class="imed-button-group">
-                                <router-link :to="`/exam/1/course/1/item/${item.guide.videoId}`" v-if="item.guide">
+                            <div style="width: 20%;padding: .25rem;" class="imed-button-group">
+                                <div @click="courseItem(item.guide.videoId,item.videoName)" v-if="item.guide">
                                     <div class="imed-button">导学</div>
-                                </router-link>
+                                </div>
                                 <template v-if="isContains(item.id)">
                                     <template v-if="item.enable">
                                         <a v-if="item.type==='examination'" @click="examination(item.isbn)">
                                             <div class="imed-button">学习</div>
                                         </a>
-                                        <router-link to="/exam/123/course" v-if="item.type==='video'">
+                                        <router-link to="/exam/1/course" v-if="item.type==='video'">
                                             <div class="imed-button">学习</div>
                                         </router-link>
                                     </template>
@@ -82,29 +89,30 @@
                     </template>
                 </div>
             </div>
-            <footer v-if="$store.getters.loginInfo.ownList.length!==list.length">
-                <router-link :to="`/book/${$route.params.eid}/order`" class="button button-fill button-big">
-                    全部购买（{{$store.state.loginInfo.remainPrice}}阅点）
-                </router-link>
-            </footer>
         </div>
+        <footer v-if="loginInfo.ownList.length!==list.length">
+            <router-link :to="`/book/${$route.params.eid}/order`" class="button button-fill button-big">
+                全部购买（{{$store.state.loginInfo.remainPrice}}阅点）
+            </router-link>
+        </footer>
     </div>
 </template>
 
 <script>
-    import ImedNav from '../../components/imed-nav'
+    import {mapState} from 'vuex'
 
     export default {
         name: "book-list",
         data() {
             return {
-                title: '临床执业医师考试实践技能通关包',
+                title: '临床执业医师考试通关包实践技能考试',
                 introduce: '贴近新版考试大纲，资深专家进行编著，重点难点深入剖析，解决考生学习痛点。内含：专家导读+操作视频+精品题库。\n',
                 time: '2018-6-1',
                 people: '405',
                 banner: {
                     cover: require("../../assets/img/bannerPic.png"),
                     videoId: 'z000032',
+                    videoName: '综合导学',
                 },
                 list: [
                     {
@@ -113,6 +121,7 @@
                         cover: require("../../assets/img/picKaoshi.png"),
                         title: '第一站 病史采集及病例分析',
                         subTitle: '答题技巧和要点',
+                        videoName: '病史采集和病例分析导学',
                         price: '0',
                         originPrice: '500',
                         buyStatus: true,
@@ -140,30 +149,40 @@
                         cover: require("../../assets/img/picMuni.png"),
                         title: '第三站 辅助检查',
                         subTitle: 'B超、CT、心电图、X线',
+                        videoName: '辅助检查导学',
                         price: '0',
                         originPrice: '600',
                         buyStatus: true,
                         guide: {videoId: 'z000030'},
                         type: 'examination',
-                        enable: false,
+                        enable: true,
                     }
                 ],
             }
         },
-        components: {ImedNav},
+        computed: {
+            ...mapState([
+                'loginInfo'
+            ])
+        },
         methods: {
             search() {
                 console.log('======');
             },
             examination(cid) {
                 if (typeof BOOK !== 'undefined') {
-                    let url = `http://47.94.206.185:3003/pc/student/student.html?token=${BOOK.token}&platforms=ebook&newebook=1&packageId=${cid}`
+                    let url = `https://exam.mvwchina.com/pc/student/student.html?token=${BOOK.token}&platforms=ebook&newebook=1&packageId=${cid}`
                     WebCallApp("CmdOpenUrl", {url,})
                 }
             },
             isContains(id) {
                 return this.$store.getters.loginInfo.ownList.includes(id)
             },
+            courseItem(courseId, name) {
+                this.$store.dispatch('video', {id: courseId, name}).then(() => {
+                    this.$router.push({path: `/exam/123/course/1/item/${courseId}`, query: {name,}})
+                })
+            }
         }
     }
 </script>
@@ -184,21 +203,20 @@
     }
 
     .imed-tips {
-        display: flex;
         border: 2px solid #F9F9F9;
+        display: flex;
     }
 
-    .imed-tips > span {
-        padding: .5rem 1.5rem;
+    .imed-tips > div {
+        padding: .5rem;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
     }
 
     .imed-tips img {
         width: .855rem;
         vertical-align: middle;
-    }
-
-    .imed-tips > span > span {
-        color: #868686;
     }
 
     .imed-title {

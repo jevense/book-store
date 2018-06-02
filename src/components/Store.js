@@ -7,17 +7,29 @@ export default new Vuex.Store({
     state: {
         loginInfo: {
             remainPrice: 0,
-            ownList: ['40288810624e037d01624e03979d0358', '40288810624e037d01624e03979d0359', '40288810624e037d01624e03979d035a'],
+            ownList: [],
         },//当前用户简要信息
+        video: "",
     },
     getters: {
         loginInfo(state) {
             return state.loginInfo
         },
+        video(state) {
+            return state.video
+        },
     },
     mutations: {
         loginInfo(state, data) {
-            state.loginInfo = data
+            let {
+                remainPrice = 0,
+                ownList = [],
+            } = data
+            state.loginInfo.remainPrice = remainPrice
+            state.loginInfo.ownList = ownList
+        },
+        video(state, data) {
+            state.video = data
         }
     },
     actions: {
@@ -25,7 +37,7 @@ export default new Vuex.Store({
             if (typeof BOOK === 'undefined') {
                 context.commit('loginInfo', {
                     remainPrice: 0,
-                    ownList: ['40288810624e037d01624e03979d0358'],
+                    ownList: [],
                 });
                 return
             }
@@ -48,10 +60,21 @@ export default new Vuex.Store({
                     }
                 } else {
                     //登录成功，保存当前用户信息到 state 里面，以便其他组建获取
+                    console.log(JSON.parse(result.serviceResult).result)
                     context.commit('loginInfo', JSON.parse(result.serviceResult).result);
-                    return res;
+                    return res.data;
                 }
             })
+        },
+        video(context, data) {
+            Vue.axios.get(`https://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/ui/phone/data/${data.id}.xml`)
+                .then(res => {
+                    context.commit('video', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    context.commit('video', `<p>${data.name}</p>`);
+                })
         },
     }
 })

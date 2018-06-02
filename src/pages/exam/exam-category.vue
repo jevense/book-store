@@ -1,9 +1,9 @@
 <template>
     <div>
         <header class="imed-bar">
-            <a @click="back()">
+            <div @click="back">
                 <div class="icon icon-left"></div>
-            </a>
+            </div>
             <h1 v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
@@ -18,7 +18,7 @@
                             <div style="width: 30%;padding: .25rem;">
                                 <b-img fluid :src='it.cover'/>
                             </div>
-                            <div style="width: 40%" class="imed-item-info">
+                            <div style="width: 50%" class="imed-item-info">
                                 <div class="imed-item-title" v-text="it.title"></div>
                                 <div class="imed-item-sub-title">
                                     <span class="imed-price" v-text="it.price"></span> 阅点
@@ -27,11 +27,11 @@
                                     </s>
                                 </div>
                             </div>
-                            <div style="width: 30%;padding: .25rem;" class="imed-button-group">
+                            <div style="width: 20%;padding: .25rem;" class="imed-button-group">
                                 <template v-if="it.type==='free'">
-                                    <router-link :to="`/exam/${it.id}`">
+                                    <div @click="learn(it.id)">
                                         <div class="imed-button">学习</div>
-                                    </router-link>
+                                    </div>
                                 </template>
                                 <template v-else-if="it.type==='fee'">
                                     <template v-if="it.enable">
@@ -61,7 +61,7 @@
     export default {
         name: "exam-guide",
         created() {
-            this.$store.dispatch('login')
+
         },
         data() {
             return {
@@ -74,7 +74,7 @@
                             {
                                 id: '40288810624e037d01624e03979d0357',
                                 cover: require("../../assets/img/exam-category-1.png"),
-                                title: '实践技能',
+                                title: '实践技能考试',
                                 price: '0',
                                 originPrice: '1880',
                                 type: 'free',
@@ -83,7 +83,7 @@
                             {
                                 id: '40288810624e037d01624e03979d0357',
                                 cover: require("../../assets/img/exam-category-2.png"),
-                                title: '综合笔试',
+                                title: '综合笔试考试',
                                 price: '5504',
                                 originPrice: '6800',
                                 type: 'fee',
@@ -98,7 +98,7 @@
                             {
                                 id: '40288810624e037d01624e03979d0357',
                                 cover: require("../../assets/img/exam-category-3.png"),
-                                title: '实践技能',
+                                title: '实践技能考试',
                                 price: '0',
                                 originPrice: '1880',
                                 type: 'free',
@@ -107,7 +107,7 @@
                             {
                                 id: '40288810624e037d01624e03979d0357',
                                 cover: require("../../assets/img/exam-category-4.png"),
-                                title: '综合笔试',
+                                title: '综合笔试考试',
                                 price: '4700',
                                 originPrice: '5880',
                                 type: 'fee',
@@ -124,10 +124,12 @@
                 console.log('======')
             },
             back() {
-                let main = document.getElementById('main')
-                let subContent = document.getElementById('sub')
-                main.className = main.className.replace('page-from-center-to-left', 'page-from-left-to-center')
-                subContent.className = subContent.className.replace('page-from-right-to-center', 'page-from-center-to-right')
+                WebCallApp("CmdGoBack")
+            },
+            learn(id) {
+                this.$store.dispatch('login').then(() => {
+                    this.$router.push(`/exam/${id}`)
+                })
             }
         }
     }

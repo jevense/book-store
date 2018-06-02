@@ -20,14 +20,14 @@ const routes = [
     {path: '/book', component: BookList},
     {path: '/book/:id', component: BookItem},
     {path: '/book/:id/order', component: BookOrder},
-    {path: '/book/:id/order/pay-success', component: PaySuccess},
+    {path: '/book/:id/order/pay-success', component: PaySuccess, name: 'pay-success'},
     {path: '/course', component: CourseMain},
     {path: '/exam', component: Exam},
     {path: '/exam/:eid', component: ExamList},
     {path: '/exam/:eid/guide', component: ExamGuide},
     {path: '/exam/:eid/course', component: ExamCourse},
     {path: '/exam/:eid/course/:cid', component: ExamCourseList},
-    {path: '/exam/:eid/course/:cid/item/:iid', component: ExamCourseItem},
+    {path: '/exam/:eid/course/:cid/item/:iid', component: ExamCourseItem, name: 'video'},
     {path: '/exam/:eid/examination', component: ExamExamination},
 ]
 

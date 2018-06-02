@@ -3,14 +3,36 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    // mode: 'production',
-    // entry: ["babel-polyfill", "./src/index"],
-    //输出的文件名 合并以后的js会命名为bundle.js
+    // mode: 'development',
+    mode: 'production',
     output: {
+        filename: 'sub.min.js',
+        // chunkFilename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
         // publicPath: 'static/js'
     },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: 'initial', // 只对入口文件处理
+    //         cacheGroups: {
+    //             vendor: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
+    //                 test: /node_modules\//,
+    //                 name: 'page/vendor',
+    //                 priority: 10,
+    //                 enforce: true
+    //             },
+    //             commons: { // split `common`和`components`目录下被打包的代码到`page/commons.js && .css`
+    //                 test: /common\/|components\//,
+    //                 name: 'page/commons',
+    //                 priority: 10,
+    //                 enforce: true
+    //             }
+    //         }
+    //     },
+    //     runtimeChunk: {
+    //         name: 'page/manifest'
+    //     }
+    // },
     resolve: {
         extensions: ['.vue', '.js', '.json'],
         alias: {
@@ -25,9 +47,8 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: [
-                    'babel-loader'
-                ]
+                exclude: /node_modules/,
+                use: ['babel-loader']
             }, {
                 test: /\.css$/,
                 use: [
@@ -43,29 +64,19 @@ module.exports = {
                 ]
             }, {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
+                use: ['file-loader']
             }, {
                 test: /\.(eot|woff)$/,
-                use: {
-                    loader: "file-loader"
-                }
+                use: ['file-loader'],
             }, {
                 test: /\.(htm)$/,
-                use: {
-                    loader: 'html-loader',
-                }
+                use: ['html-loader']
             }, {
                 test: /\.(csv|tsv)$/,
-                use: [
-                    'csv-loader'
-                ]
+                use: ['csv-loader']
             }, {
                 test: /\.xml$/,
-                use: [
-                    'xml-loader'
-                ]
+                use: ['xml-loader']
             }
         ],
     },

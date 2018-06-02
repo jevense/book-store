@@ -1,0 +1,148 @@
+<div>
+    <p>一、考试简介</p>
+    <p>二、病史采集</p>
+    <p>三、体格检查</p>
+    <table class="imed-border">
+        <tr>
+            <td>一般检查</td>
+            <td>腹部检查</td>
+        </tr>
+        <tr>
+            <td>头颈部检查</td>
+            <td>脊柱、四肢、肛门检查</td>
+        </tr>
+        <tr>
+            <td>胸部检查</td>
+            <td>神经检查</td>
+        </tr>
+        <tr>
+            <td>外周血管检查</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>四、基本操作</p>
+    <p>五、辅助检查</p>
+    <table class="imed-border">
+        <tr>
+            <td>心电图</td>
+            <td>CT影像诊断</td>
+        </tr>
+        <tr>
+            <td>X线平片影像诊断</td>
+            <td>超声诊断</td>
+        </tr>
+        <tr>
+            <td>X线胃肠道造影影像诊断</td>
+            <td>实验室检查结果判读</td>
+        </tr>
+    </table>
+    <p>六、病例分析</p>
+    <table class="imed-border">
+        <tr>
+            <td>呼吸系统</td>
+            <td>神经系统</td>
+        </tr>
+        <tr>
+            <td>心血管系统</td>
+            <td>运动系统</td>
+        </tr>
+        <tr>
+            <td>消化系统</td>
+            <td>风湿免疫性疾病</td>
+        </tr>
+        <tr>
+            <td>泌尿系统（含男性生殖系统）</td>
+            <td>儿科疾病</td>
+        </tr>
+        <tr>
+            <td>女性生殖系统</td>
+            <td>传染病</td>
+        </tr>
+        <tr>
+            <td>血液系统</td>
+            <td>其他</td>
+        </tr>
+        <tr>
+            <td>内分泌系统</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>八、实践技能考试</p>
+    <table class="imed-border">
+        <tr>
+            <td>考 站</td>
+            <td colspan="2">考试项目</td>
+            <td colspan="2">分值（分）</td>
+            <td colspan="2">考试时间（分钟）</td>
+        </tr>
+        <tr>
+            <td rowspan="2">第一站</td>
+            <td colspan="2">病史采集</td>
+            <td>15</td>
+            <td rowspan="2">37</td>
+            <td>11</td>
+            <td rowspan="2">26</td>
+        </tr>
+        <tr>
+            <td colspan="2">病例分析</td>
+            <td>22</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td rowspan="2">第二站</td>
+            <td colspan="2">体格检查</td>
+            <td>20</td>
+            <td rowspan="2">40</td>
+            <td>13</td>
+            <td rowspan="2">24</td>
+        </tr>
+        <tr>
+            <td colspan="2">基本操作技能</td>
+            <td>22</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td rowspan="7">第三站</td>
+            <td rowspan="2">心肺听诊</td>
+            <td>试题1</td>
+            <td>4</td>
+            <td rowspan="8">23</td>
+            <td rowspan="8" colspan="2">15</td>
+        </tr>
+        <tr>
+            <td>试题2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td rowspan="3">影像（X线、CT）</td>
+            <td>试题1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>试题2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>试题3</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td rowspan="2">心电图</td>
+            <td>试题1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>试题2</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td colspan="3">医德医风</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td colspan="3">合 计</td>
+            <td colspan="2">100</td>
+            <td colspan="2">65</td>
+        </tr>
+    </table>
+</div>

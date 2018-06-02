@@ -14,7 +14,7 @@
         },
         watch: {
             '$route'(to, from) {
-                if (to.path === '/exam' || from.path.includes('pay-success')) {
+                if (from.name === 'pay-success') {
                     this.transitionName = 'slide-right'
                 } else {
                     const fromDepth = from.path.split('/').length
@@ -36,7 +36,7 @@
         height: 100%;
     }
 
-    .slide-left-enter, .slide-left-leave-to {
+    .slide-left-enter, .slide-right-leave-to {
         transform: translateX(100%);
     }
 
@@ -79,14 +79,15 @@
     .icon-left:before {
         content: "\e614";
         font-size: 0.855rem;
+        color: #D54443;
     }
 
     .button.button-fill.button-big {
         background-color: #D54443;
     }
 
-    a:active {
-        color: white;
+    a:link, a:active, a:visited, a:hover {
+        text-decoration: none;
     }
 
 </style>

@@ -1,12 +1,5 @@
 <template>
-    <div>
-        <header class="imed-bar">
-            <router-link to="/exam/123" class="item-content item-link">
-                <div class="icon icon-left"></div>
-            </router-link>
-            <h1 v-text="title"></h1>
-            <a class="icon" style="width: 0.8rem">&nbsp;</a>
-        </header>
+    <imed-nav :title="title">
         <div class="content" style="margin:3rem 0 0 0;">
             <b-container class="imed-item-content">
                 <template v-for="item in list">
@@ -20,7 +13,7 @@
                             <div class="imed-item-sub-title" v-if="item.time">时长：{{item.time}}</div>
                         </b-col>
                         <b-col cols="4" class="imed-button-group">
-                            <router-link to="/exam/123/course/1">
+                            <router-link :to="`/exam/123/course/${item.courseId}`">
                                 <div class="imed-button">开始学习</div>
                             </router-link>
                         </b-col>
@@ -29,7 +22,7 @@
                 </template>
             </b-container>
         </div>
-    </div>
+    </imed-nav>
 </template>
 
 <script>

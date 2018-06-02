@@ -11,35 +11,6 @@
             <iframe style="width: 100%; height: 100%;border: 0"
                     src="https://exam.mvwchina.com/pc/student/student.html?token=e5860323ec3044fcb9f2bfea59446efe&platform=ebook&newebook=1&paperId=4028882263b058430163b06c545d0001">
             </iframe>
-            <!--<div class="content-block-title">模拟练习</div>-->
-            <!--<div class="list-block">-->
-            <!--<div>-->
-            <!--<div>执业医师练习题</div>-->
-            <!--<div>-->
-            <!--<span>题数：300</span>-->
-            <!--<span>学科：15个</span>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="content-block-title">模拟试卷</div>-->
-            <!--<div class="list-block">-->
-            <!--<div>-->
-            <!--<div>特训试卷一</div>-->
-            <!--<div>-->
-            <!--<span>时长：05：00</span>-->
-            <!--<span>总分：600分</span>-->
-            <!--<span>合计：4个单元</span>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div>-->
-            <!--<div>特训试卷二</div>-->
-            <!--<div>-->
-            <!--<span>时长：05：00</span>-->
-            <!--<span>总分：600分</span>-->
-            <!--<span>合计：4个单元</span>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </template>

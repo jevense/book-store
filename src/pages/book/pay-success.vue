@@ -1,12 +1,17 @@
 <template>
-    <imed-nav :title="title">
+    <div>
+        <header class="imed-bar">
+            <a style="width: 0.8rem">&nbsp;</a>
+            <h1 v-text="title"></h1>
+            <a class="icon" style="width: 0.8rem">&nbsp;</a>
+        </header>
         <div class="list-block media-list">
             <div class="item-content">
                 <div class="item-media">
                     <img :src='require("../../assets/img/pic0531.jpg")'>
                 </div>
                 <div class="item-inner">
-                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能</div>
+                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能考试</div>
                     <div class="imed-item-sub-title"><span style="color: red">0</span> 阅点</div>
                     <div class="imed-item-sub-title">作者：医视界</div>
                     <div class="imed-item-sub-title">图书类型：通关包</div>
@@ -18,10 +23,10 @@
         <footer>
             <a @click="main($route.params.id)"
                class="button button-fill button-big button-danger">
-                马上去学习
+                <span style="color: white">马上去学习</span>
             </a>
         </footer>
-    </imed-nav>
+    </div>
 </template>
 
 <script>
@@ -41,7 +46,7 @@
                 if (typeof BOOK === 'undefined') {
                     this.$router.push(`/exam/${eid}`)
                 }
-                this.$store.dispatch('login', {eid,}).then(() => {
+                this.$store.dispatch('login').then(() => {
                     this.$router.push(`/exam/${eid}`)
                 })
             },
