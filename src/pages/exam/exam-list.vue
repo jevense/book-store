@@ -55,9 +55,9 @@
                                 </div>
                                 <template v-if="isContains(item.id)">
                                     <template v-if="item.enable">
-                                        <a v-if="item.type==='examination'" @click="examination(item.isbn)">
+                                        <div v-if="item.type==='examination'" @click="examination(item.isbn)">
                                             <div class="imed-button">学习</div>
-                                        </a>
+                                        </div>
                                         <router-link to="/exam/1/course" v-if="item.type==='video'">
                                             <div class="imed-button">学习</div>
                                         </router-link>
@@ -92,7 +92,7 @@
         </div>
         <footer v-if="loginInfo.ownList.length!==list.length">
             <router-link :to="`/book/${$route.params.eid}/order`" class="button button-fill button-big">
-                全部购买（{{$store.state.loginInfo.remainPrice}}阅点）
+                全部购买（{{loginInfo.remainPrice}}阅点）
             </router-link>
         </footer>
     </div>
@@ -100,6 +100,7 @@
 
 <script>
     import {mapState} from 'vuex'
+    import getQueryString from '../../components/common'
 
     export default {
         name: "book-list",
@@ -170,13 +171,12 @@
                 console.log('======');
             },
             examination(cid) {
-                if (typeof BOOK !== 'undefined') {
-                    let url = `https://exam.mvwchina.com/pc/student/student.html?token=${BOOK.token}&platforms=ebook&newebook=1&packageId=${cid}`
-                    WebCallApp("CmdOpenUrl", {url,})
-                }
+                let token = getQueryString('token')
+                let url = `https://exam.mvwchina.com/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${cid}`
+                WebCallApp("CmdOpenUrl", {url,})
             },
             isContains(id) {
-                return this.$store.getters.loginInfo.ownList.includes(id)
+                return this.loginInfo.ownList.includes(id)
             },
             courseItem(courseId, name) {
                 this.$store.dispatch('video', {id: courseId, name}).then(() => {

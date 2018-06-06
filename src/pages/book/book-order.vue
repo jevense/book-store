@@ -28,6 +28,7 @@
 
 <script>
     import ImedNav from '../../components/imed-nav'
+    import getQueryString from '../../components/common'
 
     export default {
         name: "book-order",
@@ -43,34 +44,31 @@
                 console.log('======');
             },
             buy(cid) {
-                if (typeof BOOK !== 'undefined') {
-                    let args = {
-                        "serviceModule": "BS-Service",
-                        "serviceNumber": "0301500",
-                        "token": BOOK.token,
-                        "args": {
-                            "token": BOOK.token,
-                            "bookId": cid,
-                            "platform": BOOK.platform,
-                            "discountId": ""
-                        },
-                        "TerminalType": "A"
-                    }
-
-                    this.$http.post(Config.busUrl, encodeURIComponent(JSON.stringify(args))).then(res => {
-                        let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
-                        if (result["opFlag"] == false) {
-                            //alert(Elf.constants.E008 + result["errorMessage"]);
-                            if (result["errorMessage"].indexOf("E012-") >= 0) {
-                                WebCallApp("UserLogout", {logoutType: "E012"});
-                            }
-                        } else {
-                            this.$router.push(`/book/${this.$route.params.id}/order/pay-success`)
-                        }
-                    })
-                } else {
-                    this.$router.push(`/book/${this.$route.params.id}/order/pay-success`)
+                let token = getQueryString('token')
+                let args = {
+                    "serviceModule": "BS-Service",
+                    "serviceNumber": "0301500",
+                    "token": token,
+                    "args": {
+                        "token": token,
+                        "bookId": cid,
+                        "platform": getQueryString('platform'),
+                        "discountId": ""
+                    },
+                    "TerminalType": "A"
                 }
+
+                this.$http.post(Config.busUrl, encodeURIComponent(JSON.stringify(args))).then(res => {
+                    let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
+                    if (result["opFlag"] == false) {
+                        //alert(Elf.constants.E008 + result["errorMessage"]);
+                        if (result["errorMessage"].indexOf("E012-") >= 0) {
+                            WebCallApp("UserLogout", {logoutType: "E012"});
+                        }
+                    } else {
+                        this.$router.push(`/book/${this.$route.params.id}/order/pay-success`)
+                    }
+                })
             },
         }
     }

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import getQueryString from './common'
 
 Vue.use(Vuex)
+
 
 export default new Vuex.Store({
     state: {
@@ -34,20 +36,15 @@ export default new Vuex.Store({
     },
     actions: {
         login(context, data) {
-            if (typeof BOOK === 'undefined') {
-                context.commit('loginInfo', {
-                    remainPrice: 0,
-                    ownList: [],
-                });
-                return
-            }
+            let token = getQueryString('token')
+            let platform = getQueryString('platform')
             let args = {
                 "serviceModule": "BS-Service",
                 "serviceNumber": "getBuyedExam",
-                "token": BOOK.token,
+                "token": token,
                 "args": {
-                    "token": BOOK.token,
-                    "platform": BOOK.platform,
+                    "token": token,
+                    "platform": platform,
                 },
                 "TerminalType": "A"
             }
@@ -60,7 +57,6 @@ export default new Vuex.Store({
                     }
                 } else {
                     //登录成功，保存当前用户信息到 state 里面，以便其他组建获取
-                    console.log(JSON.parse(result.serviceResult).result)
                     context.commit('loginInfo', JSON.parse(result.serviceResult).result);
                     return res.data;
                 }

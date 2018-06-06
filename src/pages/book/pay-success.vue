@@ -43,9 +43,6 @@
         components: {ImedNav},
         methods: {
             main(eid) {
-                if (typeof BOOK === 'undefined') {
-                    this.$router.push(`/exam/${eid}`)
-                }
                 this.$store.dispatch('login').then(() => {
                     this.$router.push(`/exam/${eid}`)
                 })
