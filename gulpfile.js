@@ -77,8 +77,16 @@ gulp.task('bridge', function () {
         .pipe(gulp.dest('template/dist/js'));
 });
 
+// gulp.task('images', function () {
+//     return gulp.src('template/phone/img/*.*')
+//         .pipe(cache(imagemin({
+//             interlaced: true
+//         })))
+//         .pipe(imagemin())
+//         .pipe(gulp.dest('template/dist/img'))
+// });
 gulp.task('images', function () {
-    return gulp.src('template/phone/img/*.*')
+    return gulp.src('template/phone/img/AD183AAF-D0C9-47ad-A997-D060F01039FD.png')
         .pipe(cache(imagemin({
             interlaced: true
         })))

@@ -7,43 +7,36 @@
             <h1 v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content" style="margin:3rem 0 0 0;">
+        <div class="content" style="margin:3rem 0 0 0;padding: 0.5rem">
             <template v-for="item in list">
-                <div style="width: 95%; margin: 1rem auto;">
+                <div style="width: 95%; margin: 0 auto .5rem;">
                     <b-img fluid :src='item.cover'/>
                 </div>
                 <div class="imed-item-content">
                     <template v-for="it in item.list">
-                        <div style="display: flex;">
-                            <div style="width: 30%;padding: .25rem;">
+                        <div style="display: flex;padding: .1rem 0; border: 1px solid #e8e8e8;border-radius: 5px; background-color: #FFFFFF;">
+                            <div style="width: 30%;padding: .5rem;">
                                 <b-img fluid :src='it.cover'/>
                             </div>
-                            <div style="width: 50%" class="imed-item-info">
+                            <div style="width: 46%" class="imed-item-info">
                                 <div class="imed-item-title" v-text="it.title"></div>
                                 <div class="imed-item-sub-title">
-                                    <span class="imed-price" v-text="it.price"></span> 阅点
-                                    <s>
-                                        <span class="imed-price" v-text="it.originPrice"></span> 阅点
-                                    </s>
+                                    <span class="imed-price" v-text="it.price"></span>阅点&nbsp;
+                                    <s>{{it.originPrice}}阅点</s>
                                 </div>
                             </div>
-                            <div style="width: 20%;padding: .25rem;" class="imed-button-group">
-                                <template v-if="it.type==='free'">
+                            <div style="width: 24%;padding: .5rem;" class="imed-button-group">
+                                <template v-if="it.enable">
                                     <div @click="learn(it.id)">
-                                        <div class="imed-button">学习</div>
+                                        <div class="imed-button">
+                                            {{text(it.type)}}
+                                        </div>
                                     </div>
                                 </template>
-                                <template v-else-if="it.type==='fee'">
-                                    <template v-if="it.enable">
-                                        <router-link :to="`/book/${it.id}/order`">
-                                            <div class="imed-button">购买</div>
-                                        </router-link>
-                                    </template>
-                                    <template v-else="it.enable">
-                                        <div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">
-                                            购买
-                                        </div>
-                                    </template>
+                                <template v-else>
+                                    <div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">
+                                        {{text(it.type)}}
+                                    </div>
                                 </template>
                             </div>
                         </div>
@@ -57,11 +50,15 @@
 
 <script>
     import ImedNav from '../../components/imed-nav'
+    import {mapState} from 'vuex'
 
     export default {
         name: "exam-guide",
         created() {
-
+            if (typeof Config !== 'undefined') {
+                console.log(Config)
+                Config && this.$store.dispatch('config', Config)
+            }
         },
         data() {
             return {
@@ -73,7 +70,7 @@
                         list: [
                             {
                                 id: '40288810624e037d01624e03979d0357',
-                                cover: require("../../assets/img/exam-category-1.png"),
+                                cover: require("../../assets/img/exam-category-1.jpg"),
                                 title: '实践技能考试',
                                 price: '0',
                                 originPrice: '1880',
@@ -81,13 +78,13 @@
                                 enable: true,
                             },
                             {
-                                id: '40288810624e037d01624e03979d0357',
-                                cover: require("../../assets/img/exam-category-2.png"),
+                                id: '40288810624e037d01624e03979d035b',
+                                cover: require("../../assets/img/exam-category-2.jpg"),
                                 title: '综合笔试考试',
                                 price: '5504',
                                 originPrice: '6800',
                                 type: 'fee',
-                                enable: false,
+                                enable: true,
                             }
                         ]
                     },
@@ -96,8 +93,8 @@
                         cover: require("../../assets/img/title-tip-2.png"),
                         list: [
                             {
-                                id: '40288810624e037d01624e03979d0357',
-                                cover: require("../../assets/img/exam-category-3.png"),
+                                id: '40288810624e037d01624e03979d035c',
+                                cover: require("../../assets/img/exam-category-3.jpg"),
                                 title: '实践技能考试',
                                 price: '0',
                                 originPrice: '1880',
@@ -105,13 +102,13 @@
                                 enable: true,
                             },
                             {
-                                id: '40288810624e037d01624e03979d0357',
-                                cover: require("../../assets/img/exam-category-4.png"),
+                                id: '40288810624e037d01624e03979d035d',
+                                cover: require("../../assets/img/exam-category-4.jpg"),
                                 title: '综合笔试考试',
                                 price: '4700',
                                 originPrice: '5880',
                                 type: 'fee',
-                                enable: false,
+                                enable: true,
                             }
                         ]
                     },
@@ -119,6 +116,11 @@
             }
         },
         components: {ImedNav},
+        computed: {
+            ...mapState({
+                config: state => state.config,
+            }),
+        },
         methods: {
             search() {
                 console.log('======')
@@ -127,9 +129,14 @@
                 WebCallApp("CmdGoBack")
             },
             learn(id) {
-                this.$store.dispatch('login').then(() => {
+                let login = this.$store.dispatch('login')
+                let pkg = this.$store.dispatch('packageInfo', {id,})
+                Promise.all([login, pkg]).then(([loginInfo, packageInfo]) => {
                     this.$router.push(`/exam/${id}`)
                 })
+            },
+            text(type) {
+                return type === 'free' ? '学习' : '购买'
             }
         }
     }
@@ -156,7 +163,7 @@
     }
 
     .imed-item-content {
-        background-color: #FFFFFF;
+        margin-bottom: .3rem;
     }
 
     .imed-item-info {
@@ -166,7 +173,7 @@
     .imed-button {
         color: #D54443;
         border: 1px solid #D54443;
-        padding: .2rem .2rem;
+        padding: .2rem .18rem;
         text-align: center;
         border-radius: 20px;
         font-size: .665rem;

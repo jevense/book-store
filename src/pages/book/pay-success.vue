@@ -5,18 +5,21 @@
             <h1 v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="list-block media-list">
-            <div class="item-content">
-                <div class="item-media">
-                    <img :src='require("../../assets/img/pic0531.jpg")'>
+        <div style="margin: 0.5rem 0">
+            <div style="display: flex;background-color: white;padding: 0.5rem;">
+                <div style="width: 40%;">
+                    <b-img fluid :src='payOrder.cover'/>
                 </div>
-                <div class="item-inner">
-                    <div class="imed-item-title">临床执业医师考试通关包<br>实践技能考试</div>
-                    <div class="imed-item-sub-title"><span style="color: red">0</span> 阅点</div>
-                    <div class="imed-item-sub-title">作者：医视界</div>
-                    <div class="imed-item-sub-title">图书类型：通关包</div>
-                    <div class="imed-item-sub-title">大小：2M</div>
-                    <div class="imed-item-sub-title">出版机构：医视界</div>
+                <div style="font-size: 1rem;margin-left: .5rem">
+                    <div style="font-size: .8em">{{payOrder.name}}</div>
+                    <div>
+                        <div class="imed-item-sub-title">价格：<span style="color: red" v-text="payOrder.price"></span> 阅点
+                        </div>
+                        <div class="imed-item-sub-title">作者：{{payOrder.author}}</div>
+                        <div class="imed-item-sub-title">图书类型：通关包</div>
+                        <div class="imed-item-sub-title">出版机构：{{payOrder.publishingAgency}}</div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -37,6 +40,13 @@
         data() {
             return {
                 title: '购买成功',
+                payOrder: {
+                    cover:'',
+                    name:'123',
+                    price:'',
+                    author:'',
+                    publishingAgency:'',
+                },
                 own: false,
             }
         },
@@ -53,44 +63,12 @@
 
 <style scoped>
 
-    .list-block {
-        margin: 0.5rem 0;
-    }
-
-    .list-block .item-content {
-        padding-left: 0.5rem;
-        background-color: white;
-    }
-
-    .list-block.media-list .item-inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
-
-    }
-
-    .imed-item-title {
-        font-size: 0.9rem;
-    }
-
     .imed-item-sub-title {
-        font-size: 0.8rem;
-        color: #666;
+        font-size: .7em;
+        margin: .3rem 0;
+        color: #666666;
     }
 
-    .item-media > img {
-        width: 5.5rem;
-    }
-
-    .imed-title {
-        color: red;
-    }
-
-    section {
-        padding: 0.5rem;
-        background-color: white;
-    }
 
     footer {
         position: fixed;

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="60" height="20">
+    <defs>
+        <g id="ShapeGroup">
+            <rect id="svg_1" height="1" width="30" x="0" transform="translate(0 10)" fill="#f0a504"/>
+            <circle id="svg_3" r="2" transform="translate(38 14)" fill="none" stroke="#f0a504" stroke-width="1"/>
+            <circle id="svg_2" r="4" transform="translate(48 6)" fill="none" stroke="#f0a504" stroke-width="1"/>
+        </g>
+    </defs>
+    <use xlink:href="#ShapeGroup" transform="translate(60,20) rotate(180)"/>
+</svg>

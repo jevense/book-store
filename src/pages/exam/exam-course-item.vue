@@ -1,14 +1,15 @@
 <template>
     <imed-nav :title="$route.query.name">
-        <video-player
-                class="video-player vjs-custom-skin"
-                ref="videoPlayer"
-                :playsinline="true"
-                :options="playerOptions"
-                @play="onPlayerPlay"
-                @pause="onPlayerPause"
-        >
-        </video-player>
+        <transition name="fade">
+            <video-player v-if="show"
+                          class="video-player vjs-custom-skin"
+                          ref="videoPlayer"
+                          :playsinline="true"
+                          :options="playerOptions"
+                          @play="onPlayerPlay"
+                          @pause="onPlayerPause"
+            />
+        </transition>
         <div class="buttons-tab">
             <div class="tab-link active button">讲义</div>
             <div href="#tab2" class="tab-link button"></div>
@@ -37,11 +38,15 @@
             let preUrl = 'http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/'
             return {
                 preUrl,
+                show: false,
             }
         },
         components: {
             ImedNav,
             videoPlayer,
+        },
+        mounted() {
+            this.show = true
         },
         computed: {
             player() {
@@ -91,10 +96,18 @@
     }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
     .content-block {
         margin: 0;
         height: 16rem;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 1s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
 
 </style>

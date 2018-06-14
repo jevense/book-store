@@ -4,37 +4,37 @@
             <router-link to="/exam" class="item-content item-link">
                 <div class="icon icon-left"></div>
             </router-link>
-            <h1 v-text="title"></h1>
+            <h1 v-text="packageInfo.title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content"
-             :style="{margin: loginInfo.ownList.length==list.length?'3rem 0 0 0':'3rem 0 2.4rem 0'}">
+        <div class="content imed-margin-nav"
+             :style="{'margin-bottom': bought?'0':'2.4rem'}">
             <div class="imed-content">
-                <div @click="courseItem(banner.videoId,banner.videoName)" v-if="banner">
-                    <b-img fluid :src='banner.cover'/>
+                <div @click="courseItem(packageInfo.banner)" v-if="packageInfo.banner">
+                    <b-img fluid :src='packageInfo.banner.cover'/>
                 </div>
-                <div style="padding: 0.7rem;" v-text="introduce"></div>
+                <div style="padding: 0.7rem;" v-text="packageInfo.introduce"></div>
                 <div class="imed-tips">
                     <div style=" border-right: 2px solid #F9F9F9;">
                         <div>
                             <b-img :src='require("../../assets/img/time.png")'/>
                         </div>
                         <div style="color: #868686;">上线时间：</div>
-                        <div>{{time}}</div>
+                        <div>{{packageInfo.time}}</div>
                     </div>
                     <div>
                         <div>
                             <b-img fluid :src='require("../../assets/img/people.png")'/>
                         </div>
                         <div style="color: #868686;">学习人数：</div>
-                        <div>{{people}}</div>
+                        <div>{{packageInfo.people}}</div>
                     </div>
                 </div>
             </div>
             <div class="imed-content" style="margin-top: .5rem;">
-                <div class="imed-title">实践技能考试</div>
+                <div class="imed-title" v-text="packageInfo.subTitle"></div>
                 <div class="imed-item-content">
-                    <template v-for="item in list">
+                    <template v-for="item in packageInfo.list">
                         <div class="imed-group">
                             <div style="width: 30%;padding: .25rem;">
                                 <b-img fluid :src='item.cover'/>
@@ -50,37 +50,28 @@
                                 </div>
                             </div>
                             <div style="width: 20%;padding: .25rem;" class="imed-button-group">
-                                <div @click="courseItem(item.guide.videoId,item.videoName)" v-if="item.guide">
-                                    <div class="imed-button">导学</div>
+                                <div v-if="item.preview"
+                                     @click="courseItem(item.preview)"
+                                >
+                                    <div :class="buttonStyle(item.preview.enable)">
+                                        试看
+                                    </div>
                                 </div>
                                 <template v-if="isContains(item.id)">
-                                    <template v-if="item.enable">
-                                        <div v-if="item.type==='examination'" @click="examination(item.isbn)">
-                                            <div class="imed-button">学习</div>
+                                    <div v-if="item.guide"
+                                         @click="courseItem(item.guide)"
+                                    >
+                                        <div :class="buttonStyle(item.guide.enable)">
+                                            导学
                                         </div>
-                                        <router-link to="/exam/1/course" v-if="item.type==='video'">
-                                            <div class="imed-button">学习</div>
-                                        </router-link>
-                                    </template>
-                                    <template v-else>
-                                        <div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">
-                                            学习
-                                        </div>
-                                    </template>
+                                    </div>
+                                    <div @click="redirect(item)">
+                                        <div :class="buttonStyle(item.enable)">学习</div>
+                                    </div>
                                 </template>
                                 <template v-else>
-                                    <!--<template v-if="item.enable">-->
-                                    <!--<router-link :to="`/book/${item.id}/order`">-->
-                                    <!--<div class="imed-button">购买</div>-->
-                                    <!--</router-link>-->
-                                    <!--</template>-->
-                                    <!--<template v-else>-->
-                                    <!--<div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">-->
-                                    <!--购买-->
-                                    <!--</div>-->
-                                    <!--</template>-->
-                                    <div class="imed-button" style="color: lightgrey;border: 1px solid lightgrey;">
-                                        购买
+                                    <div @click="buy(item)">
+                                        <div :class="buttonStyle(item.buyable)">购买</div>
                                     </div>
                                 </template>
                             </div>
@@ -90,10 +81,11 @@
                 </div>
             </div>
         </div>
-        <footer v-if="loginInfo.ownList.length!==list.length">
-            <router-link :to="`/book/${$route.params.eid}/order`" class="button button-fill button-big">
+        <footer v-if="!bought">
+            <div @click="buy({id:$route.params.eid,buyable:true})"
+                 class="button button-fill button-big">
                 全部购买（{{loginInfo.remainPrice}}阅点）
-            </router-link>
+            </div>
         </footer>
     </div>
 </template>
@@ -105,89 +97,61 @@
     export default {
         name: "book-list",
         data() {
-            return {
-                title: '临床执业医师考试通关包实践技能考试',
-                introduce: '贴近新版考试大纲，资深专家进行编著，重点难点深入剖析，解决考生学习痛点。内含：专家导读+操作视频+精品题库。\n',
-                time: '2018-6-1',
-                people: '405',
-                banner: {
-                    cover: require("../../assets/img/bannerPic.png"),
-                    videoId: 'z000032',
-                    videoName: '综合导学',
-                },
-                list: [
-                    {
-                        id: "40288810624e037d01624e03979d0358",
-                        isbn: "6ca818bb0804442992c06d190895720c",
-                        cover: require("../../assets/img/picKaoshi.png"),
-                        title: '第一站 病史采集及病例分析',
-                        subTitle: '答题技巧和要点',
-                        videoName: '病史采集和病例分析导学',
-                        price: '0',
-                        originPrice: '500',
-                        buyStatus: true,
-                        guide: {videoId: 'z000031'},
-                        type: 'examination',
-                        enable: true,
-
-                    },
-                    {
-                        id: "40288810624e037d01624e03979d0359",
-                        isbn: "d0a07f9c5d5f4ec4a2d63e989590600f",
-                        cover: require("../../assets/img/picShipin.png"),
-                        title: '第二站 体格检查与基本操作',
-                        subTitle: '高清示教视频操作',
-                        price: '0',
-                        originPrice: '780',
-                        buyStatus: true,
-                        type: 'video',
-                        enable: true,
-
-                    },
-                    {
-                        id: "40288810624e037d01624e03979d035a",
-                        isbn: "d8a76956f6b14263a8a04e332c2f3c08",
-                        cover: require("../../assets/img/picMuni.png"),
-                        title: '第三站 辅助检查',
-                        subTitle: 'B超、CT、心电图、X线',
-                        videoName: '辅助检查导学',
-                        price: '0',
-                        originPrice: '600',
-                        buyStatus: true,
-                        guide: {videoId: 'z000030'},
-                        type: 'examination',
-                        enable: true,
-                    }
-                ],
-            }
+            return {}
         },
         computed: {
-            ...mapState([
-                'loginInfo'
-            ])
+            ...mapState({
+                loginInfo: state => state.loginInfo,
+                packageInfo: state => state.packageInfo,
+                config: state => state.config,
+                bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id))
+            }),
         },
         methods: {
             search() {
                 console.log('======');
             },
-            examination(cid) {
-                let token = getQueryString('token')
-                let url = `https://exam.mvwchina.com/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${cid}`
-                WebCallApp("CmdOpenUrl", {url,})
+            redirect(item) {
+                let {type, isbn, enable} = item
+                if (!enable) return false
+                if (type === 'examination') {
+                    let token = getQueryString('token')
+                    let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
+                    WebCallApp("CmdOpenUrl", {url,})
+                } else if (type === 'video') {
+                    let {eid} = this.$route.params
+                    this.$router.push(`/exam/${eid}/course`)
+                }
             },
             isContains(id) {
                 return this.loginInfo.ownList.includes(id)
             },
-            courseItem(courseId, name) {
-                this.$store.dispatch('video', {id: courseId, name}).then(() => {
-                    this.$router.push({path: `/exam/123/course/1/item/${courseId}`, query: {name,}})
+            courseItem(item) {
+                let {video, enable} = item
+                if (!enable) return false
+                let {id, name} = video
+                this.$store.dispatch('video', {id, name}).then(() => {
+                    this.$router.push({path: `/exam/123/course/1/item/${id}`, query: {name,}})
                 })
-            }
+            },
+            buy(item) {
+                let {id, buyable: enable} = item
+                if (!enable) return false
+                this.$store.dispatch('payOrder', {id}).then(() => {
+                    this.$router.push(`/book/${id}/order`)
+                })
+            },
+            buttonStyle(status) {
+                return {
+                    'imed-button': true,
+                    'imed-button-disable': !status
+                }
+            },
         }
     }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
     div, span {
         color: black;
@@ -255,7 +219,7 @@
     .imed-button {
         color: #D54443;
         border: 1px solid #D54443;
-        padding: .2rem .7rem;
+        padding: .2rem .2rem;
         text-align: center;
         border-radius: 20px;
         font-size: .665rem;
@@ -271,6 +235,11 @@
         margin: 2px;
     }
 
+    .imed-button-disable {
+        color: lightgrey;
+        border: 1px solid lightgrey;
+    }
+
     footer {
         position: fixed;
         width: 100%;
@@ -280,6 +249,10 @@
     hr {
         margin: 0;
         border: 2px solid #F9F9F9;
+    }
+
+    .imed-margin-nav {
+        margin: 3rem 0 0 0;
     }
 
 </style>
