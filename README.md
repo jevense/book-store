@@ -1,3 +1,3 @@
 #书城项目
 ##测试token
-token = 6e19264e5b63448aaef6f626bf1d0e3a
+token = 8dc3ae8af10c46e9bc5d426ea9ddbfb3

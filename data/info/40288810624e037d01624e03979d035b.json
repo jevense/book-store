@@ -1,8 +1,8 @@
 {
   "title": "临床执业医师考试综合理论通关包",
-  "introduce": "紧扣新版考试大纲，权威名师辅导，全面梳理、重点突出、主次分明。内容包括：权威导学+考试指南+名师课程+测试练习+在线答疑+考前",
-  "time": "2018-6-1",
-  "people": "405",
+  "introduce": "紧扣新版考试大纲，权威名师辅导，全面梳理、重点突出、主次分明。内容包括：权威导学+考试指南+名师课程+考试题库+在线答疑+考前冲刺课",
+  "time": "2018-6-15",
+  "people": "1218",
   "banner": {
     "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/cf60e80f6467489f3d64a87e27c7c13a.png",
     "video": {
@@ -14,23 +14,17 @@
   "subTitle": "综合笔试",
   "list": [
     {
-      "id": "40288810624e037d01624e03979d0358",
-      "isbn": "6ca818bb0804442992c06d190895720c",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/bdc8e294bc1303a087401a66077da4aa.png",
-      "title": "考试指南",
-      "subTitle": "系统梳理知识点、考点",
-      "price": "0",
-      "originPrice": "500",
-      "guide": {
-        "video": {
-          "id": "z000031",
-          "name": "病史采集和病例分析导学"
-        },
-        "enable": true
-      },
+      "id": "40288810624e037d01624e03979d035e",
+      "isbn": "2e9d5ed40fa94f9aaa714dcfa832cf27",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/f11a79016911528bad9208d646be43a5.png",
+      "title": "考试题库",
+      "subTitle": "精品试卷，全真模拟",
+      "price": "1504",
+      "originPrice": "1880",
       "type": "examination",
+      "skillbook": true,
       "enable": true,
-      "buyable": false
+      "buyable": true
     },
     {
       "id": "40288810624e037d01624e03979d0359",
@@ -38,74 +32,53 @@
       "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/d6a15479f0f055c2ed5ee65e8c31b5ef.png",
       "title": "名师授课",
       "subTitle": "名校名师权威讲解",
-      "price": "0",
-      "originPrice": "780",
+      "price": "3904",
+      "originPrice": "4880",
       "type": "video",
       "preview": {
         "video": {
           "id": "z000031",
           "name": "病史采集和病例分析导学"
         },
-        "enable": true
+        "enable": false
       },
-      "enable": true,
+      "enable": false,
       "buyable": false
     },
     {
-      "id": "40288810624e037d01624e03979d035a",
+      "id": "40288810624e037d01624e03979d0358",
       "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/f11a79016911528bad9208d646be43a5.png",
-      "title": "测试练习仿真模拟",
-      "subTitle": "权威题库，精品试题",
-      "price": "0",
-      "originPrice": "600",
-      "guide": {
-        "video": {
-          "id": "z000030",
-          "name": "辅助检查导学"
-        },
-        "enable": true
-      },
-      "type": "examination",
-      "enable": true,
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/2ee481eb37118be8d71b9ba389a2f00b.png",
+      "title": "考前冲刺课",
+      "subTitle": "考前划重点和考点",
+      "price": "2304",
+      "originPrice": "2880",
+      "type": "video",
+      "enable": false,
       "buyable": false
     },
     {
-      "id": "40288810624e037d01624e03979d035b",
+      "id": "40288810624e037d01624e03979d0358",
+      "isbn": "2e9d5ed40fa94f9aaa714dcfa832cf27",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/bdc8e294bc1303a087401a66077da4aa.png",
+      "title": "考试指南",
+      "subTitle": "系统梳理知识点、考点",
+      "price": "280",
+      "originPrice": "350",
+      "type": "pdf",
+      "enable": false,
+      "buyable": false
+    },
+    {
+      "id": "40288810624e037d01624e03979d0358",
       "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
       "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/54a96274a1e2464e0222e6d7226c1d97.png",
       "title": "在线答疑",
       "subTitle": "考生与专家实时互动",
       "price": "0",
-      "originPrice": "600",
-      "guide": {
-        "video": {
-          "id": "z000030",
-          "name": "辅助检查导学"
-        },
-        "enable": true
-      },
-      "type": "examination",
-      "enable": true,
-      "buyable": false
-    },
-    {
-      "id": "40288810624e037d01624e03979d035c",
-      "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/2ee481eb37118be8d71b9ba389a2f00b.png",
-      "title": "直播辅导",
-      "subTitle": "考前划重点和考点",
-      "price": "0",
-      "originPrice": "600",
-      "guide": {
-        "video": {
-          "id": "z000030",
-          "name": "辅助检查导学"
-        },
-        "enable": true
-      },
-      "type": "examination",
-      "enable": true,
+      "originPrice": "0",
+      "type": "bbs",
+      "enable": false,
       "buyable": false
     }
   ]

@@ -27,7 +27,7 @@
                             </div>
                             <div style="width: 24%;padding: .5rem;" class="imed-button-group">
                                 <template v-if="it.enable">
-                                    <div @click="learn(it.id)">
+                                    <div @click="learn(it.id, it.price)">
                                         <div class="imed-button">
                                             {{text(it.type)}}
                                         </div>
@@ -56,8 +56,7 @@
         name: "exam-guide",
         created() {
             if (typeof Config !== 'undefined') {
-                console.log(Config)
-                Config && this.$store.dispatch('config', Config)
+                Config && this.$store.commit('config', Config)
             }
         },
         data() {
@@ -80,9 +79,9 @@
                             {
                                 id: '40288810624e037d01624e03979d035b',
                                 cover: require("../../assets/img/exam-category-2.jpg"),
-                                title: '综合笔试考试',
-                                price: '5504',
-                                originPrice: '6800',
+                                title: '综合笔试',
+                                price: '6990',
+                                originPrice: '9990',
                                 type: 'fee',
                                 enable: true,
                             }
@@ -104,11 +103,11 @@
                             {
                                 id: '40288810624e037d01624e03979d035d',
                                 cover: require("../../assets/img/exam-category-4.jpg"),
-                                title: '综合笔试考试',
-                                price: '4700',
-                                originPrice: '5880',
+                                title: '综合笔试',
+                                price: '0',
+                                originPrice: '0',
                                 type: 'fee',
-                                enable: true,
+                                enable: false,
                             }
                         ]
                     },
@@ -128,15 +127,18 @@
             back() {
                 WebCallApp("CmdGoBack")
             },
-            learn(id) {
-                let login = this.$store.dispatch('login')
+            learn(id, price) {
+                this.$store.commit('currentId', id)
+                this.$store.commit('price', parseInt(price))
+                let login = this.$store.dispatch('login', {id,})
                 let pkg = this.$store.dispatch('packageInfo', {id,})
                 Promise.all([login, pkg]).then(([loginInfo, packageInfo]) => {
-                    this.$router.push(`/exam/${id}`)
+                    this.$router.push({path: `/exam/${id}`, query: {price}})
                 })
             },
             text(type) {
-                return type === 'free' ? '学习' : '购买'
+                // return type === 'free' ? '学习' : '购买'
+                return '学习'
             }
         }
     }

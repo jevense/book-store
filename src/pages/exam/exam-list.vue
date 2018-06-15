@@ -84,7 +84,7 @@
         <footer v-if="!bought">
             <div @click="buy({id:$route.params.eid,buyable:true})"
                  class="button button-fill button-big">
-                全部购买（{{loginInfo.remainPrice}}阅点）
+                全部购买（{{remainPrice()}}阅点）
             </div>
         </footer>
     </div>
@@ -104,26 +104,42 @@
                 loginInfo: state => state.loginInfo,
                 packageInfo: state => state.packageInfo,
                 config: state => state.config,
-                bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id))
+                price: state => state.price,
+                bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
+
             }),
         },
         methods: {
             search() {
                 console.log('======');
             },
+            remainPrice() {
+                let own = this.packageInfo.list.reduce((prev, cur) => {
+                    let reulst = prev
+                    if (this.loginInfo.ownList.includes(cur.id)) {
+                        reulst += parseInt(cur.price)
+                    }
+                    return reulst
+                }, 0)
+                return this.price - own
+            },
             redirect(item) {
-                let {type, isbn, enable} = item
+                let {type, isbn, enable, skillbook} = item
                 if (!enable) return false
                 if (type === 'examination') {
                     let token = getQueryString('token')
                     let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
+                    skillbook && (url += '&skillbook=1')
                     WebCallApp("CmdOpenUrl", {url,})
                 } else if (type === 'video') {
                     let {eid} = this.$route.params
                     this.$router.push(`/exam/${eid}/course`)
+                } else if (type === 'pdf') {
+                } else if (type === 'bbs') {
                 }
             },
             isContains(id) {
+                console.log(id)
                 return this.loginInfo.ownList.includes(id)
             },
             courseItem(item) {
@@ -137,6 +153,7 @@
             buy(item) {
                 let {id, buyable: enable} = item
                 if (!enable) return false
+                console.log(id)
                 this.$store.dispatch('payOrder', {id}).then(() => {
                     this.$router.push(`/book/${id}/order`)
                 })

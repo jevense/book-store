@@ -1,69 +1,74 @@
 <template>
     <imed-nav :title="title" style="background-color: #F3F3F3">
-        <div style="margin: 0.5rem 0">
-            <div style="display: flex;background-color: white;padding: 0.5rem;">
-                <div style="width: 40%;">
-                    <b-img fluid :src='payOrder.cover'/>
-                </div>
-                <div style="font-size: 1rem;margin-left: .5rem">
-                    <div style="font-size: .8em">{{payOrder.name}}</div>
-                    <div>
-                        <div class="imed-item-sub-title">价格：<span style="color: red" v-text="payOrder.price"></span> 阅点
+        <div class="content" style="margin: 3rem 0 2rem 0">
+            <div style="margin: 0.5rem 0">
+                <div style="display: flex;background-color: white;padding: 0.5rem;">
+                    <div style="min-width: 5rem;width: 5rem;">
+                        <b-img fluid :src='payOrder.cover'/>
+                    </div>
+                    <div style="font-size: 1rem;margin-left: .5rem">
+                        <div style="font-size: .8em">{{payOrder.name}}</div>
+                        <div>
+                            <div class="imed-item-sub-title">价格：<span style="color: red" v-text="payOrder.price"></span>
+                                阅点
+                            </div>
+                            <div class="imed-item-sub-title">作者：{{payOrder.author}}</div>
+                            <div class="imed-item-sub-title">类型：通关包</div>
+                            <div class="imed-item-sub-title">出版机构：{{payOrder.publishingAgency}}</div>
                         </div>
-                        <div class="imed-item-sub-title">作者：{{payOrder.author}}</div>
-                        <div class="imed-item-sub-title">图书类型：通关包</div>
-                        <div class="imed-item-sub-title">出版机构：{{payOrder.publishingAgency}}</div>
                     </div>
-
+                </div>
+                <div v-if="payOrder.abstracts" style="font-size: .6em; padding: .5rem;background-color: white;"
+                     v-html="payOrder.abstracts">
                 </div>
             </div>
+            <!--<section>-->
+            <!--<span class="imed-title">优惠券</span>-->
+            <!--</section>-->
+            <section>
+                <span class="imed-title">支付金额</span>
+                <span class="imed-title"><span style="color: red" v-text="payOrder.actualPrice"></span> 阅点</span>
+            </section>
+            <section>
+                <div class="imed-title-read-point">
+                    <div>
+                        <b-img style="width: 1.2rem;margin: 0 auto;" fluid
+                               :src="require('../../assets/img/yuedian.png')"/>
+                    </div>
+                    <div style="margin-left: .5rem;">
+                        <div style="font-size: .8rem;">使用阅点</div>
+                        <div style="font-size: .7rem;color: #BABABA;">可用阅点
+                            <span style="color: red;" v-text="payOrder.availablePoint"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 1.5rem;">
+                    <b-img fluid :src="require('../../assets/img/selected.png')"/>
+                </div>
+            </section>
+            <template v-if="payOrder.isAppPay === '1' && platform()!=='0'">
+                <section @click="changePayType('1')">
+                    <div class="imed-title">
+                        <b-img fluid :src="require('../../assets/img/zhifubao.png')"/>
+                        支付宝支付
+                    </div>
+                    <div style="width: 1.5rem;">
+                        <b-img v-if="payType==='1'" fluid :src="require('../../assets/img/selected.png')"/>
+                        <b-img v-else fluid :src="require('../../assets/img/noselected.png')"/>
+                    </div>
+                </section>
+                <section @click="changePayType('2')">
+                    <div class="imed-title">
+                        <b-img fluid :src="require('../../assets/img/weixin.png')"/>
+                        微信支付
+                    </div>
+                    <div style="width: 1.5rem;">
+                        <b-img v-if="payType === '2'" fluid :src="require('../../assets/img/selected.png')"/>
+                        <b-img v-else fluid :src="require('../../assets/img/noselected.png')"/>
+                    </div>
+                </section>
+            </template>
         </div>
-        <section>
-            <span class="imed-title">优惠券</span>
-        </section>
-        <section>
-            <span class="imed-title">支付金额</span>
-            <span class="imed-title"><span style="color: red" v-text="payOrder.actualPrice"></span> 阅点</span>
-        </section>
-        <section>
-            <div class="imed-title-read-point">
-                <div>
-                    <b-img style="width: 1.2rem;margin: 0 auto;" fluid
-                           :src="require('../../assets/img/yuedian.png')"/>
-                </div>
-                <div style="margin-left: .5rem;">
-                    <div style="font-size: .8rem;">使用阅点</div>
-                    <div style="font-size: .7rem;color: #BABABA;">可用阅点
-                        <span style="color: red;" v-text="payOrder.availablePoint"></span>
-                    </div>
-                </div>
-            </div>
-            <div style="width: 1.5rem;">
-                <b-img fluid :src="require('../../assets/img/selected.png')"/>
-            </div>
-        </section>
-        <template v-if="payOrder.isAppPay === '1'">
-            <section @click="changePayType('1')">
-                <div class="imed-title">
-                    <b-img fluid :src="require('../../assets/img/zhifubao.png')"/>
-                    支付宝支付
-                </div>
-                <div style="width: 1.5rem;">
-                    <b-img v-if="payType==='1'" fluid :src="require('../../assets/img/selected.png')"/>
-                    <b-img v-else fluid :src="require('../../assets/img/noselected.png')"/>
-                </div>
-            </section>
-            <section @click="changePayType('2')">
-                <div class="imed-title">
-                    <b-img fluid :src="require('../../assets/img/weixin.png')"/>
-                    微信支付
-                </div>
-                <div style="width: 1.5rem;">
-                    <b-img v-if="payType === '2'" fluid :src="require('../../assets/img/selected.png')"/>
-                    <b-img v-else fluid :src="require('../../assets/img/noselected.png')"/>
-                </div>
-            </section>
-        </template>
         <footer>
             <a @click="buy($route.params.id)" class="button button-fill button-big button-danger">
                 <span style="color: white">确认付款</span>
@@ -81,7 +86,7 @@
         name: "book-order",
         data() {
             return {
-                title: '图书订单',
+                title: '订单',
                 payType: '1',
             }
         },
@@ -95,6 +100,9 @@
         methods: {
             search() {
                 console.log('======');
+            },
+            platform() {
+                return getQueryString('platform')
             },
             buy(cid) {
                 let token = getQueryString('token')
@@ -139,13 +147,14 @@
                     } else if (platform === "2") {
                         alert("对不起，暂不支持PC支付购买，请到手机端支付购买");
                     } else {
-                        var appCallData = {
+                        let appCallData = {
                             command: "payment",
                             args: {
                                 payType: this.payType,
                                 bookid: cid,
-                                amount: this.payOrder.actualPaymentAmount,
-                                discountId: ""
+                                amount: `${this.payOrder.actualPaymentAmount}`,
+                                uuid: '',
+                                discountId: ''
                             }
                         };
                         Elf.WebCallApp(JSON.stringify(appCallData));
@@ -163,11 +172,6 @@
 </script>
 
 <style scoped>
-
-    section {
-        padding: 0.5rem;
-        background-color: white;
-    }
 
     footer {
         position: fixed;
@@ -190,11 +194,11 @@
     }
 
     section {
-        margin: 0.5rem 0;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        margin: .5rem 0;
+        padding: .5rem 1rem;
         display: flex;
-        justify-content: space-between
+        justify-content: space-between;
+        background-color: white;
     }
 
     .imed-title-read-point {

@@ -1,16 +1,30 @@
 <template>
+    <!--<div>-->
+    <!--<Loading v-show="showLoading"></Loading>-->
     <transition :name="transitionName">
         <router-view class="router-view"></router-view>
     </transition>
+    <!--</div>-->
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+    // import Loading from './components/loading.vue'
+
     export default {
         name: "app",
         data() {
             return {
                 transitionName: 'slide-left'
             }
+        },
+        computed: {
+            ...mapState({
+                showLoading: state => state.showLoading,
+            }),
+        },
+        components: {
+            // Loading
         },
         watch: {
             '$route'(to, from) {

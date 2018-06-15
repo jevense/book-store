@@ -1,5 +1,5 @@
 {
-  "title": "临床执业医师考试通关包实践技能考试2",
+  "title": "临床执业助理医师考试通关包实践技能考试",
   "introduce": "贴近新版考试大纲，资深专家进行编著，重点难点深入剖析，解决考生学习痛点。内含：专家导读+操作视频+精品题库。",
   "time": "2018-6-1",
   "people": "405",
@@ -29,7 +29,7 @@
         "enable": true
       },
       "type": "examination",
-      "enable": true,
+      "enable": false,
       "buyable": false
     },
     {
@@ -60,7 +60,7 @@
         "enable": true
       },
       "type": "examination",
-      "enable": true,
+      "enable": false,
       "buyable": false
     }
   ]
