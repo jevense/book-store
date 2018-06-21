@@ -129,7 +129,7 @@
                 if (type === 'examination') {
                     let token = getQueryString('token')
                     let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
-                    skillbook && (url += '&skillbook=1')
+                    skillbook && (url += '&skillbook=1&key1=1')//TODO key1 = 2
                     WebCallApp("CmdOpenUrl", {url,})
                 } else if (type === 'video') {
                     let {eid} = this.$route.params

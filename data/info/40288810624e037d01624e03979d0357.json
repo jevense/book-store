@@ -15,7 +15,7 @@
   "list": [
     {
       "id": "40288810624e037d01624e03979d0358",
-      "isbn": "2e9d5ed40fa94f9aaa714dcfa832cf27",
+      "isbn": "6ca818bb0804442992c06d190895720c",
       "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/8525f94a5affaa34eff2e172ea0603fc.png",
       "title": "第一站 病史采集及病例分析",
       "subTitle": "答题技巧和要点",
@@ -29,7 +29,7 @@
         "enable": true
       },
       "type": "examination",
-      "enable": false,
+      "enable": true,
       "buyable": false
     },
     {
@@ -60,7 +60,7 @@
         "enable": true
       },
       "type": "examination",
-      "enable": false,
+      "enable": true,
       "buyable": false
     }
   ]
