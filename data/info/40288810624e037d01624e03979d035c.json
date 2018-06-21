@@ -29,7 +29,7 @@
         "enable": true
       },
       "type": "examination",
-      "enable": false,
+      "enable": true,
       "buyable": false
     },
     {
@@ -60,7 +60,7 @@
         "enable": true
       },
       "type": "examination",
-      "enable": false,
+      "enable": true,
       "buyable": false
     }
   ]
