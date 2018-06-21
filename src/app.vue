@@ -104,4 +104,8 @@
         text-decoration: none;
     }
 
+    .button {
+        border-radius: 0;
+    }
+
 </style>

@@ -38,12 +38,13 @@ new Vue({
     components: {App},
 })
 
-
-Elf.AppCallWeb = function (sn, data) {
-    if (sn === 'MsgOpenSuccess') {	//支付宝、或微信时需通知一下
-        let dataJson = JSON.parse(data);
-        store.dispatch('paySuccess', {tradeNo: dataJson.tradeNo}).then(res => {
-            router.push(`/book/${res.id}/order/pay-success`,)
-        })
+if (typeof Elf !== 'undefined') {
+    Elf.AppCallWeb = function (sn, data) {
+        if (sn === 'MsgOpenSuccess') {	//支付宝、或微信时需通知一下
+            let dataJson = JSON.parse(data);
+            store.dispatch('paySuccess', {tradeNo: dataJson.tradeNo}).then(res => {
+                router.push(`/book/${res.id}/order/pay-success`,)
+            })
+        }
     }
 }

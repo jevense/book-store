@@ -50,7 +50,7 @@
                 <section @click="changePayType('1')">
                     <div class="imed-title">
                         <b-img fluid :src="require('../../assets/img/zhifubao.png')"/>
-                        支付宝支付
+                        <span>支付宝支付</span>
                     </div>
                     <div style="width: 1.5rem;">
                         <b-img v-if="payType==='1'" fluid :src="require('../../assets/img/selected.png')"/>
@@ -60,7 +60,7 @@
                 <section @click="changePayType('2')">
                     <div class="imed-title">
                         <b-img fluid :src="require('../../assets/img/weixin.png')"/>
-                        微信支付
+                        <span> 微信支付</span>
                     </div>
                     <div style="width: 1.5rem;">
                         <b-img v-if="payType === '2'" fluid :src="require('../../assets/img/selected.png')"/>
@@ -70,8 +70,9 @@
             </template>
         </div>
         <footer>
-            <a @click="buy($route.params.id)" class="button button-fill button-big button-danger">
-                <span style="color: white">确认付款</span>
+            <a @click="buy($route.params.id, status)" class="button button-fill button-big button-danger"
+               :class="{disabled:!status}">
+                <span style="color: white">{{status?'确认付款':'付款中...'}}</span>
             </a>
         </footer>
     </imed-nav>
@@ -88,6 +89,7 @@
             return {
                 title: '订单',
                 payType: '1',
+                status: true,
             }
         },
         components: {ImedNav},
@@ -104,10 +106,12 @@
             platform() {
                 return getQueryString('platform')
             },
-            buy(cid) {
+            buy(cid, status) {
+                if (!status) return false
                 let token = getQueryString('token')
                 let platform = getQueryString('platform')
                 if (this.payOrder.isAppPay === '0') {
+                    this.status = false
                     let args = {
                         "serviceModule": "BS-Service",
                         "serviceNumber": "0301500",
@@ -125,19 +129,25 @@
                         let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
                         if (!result["opFlag"] || result["opFlag"] === false) {
                             if (result["errorMessage"].indexOf("E012-") >= 0) {
+                                this.status = true
                                 WebCallApp("UserLogout", {logoutType: "E012"});
                             }
                         } else {
                             let resultObj = JSON.parse(result["serviceResult"]);
                             if (resultObj['flag'] === 'true') {
                                 this.$store.dispatch('paySuccess', resultObj['result']).then(() => {
+                                    this.status = true
                                     this.$router.push(`/book/${this.$route.params.id}/order/pay-success`,)
                                 })
                             } else {
                                 console.log(resultObj)
+                                this.status = true
                             }
                         }
+                    }).catch(e => {
+                        this.status = true
                     })
+
                 } else {
                     if (platform === "0") {
                         window.webkit.messageHandlers["WebCallApp"].postMessage(JSON.stringify({
@@ -190,6 +200,8 @@
     }
 
     .imed-title {
+        display: flex;
+        flex-direction: row;
         font-size: .8em;
     }
 
