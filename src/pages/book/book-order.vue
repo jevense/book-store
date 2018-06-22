@@ -70,7 +70,7 @@
             </template>
         </div>
         <footer>
-            <a @click="buy($route.params.id, status)" class="button button-fill button-big button-danger"
+            <a @click="buy($route.params.id)" class="button button-fill button-big button-danger"
                :class="{disabled:!status}">
                 <span style="color: white">{{status?'确认付款':'付款中...'}}</span>
             </a>
@@ -106,8 +106,8 @@
             platform() {
                 return getQueryString('platform')
             },
-            buy(cid, status) {
-                if (!status) return false
+            buy(cid) {
+                if (!this.status) return false
                 let token = getQueryString('token')
                 let platform = getQueryString('platform')
                 if (this.payOrder.isAppPay === '0') {
@@ -129,19 +129,16 @@
                         let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
                         if (!result["opFlag"] || result["opFlag"] === false) {
                             if (result["errorMessage"].indexOf("E012-") >= 0) {
-                                this.status = true
                                 WebCallApp("UserLogout", {logoutType: "E012"});
                             }
                         } else {
                             let resultObj = JSON.parse(result["serviceResult"]);
                             if (resultObj['flag'] === 'true') {
                                 this.$store.dispatch('paySuccess', resultObj['result']).then(() => {
-                                    this.status = true
                                     this.$router.push(`/book/${this.$route.params.id}/order/pay-success`,)
                                 })
                             } else {
                                 console.log(resultObj)
-                                this.status = true
                             }
                         }
                     }).catch(e => {
