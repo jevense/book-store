@@ -23,6 +23,7 @@
       "originPrice": "1880",
       "type": "examination",
       "skillbook": true,
+      "key1": "2",
       "enable": true,
       "buyable": true
     },
@@ -66,8 +67,8 @@
       "price": "280",
       "originPrice": "350",
       "type": "pdf",
-      "enable": false,
-      "buyable": false
+      "enable": true,
+      "buyable": true
     },
     {
       "id": "40288810624e037d01624e03979d035i",

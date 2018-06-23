@@ -12,7 +12,8 @@ import ExamCourse from './pages/exam/exam-course'
 import ExamCourseList from './pages/exam/exam-course-list'
 import ExamCourseItem from './pages/exam/exam-course-item'
 import ExamExamination from './pages/exam/exam-examination'
-// import PDF from './pages/exam/pdf-view'
+import ExamPDFCategory from './pages/exam/exam-pdf-list'
+import ExamPDFView from './pages/exam/exam-pdf-view'
 
 Vue.use(VueRouter)
 
@@ -30,7 +31,8 @@ const routes = [
     {path: '/exam/:eid/course/:cid', component: ExamCourseList},
     {path: '/exam/:eid/course/:cid/item/:iid', component: ExamCourseItem, name: 'video'},
     {path: '/exam/:eid/examination', component: ExamExamination},
-    // {path: '/pdf', component: PDF},
+    {path: '/exam/:eid/pdf/:cid', component: ExamPDFCategory},
+    {path: '/exam/:eid/pdf/:cid/item/:iid', component: ExamPDFView},
 ]
 
 export default new VueRouter({

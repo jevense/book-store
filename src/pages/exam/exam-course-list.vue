@@ -24,7 +24,7 @@
         data() {
             return {
                 title: '体格检查与基本操作',
-                preUrl: 'http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/',
+                preUrl: 'https://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/',
                 videos: {
                     "1": [
                         {

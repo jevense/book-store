@@ -35,7 +35,7 @@
     export default {
         name: "book-order",
         data() {
-            let preUrl = 'http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/'
+            let preUrl = 'https://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/'
             return {
                 preUrl,
                 show: false,

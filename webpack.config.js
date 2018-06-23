@@ -1,6 +1,7 @@
 //定义了一些文件夹的路径
-const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const ImageminPlugin = require('imagemin-webpack-plugin')
 
 module.exports = {
     // mode: 'development',
@@ -64,7 +65,14 @@ module.exports = {
                 ]
             }, {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: ['file-loader']
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: '8192',
+                        outputPath: 'img',
+                        publicPath: 'http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/ui/phone/img',
+                    }
+                }]
             }, {
                 test: /\.(eot|woff)$/,
                 use: ['file-loader'],
@@ -82,6 +90,7 @@ module.exports = {
     },
     //添加我们的插件 会自动生成一个html文件
     plugins: [
+        // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
         new HtmlWebpackPlugin({
             title: 'Hello World app',
             // filename: '../../index.html',

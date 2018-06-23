@@ -104,10 +104,10 @@
                                 id: '40288810624e037d01624e03979d035d',
                                 cover: require("../../assets/img/exam-category-4.jpg"),
                                 title: '综合笔试',
-                                price: '0',
-                                originPrice: '0',
+                                price: '6200',
+                                originPrice: '8880',
                                 type: 'fee',
-                                enable: false,
+                                enable: true,
                             }
                         ]
                     },

@@ -105,6 +105,7 @@
                 packageInfo: state => state.packageInfo,
                 config: state => state.config,
                 price: state => state.price,
+                currentId: state => state.currentId,
                 bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
 
             }),
@@ -124,18 +125,22 @@
                 return this.price - own
             },
             redirect(item) {
-                let {type, isbn, enable, skillbook} = item
+                let {id, type, isbn, enable, skillbook, key1} = item
                 if (!enable) return false
                 if (type === 'examination') {
                     let token = getQueryString('token')
                     let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
-                    skillbook && (url += '&skillbook=1&key1=1')//TODO key1 = 2
+                    skillbook && (url += `&skillbook=1&key1=${key1}`)
                     WebCallApp("CmdOpenUrl", {url,})
                 } else if (type === 'video') {
                     let {eid} = this.$route.params
                     this.$router.push(`/exam/${eid}/course`)
                 } else if (type === 'pdf') {
+                    this.$store.dispatch('pdf', {id,}).then(() => {
+                        this.$router.push(`/exam/${this.$route.params.eid}/pdf/${id}`)
+                    })
                 } else if (type === 'bbs') {
+
                 }
             },
             isContains(id) {
@@ -147,7 +152,7 @@
                 if (!enable) return false
                 let {id, name} = video
                 this.$store.dispatch('video', {id, name}).then(() => {
-                    this.$router.push({path: `/exam/123/course/1/item/${id}`, query: {name,}})
+                    this.$router.push({path: `/exam/${this.$route.params.eid}/course/1/item/${id}`, query: {name,}})
                 })
             },
             buy(item) {

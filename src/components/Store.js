@@ -8,11 +8,10 @@ export default new Vuex.Store({
     state: {
         config: {
             busUrl: 'http://developer.mvwchina.com:8080/bus/services',
-            storeUrl: 'https://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com',
+            storeUrl: 'http://localhost:8080/data',
             examUrl: 'https://exam.mvwchina.com',
         },
         currentId: "",
-        showLoading: false,
         loginInfo: {
             remainPrice: 0,
             ownList: [],
@@ -21,6 +20,7 @@ export default new Vuex.Store({
             list: [],
         },
         video: "",
+        pdf: {},
         price: 0,
         payOrder: {},
         paySuccess: {},
@@ -28,9 +28,6 @@ export default new Vuex.Store({
     getters: {
         config(state) {
             return state.config
-        },
-        showLoading(state) {
-            return state.showLoading
         },
         loginInfo(state) {
             return state.loginInfo
@@ -43,6 +40,9 @@ export default new Vuex.Store({
         },
         video(state) {
             return state.video
+        },
+        pdf(state) {
+            return state.pdf
         },
         price(state) {
             return state.price
@@ -57,12 +57,6 @@ export default new Vuex.Store({
     mutations: {
         config(state, data) {
             state.config = data
-        },
-        SHOWLOADING(state) {
-            state.showLoading = true
-        },
-        HIDELOADING(state) {
-            state.showLoading = false
         },
         loginInfo(state, data) {
             let {
@@ -80,6 +74,9 @@ export default new Vuex.Store({
         },
         video(state, data) {
             state.video = data
+        },
+        pdf(state, data) {
+            state.pdf = data
         },
         price(state, data) {
             state.price = data
@@ -147,6 +144,16 @@ export default new Vuex.Store({
                 })
                 .catch(res => {
                     context.commit('video', `<p>${data.name}</p>`);
+                })
+        },
+        pdf(context, data) {
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/info/${data.id}.json`)
+                .then(res => {
+                    context.commit('pdf', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    context.commit('pdf', {});
                 })
         },
         payOrder(context, data) {

@@ -1,0 +1,86 @@
+{
+  "title": "临床执业助理医师考试综合理论通关包",
+  "introduce": "紧扣新版考试大纲，权威名师辅导，全面梳理、重点突出、主次分明。内容包括：权威导学+考试指南+名师课程+测试练习+在线答疑+考前",
+  "time": "2018-6-24",
+  "people": "895",
+  "banner": {
+    "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/40288810624e037d01624e03979d035d.jpg",
+    "video": {
+      "id": "z000032",
+      "name": "综合导学"
+    },
+    "enable": true
+  },
+  "subTitle": "实践技能考试",
+  "list": [
+    {
+      "id": "40288810624e037d01624e03979d035j",
+      "isbn": "e32235ec76bc11e887ac7cd30ae00c08",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/f11a79016911528bad9208d646be43a5.png",
+      "title": "考试题库",
+      "subTitle": "精品试卷，全真模拟",
+      "price": "620",
+      "originPrice": "770",
+      "type": "examination",
+      "skillbook": true,
+      "key1": "2",
+      "enable": true,
+      "buyable": true
+    },
+    {
+      "id": "40288810624e037d01624e03979d035k",
+      "isbn": "d0a07f9c5d5f4ec4a2d63e989590600f",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/d6a15479f0f055c2ed5ee65e8c31b5ef.png",
+      "title": "名师授课",
+      "subTitle": "名校名师权威讲解",
+      "price": "3904",
+      "originPrice": "4880",
+      "type": "video",
+      "preview": {
+        "video": {
+          "id": "z000031",
+          "name": "病史采集和病例分析导学"
+        },
+        "enable": false
+      },
+      "enable": false,
+      "buyable": false
+    },
+    {
+      "id": "40288810624e037d01624e03979d035l",
+      "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/2ee481eb37118be8d71b9ba389a2f00b.png",
+      "title": "考前冲刺课",
+      "subTitle": "考前划重点和考点",
+      "price": "2304",
+      "originPrice": "2880",
+      "type": "video",
+      "enable": false,
+      "buyable": false
+    },
+    {
+      "id": "40288810624e037d01624e03979d035m",
+      "isbn": "2e9d5ed40fa94f9aaa714dcfa832cf27",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/bdc8e294bc1303a087401a66077da4aa.png",
+      "title": "考试指南",
+      "subTitle": "系统梳理知识点、考点",
+      "price": "280",
+      "originPrice": "350",
+      "type": "pdf",
+      "enable": true,
+      "buyable": true
+    },
+    {
+      "id": "40288810624e037d01624e03979d035n",
+      "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
+      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/54a96274a1e2464e0222e6d7226c1d97.png",
+      "title": "在线答疑",
+      "subTitle": "考生与专家实时互动",
+      "price": "0",
+      "originPrice": "0",
+      "type": "bbs",
+      "enable": false,
+      "buyable": false
+    }
+  ]
+}

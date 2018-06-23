@@ -1,10 +1,7 @@
 <template>
-    <!--<div>-->
-    <!--<Loading v-show="showLoading"></Loading>-->
     <transition :name="transitionName">
         <router-view class="router-view"></router-view>
     </transition>
-    <!--</div>-->
 </template>
 
 <script>

@@ -1,0 +1,71 @@
+{
+  "name": "考试指南",
+  "list": [
+    {
+      "index": "01",
+      "id": "40288810624e037d01624e03979d035h-01",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-01.jpg",
+      "name": "第一版块——消化系统"
+    },
+    {
+      "index": "02",
+      "id": "40288810624e037d01624e03979d035h-02",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-02.jpg",
+      "name": "第二版块——心血管系统"
+    },
+    {
+      "index": "03",
+      "id": "40288810624e037d01624e03979d035h-03",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-03.jpg",
+      "name": "第三版块——呼吸系统"
+    },
+    {
+      "index": "04",
+      "id": "40288810624e037d01624e03979d035h-04",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-04.jpg",
+      "name": "第四版块——泌尿系统"
+    },
+    {
+      "index": "05",
+      "id": "40288810624e037d01624e03979d035h-05",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-05.jpg",
+      "name": "第五版块 —— 血液、内分泌风湿免疫中毒"
+    },
+    {
+      "index": "06",
+      "id": "40288810624e037d01624e03979d035h-06",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-06.jpg",
+      "name": "第六版块——运动系统、乳房疾病、外科总论"
+    },
+    {
+      "index": "07",
+      "id": "40288810624e037d01624e03979d035h-07",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-07.jpg",
+      "name": "第七版块——儿科学"
+    },
+    {
+      "index": "08",
+      "id": "40288810624e037d01624e03979d035h-08",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-08.jpg",
+      "name": "第八版块——妇产科"
+    },
+    {
+      "index": "09",
+      "id": "40288810624e037d01624e03979d035h-09",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-09.jpg",
+      "name": "第九版块——神经精神心理"
+    },
+    {
+      "index": "10",
+      "id": "40288810624e037d01624e03979d035h-10",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-10.jpg",
+      "name": "第十版块——传染病性传播疾病人文与预防"
+    },
+    {
+      "index": "11",
+      "id": "40288810624e037d01624e03979d035h-11",
+      "cover": "http://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/40288810624e037d01624e03979d035h-11.jpg",
+      "name": "第十一版块——基础综合"
+    }
+  ]
+}
