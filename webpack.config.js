@@ -5,17 +5,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     // mode: 'development',
+    // devtool: "source-map",
     mode: 'production',
+    // dev: {
+    //     proxyTable: {
+    //         '/api': {
+    //             target: 'http://10.1.5.11:8080/',//设置你调用的接口域名和端口号
+    //             changeOrigin: true,     //跨域
+    //             pathRewrite: {
+    //                 '^/api': '/'          //这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用'http://10.1.5.11:8080/xxx/duty?time=2017-07-07 14:57:22'，直接写‘/api/xxx/duty?time=2017-07-07 14:57:22’即可
+    //             }
+    //         }
+    //     }
+    // },
     output: {
-        // filename: 'sub.min.js',
         chunkFilename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
-        // publicPath: 'static/js'
     },
     optimization: {
         splitChunks: {
             chunks: 'initial', // 只对入口文件处理
             cacheGroups: {
+                // pdfjs: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
+                //     test: /node_modules\/pdfjs-dist\//,
+                //     name: 'page/pdfjs',
+                //     priority: 10,
+                //     enforce: true
+                // },
                 vendor: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
                     test: /node_modules\//,
                     name: 'page/vendor',
@@ -93,7 +108,7 @@ module.exports = {
         // new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
         new HtmlWebpackPlugin({
             title: 'Hello World app',
-            // filename: '../../index.html',
+            // chunks: [],
             template: 'src/assets/index.html',
         }),
     ],

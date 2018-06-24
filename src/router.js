@@ -14,6 +14,7 @@ import ExamCourseItem from './pages/exam/exam-course-item'
 import ExamExamination from './pages/exam/exam-examination'
 import ExamPDFCategory from './pages/exam/exam-pdf-list'
 import ExamPDFView from './pages/exam/exam-pdf-view'
+// import Test from './components/PdfViewer'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,7 @@ const routes = [
     {path: '/exam/:eid/examination', component: ExamExamination},
     {path: '/exam/:eid/pdf/:cid', component: ExamPDFCategory},
     {path: '/exam/:eid/pdf/:cid/item/:iid', component: ExamPDFView},
+    // {path: '/pdf', component: Test},
 ]
 
 export default new VueRouter({
