@@ -25,12 +25,6 @@ module.exports = {
         splitChunks: {
             chunks: 'initial', // 只对入口文件处理
             cacheGroups: {
-                // pdfjs: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
-                //     test: /node_modules\/pdfjs-dist\//,
-                //     name: 'page/pdfjs',
-                //     priority: 10,
-                //     enforce: true
-                // },
                 vendor: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
                     test: /node_modules\//,
                     name: 'page/vendor',

@@ -8,13 +8,13 @@ export default new Vuex.Store({
     state: {
         config: {
             busUrl: 'http://developer.mvwchina.com:8080/bus/services',
-            storeUrl: 'http://localhost:8080/data',
+            storeUrl: 'http://192.168.8.144:8080/data',
             examUrl: 'https://exam.mvwchina.com',
         },
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: [],
+            ownList: ['40288810624e037d01624e03979d035h'],
         },//当前用户简要信息
         packageInfo: {
             list: [],
