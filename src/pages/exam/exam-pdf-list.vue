@@ -33,7 +33,8 @@
         methods: {
             openPDF({id, name}) {
                 let {eid, cid} = this.$route.params
-                this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
+                // this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
+                WebCallApp("downloadBsBook", {id: BOOK.bookInfos.id})
             },
         }
     }
