@@ -28,13 +28,56 @@
         computed: {
             ...mapState({
                 pdf: state => state.pdf,
+                downloadList: state => state.downloadList,
             }),
         },
         methods: {
-            openPDF({id, name}) {
+            openPDF({id, name, isbn, cover}) {
                 let {eid, cid} = this.$route.params
-                // this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
-                WebCallApp("downloadBsBook", {id: BOOK.bookInfos.id})
+                this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
+                // let book = {
+                //     "id": id,
+                //     "cover": cover,
+                //     "coverBase": cover,
+                //     "isbn": isbn,
+                //     "name": name,
+                //     "s9id": isbn,
+                //     "path": `https://mall.imed.org.cn/ui/phone/zhiyikaoshi/${isbn}`,
+                //     "textbook": "1",
+                //     "textbookType": "0",
+                //     "author": "",
+                //     "bookDeadline": "",
+                //     "bookSet": "1",
+                //     "buyStatus": "1",
+                //     "categoryId": "",
+                //     "categoryName": "",
+                //     "createDate": "",
+                //     "day": "",
+                //     "downloadPath": "",
+                //     "downloadState": "0",
+                //     "editor": "",
+                //     "isExpired": "0",
+                //     "isFree": "2",
+                //     "isUpdate": "0",
+                //     "nonWifi": "0",
+                //     "patchPath": "",
+                //     "patchVersion": "3.0",
+                //     "sequence": "1",
+                //     "size": "",
+                //     "downloaded": 0,
+                //     "order": 0,
+                //     "total": 0
+                // }
+                // if (this.downloadList.includes(isbn)) {
+                //     WebCallApp("CmdOpenPDFBook", {isbn, static: "1", book: book})
+                // } else {
+                //     // this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
+                //     WebCallApp("CmdDownloadBook", {
+                //         "isbn": isbn,
+                //         "book": book,
+                //         "nonWifi": "0"
+                //     })
+                // }
             },
         }
     }

@@ -8,19 +8,20 @@ export default new Vuex.Store({
     state: {
         config: {
             busUrl: 'http://developer.mvwchina.com:8080/bus/services',
-            storeUrl: 'http://192.168.8.144:8080/data',
+            storeUrl: 'http://localhost:8080/data',
             examUrl: 'https://exam.mvwchina.com',
         },
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: ['40288810624e037d01624e03979d035h'],
+            ownList: [],
         },//当前用户简要信息
         packageInfo: {
             list: [],
         },
         video: "",
         pdf: {},
+        downloadList: [],
         price: 0,
         payOrder: {},
         paySuccess: {},
@@ -77,6 +78,9 @@ export default new Vuex.Store({
         },
         pdf(state, data) {
             state.pdf = data
+        },
+        addDownloadList(state, data) {
+            state.downloadList.push(data)
         },
         price(state, data) {
             state.price = data

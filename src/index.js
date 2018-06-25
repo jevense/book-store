@@ -46,30 +46,10 @@ if (typeof Elf !== 'undefined') {
                 router.push(`/book/${res.id}/order/pay-success`,)
             })
         } else if (sn === 'MsgUpdateBookState') {
-            data = decodeURIComponent(data);
-            data = JSON.parse(data); //由JSON字符串转换为JSON对象
-            BOOK.downloadState = data.downloadState;
-
-            if (BOOK.buyStatus == '1' && BOOK.textbook == "1") {
-                if (data.downloadState == '8') { //0:未下载 2:下载中 3:暂停   8:完成
-                    BOOK.ui.downloadBtnTxt.btnTxt.innerHTML = "开始阅读";
-                    //BOOK.bookIsbn = "";
-                    Elf.xEvents.onXClick(BOOK.ui.downloadBtnTxt, function () {
-                        if (BOOK.ui.downloadBtnTxt.btnTxt.innerHTML == "开始阅读") {
-                            var args = {isbn: data.isbn};
-                            WebCallApp("CmdOpenPDFBook", args);
-                        }
-                    });
-                } else if (data.downloadState == '0') {
-                    BOOK.ui.downloadBtnTxt.btnTxt.innerHTML = "立即下载";
-                } else if (data.downloadState == '1') {
-                    BOOK.ui.downloadBtnTxt.btnTxt.innerHTML = "等待";
-                } else if (data.downloadState == '3') {
-                    BOOK.ui.downloadBtnTxt.btnTxt.innerHTML = "暂停";
-                } else if (data.downloadState == '2') {
-                    BOOK.ui.downloadBtnTxt.btnTxt.innerHTML = "下载中";
-                }
-            }
+            data = decodeURIComponent(data)
+            data = JSON.parse(data)
+            context.commit('addDownloadList', data.isbn)
+            WebCallApp("CmdOpenPDFBook", {isbn: data.isbn})
 
         }
     }
