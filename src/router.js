@@ -14,12 +14,12 @@ import ExamCourseItem from './pages/exam/exam-course-item'
 import ExamExamination from './pages/exam/exam-examination'
 import ExamPDFCategory from './pages/exam/exam-pdf-list'
 import ExamPDFView from './pages/exam/exam-pdf-view'
-import Test from './pages/reader/reader'
+// import Test from './pages/reader/reader'
 
 Vue.use(VueRouter)
 
 const routes = [
-    {path: '/', redirect: '/test'},
+    {path: '/', redirect: '/exam'},
     {path: '/book', component: BookList},
     {path: '/book/:id', component: BookItem},
     {path: '/book/:id/order', component: BookOrder},
@@ -34,7 +34,7 @@ const routes = [
     {path: '/exam/:eid/examination', component: ExamExamination},
     {path: '/exam/:eid/pdf/:cid', component: ExamPDFCategory},
     {path: '/exam/:eid/pdf/:cid/item/:iid', component: ExamPDFView},
-    {path: '/test', component: Test},
+    // {path: '/test', component: Test},
 ]
 
 export default new VueRouter({
