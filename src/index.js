@@ -7,7 +7,8 @@ import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+import 'wc-loading/style.css'
+import Loading from 'wc-loading'
 // import animate from 'animate.css'
 
 // Vue.use(animate)
@@ -28,9 +29,9 @@ axios.defaults.baseURL = 'https://api.example.com'
 // })
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
+Vue.use(Loading)
 
-
-new Vue({
+let inst = new Vue({
     el: '#content',
     store,
     template: '<App/>',
@@ -48,9 +49,12 @@ if (typeof Elf !== 'undefined') {
         } else if (sn === 'MsgUpdateBookState') {
             data = decodeURIComponent(data)
             data = JSON.parse(data)
-            context.commit('addDownloadList', data.isbn)
+            console.log(data)
+            store.commit('addDownloadList', data.isbn)
             WebCallApp("CmdOpenPDFBook", {isbn: data.isbn})
-
+            inst.$loading.hide()
+        } else {
+            console.log(sn + data)
         }
     }
 }

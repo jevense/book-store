@@ -5,7 +5,6 @@
             <button @click="prevPage"
                     class="toolbarButton pageUp"
                     :class="{disabled: pdfReader.pageNo===1}">
-
             </button>
 
             <input type="number" id="pageNumber" class="toolbarField pageNumber" v-model.number="pdfReader.pageNo"

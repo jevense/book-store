@@ -11628,6 +11628,10 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+wc-loading@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/wc-loading/-/wc-loading-1.2.6.tgz#7db0b5fa68135b537489e86fee4415d45a5395f0"
+
 webpack-addons@^1.1.5:
   version "1.1.5"
   resolved "https://registry.npmjs.org/webpack-addons/-/webpack-addons-1.1.5.tgz#2b178dfe873fb6e75e40a819fa5c26e4a9bc837a"
