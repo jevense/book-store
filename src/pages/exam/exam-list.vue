@@ -113,7 +113,7 @@
                 price: state => state.price,
                 currentId: state => state.currentId,
                 bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
-                combineBought: state => state.packageInfo.combine.combineList.every(item => state.loginInfo.ownList.includes(item.id)),
+                combineBought: state => state.packageInfo.combine.combineList.every(id => state.loginInfo.ownList.includes(id)),
             }),
         },
         methods: {
