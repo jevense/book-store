@@ -1,7 +1,11 @@
 <template>
     <table class="imed-table-border">
-        <tr v-for="nod in data.content" :rowspan="nod.rowSpan" :class="nod.class">
-            <td v-for="no in nod.content" :colSpan="no.colSpan" :class="no.class" v-html="no.text"></td>
+        <tr v-for="nod in data.content" :class="nod.class">
+            <td v-for="no in nod.content"
+                :colSpan="defaultSpan(no.colSpan)"
+                :rowspan="defaultSpan(no.rowSpan)"
+                :class="no.class"
+                v-html="no.text"></td>
         </tr>
     </table>
 </template>
@@ -9,7 +13,10 @@
 <script>
     export default {
         name: "imed-table",
-        props: ['data']
+        props: ['data'],
+        methods: {
+            defaultSpan: item => item ? item : 1
+        }
     }
 </script>
 

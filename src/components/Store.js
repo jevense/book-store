@@ -14,7 +14,7 @@ export default new Vuex.Store({
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: [],
+            ownList: ['40288810624e037d01624e03979d0359'],
         },//当前用户简要信息
         packageInfo: {
             list: [],
@@ -165,7 +165,7 @@ export default new Vuex.Store({
             let platform = getQueryString('platform')
             let args = {
                 "serviceModule": "BS-Service",
-                "serviceNumber": "0201100",
+                "serviceNumber": "0201101",
                 "token": token,
                 "args": {
                     "bookId": data.id,
@@ -177,13 +177,16 @@ export default new Vuex.Store({
                 .then(res => {
                     let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
                     let resultObj = JSON.parse(result["serviceResult"]);
+                    console.log(resultObj)
                     if (resultObj.flag === "true") {
                         context.commit('payOrder', resultObj.result);
                     } else {
                         console.log(resultObj.error);
                     }
                     return resultObj
-                })
+                }).catch(res => {
+                    console.log(res)
+            })
         },
         paySuccess(context, data) {
             let token = getQueryString('token')
