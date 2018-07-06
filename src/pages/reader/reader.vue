@@ -1,22 +1,22 @@
 <template>
     <div class="imed-reader">
-        <div class="imed-title" v-text="title"></div>
-        <div v-if="guide" style="padding: .5rem 0">
-            <div class="imed-title" v-text="guide.title"></div>
-            <p class="imed-content" v-text="guide.text"></p>
-        </div>
-        <div v-for="item in chapter">
-            <div v-for="content in item.content">
-                <div class="imed-title">【图文并茂——章节解析】</div>
-                <div class="imed-chapter" v-text="content.title"></div>
-                <imed-content v-for="node in content.nodes" :data="node"/>
+        <div class="imed-title" v-text="title + ' ' + text"></div>
+        <div v-for="mod in content">
+            <div v-if="mod.title" class="imed-title" v-text="mod.title + ' ' + mod.text"></div>
+            <div v-for="mo in mod.content">
+                <div v-for="item in mo.guide" style="padding: .5rem 0">
+                    <div class="imed-title">【提纲挈领——章节指南】</div>
+                    <p class="imed-content" v-text="item.text"></p>
+                </div>
+                <div v-for="item in mo.content">
+                    <div class="imed-title">【图文并茂——章节解析】</div>
+                    <div class="imed-chapter" v-text="item.title + ' ' + item.text"></div>
+                    <imed-content :key="uuid()" v-for="content in item.content" :data="content"/>
+                    <div class="imed-title">【临考必备——记忆点睛】</div>
+                    <imed-content :key="uuid()" v-for="keyPoint in item.keyPoint" :data="keyPoint"/>
+                </div>
             </div>
-            <div>
-                <div class="imed-title">【临考必备——记忆点睛】</div>
-                <imed-content v-for="keyPoint in item.keyPoint" :data="keyPoint"/>
-            </div>
         </div>
-
     </div>
 </template>
 
