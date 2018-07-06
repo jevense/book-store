@@ -1,8 +1,6 @@
 <template>
-    <div v-if="data.type">
-        <div v-if="data.type==='table'">
-            <imed-table :data="data"/>
-        </div>
+    <div>
+        <imed-table v-if="data.type==='table'" :data="data"/>
         <div v-else-if="data.type==='h1'" class="imed-h1" v-text="data.text"></div>
         <div v-else-if="data.type==='h2-pre'" class="imed-content" v-text="data.text"></div>
         <div v-else-if="data.type==='h2'" class="imed-h2" v-text="data.text"></div>
@@ -11,16 +9,22 @@
         <div v-else-if="data.type==='common'" class="imed-content" v-text="data.text"></div>
         <div v-else-if="data.type==='keyPoint'" class="imed-key-point" v-text="data.text"></div>
         <div v-else class="imed-content" v-text="data.text"></div>
-        <imed-content v-for="content in data.content" :data="content"/>
+        <template v-if="data.content">
+            <imed-content :key="uuid()" v-for="content in data.content" :data="content"/>
+        </template>
     </div>
 </template>
 
 <script>
     import ImedTable from "./imed-table"
+    import uuid from "uuid/v4"
 
     export default {
         name: "imed-content",
         props: ['data'],
+        methods: {
+            uuid: () => uuid()
+        },
         components: {
             ImedTable
         },
@@ -44,7 +48,7 @@
         font-size: .8rem;
     }
 
-    .imed-key-point{
+    .imed-key-point {
         font-size: .8rem;
     }
 </style>

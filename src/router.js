@@ -19,7 +19,7 @@ import Test from './pages/reader/reader'
 Vue.use(VueRouter)
 
 const routes = [
-    {path: '/', redirect: '/test'},
+    {path: '/', redirect: '/exam'},
     {path: '/book', component: BookList},
     {path: '/book/:id', component: BookItem},
     {path: '/book/:id/order', component: BookOrder},

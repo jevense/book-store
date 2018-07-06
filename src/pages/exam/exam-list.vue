@@ -81,10 +81,16 @@
                 </div>
             </div>
         </div>
-        <footer v-if="!bought">
-            <div @click="buy({id:$route.params.eid,buyable:true})"
+        <footer v-if="!bought" style="display: flex;">
+            <div @click="buy({id:$route.params.eid, buyable:true})"
+                 style="flex-grow:1"
                  class="button button-fill button-big">
                 全部购买（{{remainPrice()}}阅点）
+            </div>
+            <div v-if="packageInfo.combine && !combineBought" @click="buyCombine"
+                 class="button button-fill button-big"
+                 style="flex-grow:1;background-color: #FB9437">
+                指南+题库({{packageInfo.combine.price}}阅点)
             </div>
         </footer>
     </div>
@@ -107,7 +113,7 @@
                 price: state => state.price,
                 currentId: state => state.currentId,
                 bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
-
+                combineBought: state => state.packageInfo.combine.combineList.some(id => state.loginInfo.ownList.includes(id)),
             }),
         },
         methods: {
@@ -160,6 +166,12 @@
                 if (!enable) return false
                 console.log(id)
                 this.$store.dispatch('payOrder', {id}).then(() => {
+                    this.$router.push(`/book/${id}/order`)
+                })
+            },
+            buyCombine() {
+                let id = this.packageInfo.combine.id
+                this.$store.dispatch('payOrder', {id,}).then(() => {
                     this.$router.push(`/book/${id}/order`)
                 })
             },
@@ -275,6 +287,10 @@
 
     .imed-margin-nav {
         margin: 3rem 0 0 0;
+    }
+
+    .imed-combine {
+        width: 100%;
     }
 
 </style>

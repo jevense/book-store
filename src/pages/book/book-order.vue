@@ -68,6 +68,11 @@
                     </div>
                 </section>
             </template>
+            <section>
+                <div class="imed-title">
+                   友情提示：虚拟商品一经售出，无正当理由，概不退款
+                </div>
+            </section>
         </div>
         <footer>
             <a @click="buy($route.params.id)" class="button button-fill button-big button-danger"
@@ -114,7 +119,7 @@
                     this.status = false
                     let args = {
                         "serviceModule": "BS-Service",
-                        "serviceNumber": "0301500",
+                        "serviceNumber": "0301501",
                         "token": token,
                         "args": {
                             "token": token,
