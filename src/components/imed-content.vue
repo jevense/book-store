@@ -1,8 +1,6 @@
 <template>
-    <div v-if="data.type">
-        <div v-if="data.type==='table'">
-            <imed-table :data="data"/>
-        </div>
+    <div>
+        <imed-table v-if="data.type==='table'" :data="data"/>
         <div v-else-if="data.type==='h1'" class="imed-h1" v-text="data.text"></div>
         <div v-else-if="data.type==='h2-pre'" class="imed-content" v-text="data.text"></div>
         <div v-else-if="data.type==='h2'" class="imed-h2" v-text="data.text"></div>

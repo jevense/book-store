@@ -70,7 +70,7 @@
             </template>
             <section>
                 <div class="imed-title">
-                   友情提示：虚拟商品一经售出，无正当理由，不得退款
+                   友情提示：虚拟商品一经售出，无正当理由，概不退款
                 </div>
             </section>
         </div>
