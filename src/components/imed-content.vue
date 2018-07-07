@@ -1,13 +1,13 @@
 <template>
     <div>
         <imed-table v-if="data.type==='table'" :data="data"/>
-        <div v-else-if="data.type==='h1'" class="imed-h1" v-text="data.text"></div>
-        <div v-else-if="data.type==='h2-pre'" class="imed-content" v-text="data.text"></div>
-        <div v-else-if="data.type==='h2'" class="imed-h2" v-text="data.text"></div>
-        <div v-else-if="data.type==='h3'" class="imed-content" v-text="data.text"></div>
-        <div v-else-if="data.type==='h4'" class="imed-content" v-text="data.text"></div>
-        <div v-else-if="data.type==='common'" class="imed-content" v-text="data.text"></div>
-        <div v-else-if="data.type==='keyPoint'" class="imed-key-point" v-text="data.text"></div>
+        <div v-else-if="data.type==='h1'" class="imed-h1" v-html="data.text"></div>
+        <div v-else-if="data.type==='h2-pre'" class="imed-content" v-html="data.text"></div>
+        <div v-else-if="data.type==='h2'" class="imed-h2" v-html="data.text"></div>
+        <div v-else-if="data.type==='h3'" class="imed-h3" v-html="data.text"></div>
+        <div v-else-if="data.type==='h4'" class="imed-h3" v-html="data.text"></div>
+        <div v-else-if="data.type==='common'" class="imed-content" v-html="data.text"></div>
+        <div v-else-if="data.type==='keyPoint'" class="imed-key-point" v-html="data.text"></div>
         <div v-else class="imed-content" v-text="data.text"></div>
         <template v-if="data.content">
             <imed-content :key="uuid()" v-for="content in data.content" :data="content"/>
@@ -33,6 +33,10 @@
 
 <style scoped>
 
+    div {
+        margin: .5rem 0;
+    }
+
     .imed-h1 {
         font-size: .9rem;
         font-weight: bold;
@@ -43,9 +47,14 @@
         font-weight: bold;
     }
 
+    .imed-h3 {
+        font-size: .8rem;
+        font-weight: bold;
+    }
+
     .imed-content {
         text-indent: 2em;
-        font-size: .8rem;
+        font-size: .7rem;
     }
 
     .imed-key-point {

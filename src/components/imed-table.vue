@@ -1,6 +1,6 @@
 <template>
     <table class="imed-table-border">
-        <tr v-for="nod in data.content" :class="nod.class">
+        <tr v-for="nod in data.rows" :class="nod.class">
             <td v-for="no in nod.content"
                 :colSpan="defaultSpan(no.colSpan)"
                 :rowspan="defaultSpan(no.rowSpan)"
@@ -8,6 +8,7 @@
                 v-html="no.text"></td>
         </tr>
     </table>
+
 </template>
 
 <script>
@@ -29,5 +30,18 @@
     .imed-table-border td {
         font-size: .8rem;
         border: 1px black solid;
+    }
+
+    table {
+        margin: 1rem 0;
+    }
+
+    table.imed-table-border td {
+        font-size: .7rem;
+    }
+
+    table > tr > td:first-child {
+        width: 6em;
+        text-align: center;
     }
 </style>
