@@ -17,7 +17,6 @@
 <script>
     import {mapState} from 'vuex'
     import ImedNav from '../../components/imed-nav'
-    import getQueryString from '../../components/common'
 
     export default {
         data() {
@@ -35,54 +34,57 @@
         methods: {
             openPDF({id, name, isbn, cover}) {
                 let {eid, cid} = this.$route.params
-                let platform = getQueryString('platform')
-                if (platform === "1") {
-                    let book = {
-                        "id": id,
-                        "cover": cover,
-                        "coverBase": cover,
-                        "isbn": isbn,
-                        "name": name,
-                        "s9id": isbn,
-                        "path": `https://mall.imed.org.cn/ui/phone/zhiyikaoshi/${isbn}`,
-                        "patchPath": `https://mall.imed.org.cn/ui/phone/zhiyikaoshi/${isbn}`,
-                        "size": "2",
-                        "textbook": "1",
-                        "textbookType": "0",
-                        "author": "",
-                        "bookDeadline": "",
-                        "bookSet": "1",
-                        "buyStatus": "1",
-                        "categoryId": "",
-                        "categoryName": "",
-                        "createDate": "",
-                        "day": "",
-                        "downloadPath": "",
-                        "downloadState": "0",
-                        "editor": "",
-                        "isExpired": "0",
-                        "isFree": "2",
-                        "isUpdate": "0",
-                        "nonWifi": "0",
-                        "patchVersion": "3.0",
-                        "sequence": "1",
-                        "downloaded": 0,
-                        "order": 0,
-                        "total": 0
-                    }
-                    if (this.downloadList.includes(isbn)) {
-                        WebCallApp("CmdOpenPDFBook", {isbn, static: "1", book: book})
-                    } else {
-                        this.$loading.show()
-                        WebCallApp("CmdDownloadBook", {
-                            "isbn": isbn,
-                            "book": book,
-                            "nonWifi": "0"
-                        })
-                    }
-                } else {
-                    this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
-                }
+                this.$store.dispatch('pdfDetail', {id,}).then(() => {
+                    this.$router.push(`/exam/${eid}/pdf/${cid}/item/${id}`)
+                })
+                // let platform = getQueryString('platform')
+                // if (platform === "1") {
+                //     let book = {
+                //         "id": id,
+                //         "cover": cover,
+                //         "coverBase": cover,
+                //         "isbn": isbn,
+                //         "name": name,
+                //         "s9id": isbn,
+                //         "path": `https://mall.imed.org.cn/ui/phone/zhiyikaoshi/${isbn}`,
+                //         "patchPath": `https://mall.imed.org.cn/ui/phone/zhiyikaoshi/${isbn}`,
+                //         "size": "2",
+                //         "textbook": "1",
+                //         "textbookType": "0",
+                //         "author": "",
+                //         "bookDeadline": "",
+                //         "bookSet": "1",
+                //         "buyStatus": "1",
+                //         "categoryId": "",
+                //         "categoryName": "",
+                //         "createDate": "",
+                //         "day": "",
+                //         "downloadPath": "",
+                //         "downloadState": "0",
+                //         "editor": "",
+                //         "isExpired": "0",
+                //         "isFree": "2",
+                //         "isUpdate": "0",
+                //         "nonWifi": "0",
+                //         "patchVersion": "3.0",
+                //         "sequence": "1",
+                //         "downloaded": 0,
+                //         "order": 0,
+                //         "total": 0
+                //     }
+                //     if (this.downloadList.includes(isbn)) {
+                //         WebCallApp("CmdOpenPDFBook", {isbn, static: "1", book: book})
+                //     } else {
+                //         this.$loading.show()
+                //         WebCallApp("CmdDownloadBook", {
+                //             "isbn": isbn,
+                //             "book": book,
+                //             "nonWifi": "0"
+                //         })
+                //     }
+                // } else {
+                //     this.$router.push({path: `/exam/${eid}/pdf/${cid}/item/${id}`, query: {name,}})
+                // }
 
             },
         }

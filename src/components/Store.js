@@ -21,6 +21,7 @@ export default new Vuex.Store({
         },
         video: "",
         pdf: {},
+        pdfDetail: {},
         downloadList: [],
         price: 0,
         payOrder: {},
@@ -44,6 +45,9 @@ export default new Vuex.Store({
         },
         pdf(state) {
             return state.pdf
+        },
+        pdfDetail(state) {
+            return state.pdfDetail
         },
         price(state) {
             return state.price
@@ -78,6 +82,9 @@ export default new Vuex.Store({
         },
         pdf(state, data) {
             state.pdf = data
+        },
+        pdfDetail(state, data) {
+            state.pdfDetail = data
         },
         addDownloadList(state, data) {
             state.downloadList.push(data)
@@ -160,6 +167,16 @@ export default new Vuex.Store({
                     context.commit('pdf', {});
                 })
         },
+        pdfDetail(context, data) {
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/article/${data.id}.json`)
+                .then(res => {
+                    context.commit('pdfDetail', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    context.commit('pdfDetail', {});
+                })
+        },
         payOrder(context, data) {
             let token = getQueryString('token')
             let platform = getQueryString('platform')
@@ -185,7 +202,7 @@ export default new Vuex.Store({
                     }
                     return resultObj
                 }).catch(res => {
-                    console.log(res)
+                console.log(res)
             })
         },
         paySuccess(context, data) {
