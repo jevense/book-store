@@ -8,7 +8,6 @@
                 v-html="no.text"></td>
         </tr>
     </table>
-
 </template>
 
 <script>
@@ -34,6 +33,7 @@
 
     table {
         margin: 1rem 0;
+        table-layout: fixed;
     }
 
     table.imed-table-border td {

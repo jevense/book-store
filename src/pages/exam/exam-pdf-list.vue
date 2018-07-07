@@ -34,8 +34,11 @@
         methods: {
             openPDF({id, name, isbn, cover}) {
                 let {eid, cid} = this.$route.params
+                this.$loading.show()
                 this.$store.dispatch('pdfDetail', {id,}).then(() => {
-                    this.$router.push(`/exam/${eid}/pdf/${cid}/item/${id}`)
+                    setTimeout(() => {
+                        this.$router.push(`/exam/${eid}/pdf/${cid}/item/${id}`)
+                    }, 10)
                 })
                 // let platform = getQueryString('platform')
                 // if (platform === "1") {

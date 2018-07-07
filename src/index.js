@@ -14,14 +14,14 @@ import Loading from 'wc-loading'
 // Vue.use(animate)
 axios.defaults.baseURL = 'https://api.example.com'
 // axios.interceptors.request.use(config => {
-//     store.commit('SHOWLOADING')
+//     inst.$loading.show()
 //     return config
 // }, function (err) {
 //     console.log(err)
 //     return Promise.reject(err)
 // })
 // axios.interceptors.response.use(response => {
-//     store.commit('HIDELOADING')
+//     inst.$loading.hide()
 //     return response
 // }, function (err) {
 //     console.log(err)

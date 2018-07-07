@@ -1,35 +1,43 @@
 <template>
-    <div class="imed-reader">
-        <div class="imed-title" v-text="showTitle({title:pdfDetail.title, text:pdfDetail.text})"></div>
-        <div v-for="mod in pdfDetail.content">
-            <div v-if="mod.title||mod.text" class="imed-title" v-text="showTitle(mod)"></div>
-            <div v-for="item in mod.guide" style="padding: .5rem 0">
-                <div class="imed-title">【提纲挈领——章节指南】</div>
-                <p class="imed-content" v-text="item.text"></p>
-            </div>
-            <div v-for="item in mod.content">
-                <div class="imed-title">【图文并茂——章节解析】</div>
-                <div class="imed-chapter" v-text="showTitle(item)"></div>
-                <imed-content :key="uuid()" v-for="content in item.content" :data="content"/>
-                <div class="imed-title">【临考必备——记忆点睛】</div>
-                <imed-content :key="uuid()" v-for="keyPoint in item.keyPoint" :data="keyPoint"/>
+    <imed-nav :title="showTitle({title:pdfDetail.title, text:pdfDetail.text})">
+        <div class="content imed-reader" style="margin:3rem 0 0 0;">
+            <!--<div class="imed-title" v-text="showTitle({title:pdfDetail.title, text:pdfDetail.text})"></div>-->
+            <div v-for="mod in pdfDetail.content">
+                <div v-if="mod.title||mod.text" class="imed-title" v-text="showTitle(mod)"></div>
+                <div v-for="item in mod.guide" style="padding: .5rem 0">
+                    <div class="imed-title">【提纲挈领——章节指南】</div>
+                    <p class="imed-content" v-text="item.text"></p>
+                </div>
+                <div v-for="item in mod.content">
+                    <div class="imed-title">【图文并茂——章节解析】</div>
+                    <div class="imed-chapter" v-text="showTitle(item)"></div>
+                    <imed-content :key="uuid()" v-for="content in item.content" :data="content"/>
+                    <div class="imed-title">【临考必备——记忆点睛】</div>
+                    <imed-content :key="uuid()" v-for="keyPoint in item.keyPoint" :data="keyPoint"/>
+                </div>
             </div>
         </div>
-    </div>
+    </imed-nav>
 </template>
 
 <script>
     import ImedContent from "../../components/imed-content"
     import uuid from "uuid/v4"
+    import {mapState} from 'vuex'
+    import ImedNav from '../../components/imed-nav'
 
     export default {
         components: {
+            ImedNav,
             ImedContent
+        },
+        mounted() {
+            this.$loading.hide()
         },
         name: "reader",
         methods: {
             uuid: () => uuid(),
-            showTitle: ({title = '', text = ''}) => title + '' + text
+            showTitle: ({title = '', text = ''}) => title + ' ' + text
         },
         data() {
             return {}
