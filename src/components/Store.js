@@ -14,7 +14,7 @@ export default new Vuex.Store({
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: ['40288810624e037d01624e03979d035m'],
+            ownList: [],
         },//当前用户简要信息
         packageInfo: {
             list: [],

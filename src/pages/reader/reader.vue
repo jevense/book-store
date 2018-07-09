@@ -31,9 +31,6 @@
             ImedNav,
             ImedContent
         },
-        mounted() {
-            this.$loading.hide()
-        },
         name: "reader",
         methods: {
             uuid: () => uuid(),
