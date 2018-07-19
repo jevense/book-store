@@ -3,17 +3,21 @@
         <div class="content imed-reader" style="margin:3rem 0 0 0;">
             <!--<div class="imed-title" v-text="showTitle({title:pdfDetail.title, text:pdfDetail.text})"></div>-->
             <div v-for="mod in pdfDetail.content">
-                <div v-if="mod.title||mod.text" class="imed-title" v-text="showTitle(mod)"></div>
+                <div v-if="mod.title||mod.text" class="imed-title" v-html="showTitle(mod)"></div>
                 <div v-for="item in mod.guide" style="padding: .5rem 0">
                     <div class="imed-title">【提纲挈领——章节指南】</div>
-                    <p class="imed-content" v-text="item.text"></p>
+                    <p class="imed-content" v-html="item.text"></p>
                 </div>
-                <div v-for="item in mod.content">
-                    <div class="imed-title">【图文并茂——章节解析】</div>
-                    <div class="imed-chapter" v-text="showTitle(item)"></div>
+                <div v-for="item in mod.content" style="margin-top: 4rem;">
+                    <template v-if="item.content">
+                        <div class="imed-title">【图文并茂——章节解析】</div>
+                        <div class="imed-chapter" v-html="showTitle(item)"></div>
+                    </template>
                     <imed-content :key="uuid()" v-for="content in item.content" :data="content"/>
-                    <div class="imed-title">【临考必备——记忆点睛】</div>
-                    <imed-content :key="uuid()" v-for="keyPoint in item.keyPoint" :data="keyPoint"/>
+                    <template v-if="item.keyPoint">
+                        <div class="imed-title">【临考必备——记忆点睛】</div>
+                        <imed-content :key="uuid()" v-for="keyPoint in item.keyPoint" :data="keyPoint"/>
+                    </template>
                 </div>
             </div>
         </div>

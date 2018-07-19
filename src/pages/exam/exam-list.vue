@@ -136,6 +136,7 @@
                 if (type === 'examination') {
                     let token = getQueryString('token')
                     let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
+                    console.log(url)
                     skillbook && (url += `&skillbook=1&key1=${key1}`)
                     WebCallApp("CmdOpenUrl", {url,})
                 } else if (type === 'video') {
