@@ -14,7 +14,7 @@ export default new Vuex.Store({
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: [],
+            ownList: ['40288810624e037d01624e03979d035h'],
         },//当前用户简要信息
         packageInfo: {
             list: [],
@@ -134,7 +134,8 @@ export default new Vuex.Store({
                         return resultObj;
                     }
                 }).catch(res => {
-                context.commit('loginInfo', {});
+                // context.commit('loginInfo', {});
+                console.log(res)
             })
         },
         packageInfo(context, data) {

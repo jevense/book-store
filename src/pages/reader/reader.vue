@@ -4,7 +4,7 @@
             <!--<div class="imed-title" v-text="showTitle({title:pdfDetail.title, text:pdfDetail.text})"></div>-->
             <div v-for="mod in pdfDetail.content">
                 <div v-if="mod.title||mod.text" class="imed-title" v-html="showTitle(mod)"></div>
-                <div v-for="item in mod.guide" style="padding: .5rem 0">
+                <div v-for="item in mod.guide" v-if="item.text" style="padding: .5rem 0">
                     <div class="imed-title">【提纲挈领——章节指南】</div>
                     <p class="imed-content" v-html="item.text"></p>
                 </div>
