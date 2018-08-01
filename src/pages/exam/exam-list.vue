@@ -19,14 +19,14 @@
                         <div>
                             <b-img :src='require("../../assets/img/time.png")'/>
                         </div>
-                        <div style="color: #868686;">上线时间：</div>
+                        <div style="color: #868686;">&nbsp;上线时间：</div>
                         <div>{{packageInfo.time}}</div>
                     </div>
                     <div>
                         <div>
                             <b-img fluid :src='require("../../assets/img/people.png")'/>
                         </div>
-                        <div style="color: #868686;">学习人数：</div>
+                        <div style="color: #868686;">&nbsp;学习人数：</div>
                         <div>{{packageInfo.people}}</div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                 return this.price - own
             },
             redirect(item) {
-                let {id, type, isbn, enable, skillbook, key1} = item
+                let {id, type, isbn, enable, skillbook, key1, direct, title} = item
                 if (!enable) return false
                 if (type === 'examination') {
                     let token = getQueryString('token')
@@ -140,8 +140,14 @@
                     skillbook && (url += `&skillbook=1&key1=${key1}`)
                     WebCallApp("CmdOpenUrl", {url,})
                 } else if (type === 'video') {
-                    let {eid} = this.$route.params
-                    this.$router.push(`/exam/${eid}/course`)
+                    if (direct) {
+                        this.$store.dispatch('videos', {id,}).then(() => {
+                            this.$router.push({path: `/exam/123/course/${id}`, query: {name: title}})
+                        })
+                    } else {
+                        let {eid} = this.$route.params
+                        this.$router.push(`/exam/${eid}/course`)
+                    }
                 } else if (type === 'pdf') {
                     this.$store.dispatch('pdf', {id,}).then(() => {
                         this.$router.push(`/exam/${this.$route.params.eid}/pdf/${id}`)

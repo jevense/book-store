@@ -1,0 +1,38 @@
+[
+  {
+    "courseId": "z000001",
+    "cover": "z000001-l.jpg",
+    "name": "一般检查",
+    "time": "00:14:08"
+  },
+  {
+    "courseId": "z000002",
+    "cover": "z000002-l.jpg",
+    "name": "头颈部检查",
+    "time": "00:03:32"
+  },
+  {
+    "courseId": "z000003",
+    "cover": "z000003-l.jpg",
+    "name": "胸部检查",
+    "time": "00:18:39"
+  },
+  {
+    "courseId": "z000004",
+    "cover": "z000004-l.jpg",
+    "name": "腹部检查",
+    "time": "00:07:17"
+  },
+  {
+    "courseId": "z000005",
+    "cover": "z000005-l.jpg",
+    "name": "脊柱、四肢、肛门检查",
+    "time": "00:05:10"
+  },
+  {
+    "courseId": "z000006",
+    "cover": "z000006-l.jpg",
+    "name": "神经检查",
+    "time": "00:02:52"
+  }
+]

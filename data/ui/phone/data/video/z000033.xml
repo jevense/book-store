@@ -1,0 +1,394 @@
+<div>
+    <style type="text/css">
+        .mvw-article-title {
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        }
+
+        .mvw-article-title-sub {
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+        }
+
+        ol li {
+        font-size: .75rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        }
+
+        td{
+        padding:.5em;
+        }
+    </style>
+    <div class="mvw-article-title">考试内容</div>
+    <ol>
+        <li>考试内容：以大纲为基础</li>
+        <li>基础综合：6科</li>
+        <li>人文综合：伦理、心理、法规3科</li>
+        <li>预防医学</li>
+        <li>临床综合：14科</li>
+        <li>实践综合：包括了临床情景（急诊、门诊和住院），症状或者体征以及常见病和多发病、初步统计涉及300多个病种。但有些是重复的，实际上有200多个病种</li>
+    </ol>
+    <div class="mvw-article-title">考试题型</div>
+    <ol>
+        <li>考试题型：A1型题、 A2型题、 A3/A4型题、B型题</li>
+        <li>A型题、B型题两种题型，统称为多项选择题（MCQ）</li>
+        <li>A型题：最佳选择题（One Best Answer）又分为
+            <ol>
+                <li>A1 单项选择题（Single Item）</li>
+                <li>A2 否定的A型题，通常有一个小的病例</li>
+                <li>A3 病例组题（Multiple Item Sets）</li>
+                <li>A4 病例串题（Case Clusters）</li>
+            </ol>
+        </li>
+    </ol>
+    <ol>
+        <li>B型题：配伍题（Matching Sets）两项题干，共享一组备选答案</li>
+        <li>题型比例
+            <ol>
+                <li>A型题大约占 88%～89%</li>
+                <li>B型题大约占 11 %～12%</li>
+            </ol>
+        </li>
+    </ol>
+    <ol>
+        <li>研究发现近几年A1型题中的型题的比例有所下降，A2、A3/A4型题比例由50%增加到56%。说明考试题中病例或病例组/串在增加，不断加强了考生对临床问题分析、判断、解决能力的考核</li>
+        <li>考试题量：600道题 分为四个单元</li>
+        <li>临床综合：占 75% 450道题</li>
+        <li>基础综合：占 13.3% 80道题</li>
+        <li>人文综合：占6.7% 40道题</li>
+        <li>预防医学：占5% 30道题</li>
+    </ol>
+    <p>但是，各系统、疾病的题量也有所变化，权重有所不同。这在我研究考点中有所体现。这些变化将在以下讲解中分别解读</p>
+    <div class="mvw-article-title">考试题量</div>
+    <div style="width: 100%;overflow-x:scroll;">
+        <table>
+            <tr>
+                <td rowspan="2">年份</td>
+                <td colspan="2">A1型题</td>
+                <td colspan="2">A2型题</td>
+                <td colspan="2">A3/A4型题</td>
+                <td colspan="2">A2、A3/A4型题</td>
+                <td colspan="2">B型题</td>
+            </tr>
+            <tr>
+                <td>题量</td>
+                <td>占比 (%)</td>
+                <td>题量</td>
+                <td>占比 (%)</td>
+                <td>题量</td>
+                <td>占比 (%)</td>
+                <td>题量</td>
+                <td>占比 (%)</td>
+                <td>题量</td>
+                <td>占比 (%)</td>
+            </tr>
+            <tr>
+                <td>2013</td>
+                <td>221</td>
+                <td>36.9</td>
+                <td>212</td>
+                <td>35.4</td>
+                <td>100</td>
+                <td>16.7</td>
+                <td>312</td>
+                <td>52</td>
+                <td>67</td>
+                <td>11.2</td>
+            </tr>
+            <tr>
+                <td>2014</td>
+                <td>219</td>
+                <td>36.5</td>
+                <td>211</td>
+                <td>35.2</td>
+                <td>103</td>
+                <td>17.2</td>
+                <td>314</td>
+                <td>52.4</td>
+                <td>67</td>
+                <td>11.2</td>
+            </tr>
+            <tr>
+                <td>2015</td>
+                <td>219</td>
+                <td>36.5</td>
+                <td>209</td>
+                <td>34.9</td>
+                <td>104</td>
+                <td>17.4</td>
+                <td>313</td>
+                <td>52.3</td>
+                <td>68</td>
+                <td>11.4</td>
+            </tr>
+            <tr>
+                <td>2016</td>
+                <td>218</td>
+                <td>36.3</td>
+                <td>213</td>
+                <td>35.5</td>
+                <td>100</td>
+                <td>16.7</td>
+                <td>313</td>
+                <td>52.3</td>
+                <td>69</td>
+                <td>11.5</td>
+            </tr>
+            <tr>
+                <td>2017</td>
+                <td>199</td>
+                <td>33.2</td>
+                <td>230</td>
+                <td>38.4</td>
+                <td>107</td>
+                <td>17.9</td>
+                <td>337</td>
+                <td>56.2</td>
+                <td>64</td>
+                <td>10.7</td>
+            </tr>
+            <tr>
+                <td>合计</td>
+                <td>1076</td>
+                <td>35.8</td>
+                <td>1075</td>
+                <td>35.8</td>
+                <td>514</td>
+                <td>17.1</td>
+                <td>1589</td>
+                <td>53</td>
+                <td>335</td>
+                <td>11.2</td>
+            </tr>
+            <tr>
+                <td>趋势</td>
+                <td colspan="2">下降↓</td>
+                <td colspan="2">上升↑</td>
+                <td colspan="2">上升↑</td>
+                <td colspan="2">上升↑</td>
+                <td colspan="2">稳定→</td>
+            </tr>
+        </table>
+    </div>
+    <div class="mvw-article-title">考点分析</div>
+    <p>每个系统/疾病的考点分为三类</p>
+    <ol>
+        <li>重要考点：这一疾病/症状/问题每年要考的可能性，高达85%以上，是考生必须掌握的内容。全部大约有900个左右</li>
+        <li>次重要考点：这些疾病/症状/问题每年要考的可能性有30%～50%，是考生应该熟悉的内容。有250多个</li>
+        <li>一般考点：这些考点近几年曾经考过，但考点比较分散，没有规律可循，大约有400个左右，我想考生应该注意到它们，了解这些知识点</li>
+    </ol>
+    <div class="mvw-article-title-sub">考点统计 1</div>
+    <table>
+        <tr class="firstRow">
+            <td>学科</td>
+            <td>重点</td>
+            <td>次重点</td>
+            <td>一般</td>
+            <td>题量</td>
+        </tr>
+        <tr>
+            <td>呼吸系统</td>
+            <td>61</td>
+            <td>17</td>
+            <td>13</td>
+            <td>36</td>
+        </tr>
+        <tr>
+            <td>心血管系统</td>
+            <td>51</td>
+            <td>16</td>
+            <td>24</td>
+            <td>38</td>
+        </tr>
+        <tr>
+            <td>消化系统</td>
+            <td>139</td>
+            <td>34</td>
+            <td>27</td>
+            <td>75</td>
+        </tr>
+        <tr>
+            <td>泌尿系统</td>
+            <td>49</td>
+            <td>16</td>
+            <td>5</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>儿科疾病</td>
+            <td>102</td>
+            <td>16</td>
+            <td>12</td>
+            <td>55</td>
+        </tr>
+        <tr>
+            <td>女性生殖系统</td>
+            <td>100</td>
+            <td>25</td>
+            <td>42</td>
+            <td>58～60</td>
+        </tr>
+        <tr>
+            <td>风湿免疫性疾病</td>
+            <td>14</td>
+            <td>0</td>
+            <td>2</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>血液系统</td>
+            <td>17</td>
+            <td>6</td>
+            <td>5</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>内分泌系统</td>
+            <td>28</td>
+            <td>12</td>
+            <td>18</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>传染病、性传播疾病</td>
+            <td>39</td>
+            <td>10</td>
+            <td>6</td>
+            <td>16～17</td>
+        </tr>
+        <tr>
+            <td>神经精神系统</td>
+            <td>52</td>
+            <td>21</td>
+            <td>33</td>
+            <td>38</td>
+        </tr>
+        <tr>
+            <td>运动系统</td>
+            <td>26</td>
+            <td>10</td>
+            <td>13</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>其他</td>
+            <td>31</td>
+            <td>10</td>
+            <td>4</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>临床学科合计</td>
+            <td>709</td>
+            <td>163</td>
+            <td>364</td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="mvw-article-title-sub">考点统计 2</div>
+    <table>
+        <tr class="firstRow">
+            <td>学科</td>
+            <td>重点</td>
+            <td>次重点</td>
+            <td>一般</td>
+            <td>题量</td>
+        </tr>
+        <tr>
+            <td>生理学</td>
+            <td>25</td>
+            <td>9</td>
+            <td>5</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>生物化学</td>
+            <td>18</td>
+            <td>10</td>
+            <td>0</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>病理学</td>
+            <td>19</td>
+            <td>27</td>
+            <td>0</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>药理学</td>
+            <td>15</td>
+            <td>4</td>
+            <td>10</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>微生物学</td>
+            <td>7</td>
+            <td>3</td>
+            <td>5</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>医学免疫学</td>
+            <td>13</td>
+            <td>7</td>
+            <td>7</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>卫生法规</td>
+            <td>51</td>
+            <td>0</td>
+            <td>0</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>伦理学</td>
+            <td>14</td>
+            <td>7</td>
+            <td>7</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>医学心理学</td>
+            <td>24</td>
+            <td>7</td>
+            <td>4</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>预防医学</td>
+            <td>32</td>
+            <td>13</td>
+            <td>4</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>基础+人文</td>
+            <td>218</td>
+            <td>87</td>
+            <td>42</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>总计</td>
+            <td>927</td>
+            <td>250</td>
+            <td>406</td>
+            <td></td>
+        </tr>
+    </table>
+    <div class="mvw-article-title">各系统/疾病/学科的差异</div>
+    <p>在分析研究中也发现有些系统或学科，考点比较散，一类考点较少，而三类考点较多，并且有点学科考题也较少，这样的学科就比较难归纳总结，在以下的讲解中我也会提醒大家</p>
+    <ol>
+        <li>女性生殖系统：重点100、次重点25、一般42</li>
+        <li>精神神经系统：重点52、次重点21、一般42</li>
+        <li>生理和生化也是类似情况</li>
+    </ol>
+</div>

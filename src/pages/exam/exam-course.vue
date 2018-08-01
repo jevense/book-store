@@ -13,9 +13,9 @@
                             <div class="imed-item-sub-title" v-if="item.time">时长：{{item.time}}</div>
                         </b-col>
                         <b-col cols="4" class="imed-button-group">
-                            <router-link :to="`/exam/123/course/${item.courseId}`">
+                            <div @click="learn(item.courseId,item.title)">
                                 <div class="imed-button">开始学习</div>
-                            </router-link>
+                            </div>
                         </b-col>
                     </b-row>
                     <hr>
@@ -56,6 +56,11 @@
             search() {
                 console.log('======')
             },
+            learn(courseId, title) {
+                this.$store.dispatch('videos', {id: courseId}).then(() => {
+                    this.$router.push({path: `/exam/123/course/${courseId}`, query: {name: title}})
+                })
+            }
         }
     }
 </script>

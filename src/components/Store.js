@@ -14,12 +14,17 @@ export default new Vuex.Store({
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: ['40288810624e037d01624e03979d035h'],
+            ownList: ['40288810624e037d01624e03979d035h',
+                '40288810624e037d01624e03979d035m',
+                '40288810624e037d01624e03979d035g',
+                '40288810624e037d01624e03979d0359'],
+            // ownList: [],
         },//当前用户简要信息
         packageInfo: {
             list: [],
         },
         video: "",
+        videos: [],
         pdf: {},
         pdfDetail: {},
         downloadList: [],
@@ -42,6 +47,9 @@ export default new Vuex.Store({
         },
         video(state) {
             return state.video
+        },
+        videos(state) {
+            return state.videos
         },
         pdf(state) {
             return state.pdf
@@ -79,6 +87,9 @@ export default new Vuex.Store({
         },
         video(state, data) {
             state.video = data
+        },
+        videos(state, data) {
+            state.videos = data
         },
         pdf(state, data) {
             state.pdf = data
@@ -149,13 +160,23 @@ export default new Vuex.Store({
                 })
         },
         video(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/${data.id}.xml`)
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/video/${data.id}.xml`)
                 .then(res => {
                     context.commit('video', res.data);
                     return res.data;
                 })
                 .catch(res => {
                     context.commit('video', `<p>${data.name}</p>`);
+                })
+        },
+        videos(context, data) {
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/video/${data.id}.json`)
+                .then(res => {
+                    context.commit('videos', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    context.commit('videos', []);
                 })
         },
         pdf(context, data) {
