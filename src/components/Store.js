@@ -8,7 +8,8 @@ export default new Vuex.Store({
     state: {
         config: {
             busUrl: 'http://developer.mvwchina.com:8080/bus/services',
-            storeUrl: 'http://localhost:8080/data',
+            // storeUrl: 'http://localhost:8080/data',
+            storeUrl: 'http://192.168.2.3:8080/data',
             examUrl: 'https://exam.mvwchina.com',
         },
         currentId: "",
