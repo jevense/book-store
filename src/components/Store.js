@@ -8,18 +8,18 @@ export default new Vuex.Store({
     state: {
         config: {
             busUrl: 'http://developer.mvwchina.com:8080/bus/services',
-            // storeUrl: 'http://localhost:8080/data',
-            storeUrl: 'http://192.168.2.3:8080/data',
+            storeUrl: 'http://localhost:8080/data',
+            // storeUrl: 'http://192.168.2.3:8080/data',
             examUrl: 'https://exam.mvwchina.com',
         },
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: ['40288810624e037d01624e03979d035h',
-                '40288810624e037d01624e03979d035m',
-                '40288810624e037d01624e03979d035g',
-                '40288810624e037d01624e03979d0359'],
-            // ownList: [],
+            // ownList: ['40288810624e037d01624e03979d035h',
+            //     '40288810624e037d01624e03979d035m',
+            //     '40288810624e037d01624e03979d035g',
+            //     '40288810624e037d01624e03979d0359'],
+            ownList: [],
         },//当前用户简要信息
         packageInfo: {
             list: [],
@@ -151,17 +151,19 @@ export default new Vuex.Store({
             })
         },
         packageInfo(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/info/${data.id}.json`)
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/info/${data.id}.json?${Math.random()}`)
                 .then(res => {
+                    console.log(res)
                     context.commit('packageInfo', res.data);
                     return res.data;
                 })
                 .catch(res => {
-                    context.commit('packageInfo', {});
+                    console.log(res)
+                    // context.commit('packageInfo', {});
                 })
         },
         video(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/video/${data.id}.xml`)
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/video/${data.id}.xml?${Math.random()}`)
                 .then(res => {
                     context.commit('video', res.data);
                     return res.data;
@@ -171,7 +173,7 @@ export default new Vuex.Store({
                 })
         },
         videos(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/video/${data.id}.json`)
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/video/${data.id}.json?${Math.random()}`)
                 .then(res => {
                     context.commit('videos', res.data);
                     return res.data;
@@ -181,7 +183,7 @@ export default new Vuex.Store({
                 })
         },
         pdf(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/info/${data.id}.json`)
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/info/${data.id}.json?${Math.random()}`)
                 .then(res => {
                     context.commit('pdf', res.data);
                     return res.data;
@@ -191,7 +193,7 @@ export default new Vuex.Store({
                 })
         },
         pdfDetail(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/article/${data.id}.json`)
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/article/${data.id}.json?${Math.random()}`)
                 .then(res => {
                     context.commit('pdfDetail', res.data);
                     return res.data;

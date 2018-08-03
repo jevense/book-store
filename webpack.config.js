@@ -25,6 +25,30 @@ module.exports = {
         splitChunks: {
             chunks: 'initial', // 只对入口文件处理
             cacheGroups: {
+                video: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
+                    test: /node_modules\/video.js\//,
+                    name: 'page/video',
+                    priority: 11,
+                    enforce: true
+                },
+                vue: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
+                    test: /node_modules\/vue.*/,
+                    name: 'page/vue',
+                    priority: 11,
+                    enforce: true
+                },
+                bootstrap: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
+                    test: /node_modules\/bootstrap\//,
+                    name: 'page/bootstrap',
+                    priority: 11,
+                    enforce: true
+                },
+                bootstrapVue: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
+                    test: /node_modules\/bootstrap-vue/,
+                    name: 'page/bootstrap-vue',
+                    priority: 11,
+                    enforce: true
+                },
                 vendor: { // split `node_modules`目录下被打包的代码到 `page/vendor.js && .css` 没找到可打包文件的话，则没有。css需要依赖 `ExtractTextPlugin`
                     test: /node_modules\//,
                     name: 'page/vendor',

@@ -80,8 +80,8 @@
                                 id: '40288810624e037d01624e03979d035b',
                                 cover: require("../../assets/img/exam-category-2.jpg"),
                                 title: '综合笔试',
-                                price: '6990',
-                                originPrice: '9990',
+                                price: '3577',
+                                originPrice: '5110',
                                 type: 'fee',
                                 enable: true,
                             }
@@ -104,8 +104,8 @@
                                 id: '40288810624e037d01624e03979d035d',
                                 cover: require("../../assets/img/exam-category-4.jpg"),
                                 title: '综合笔试',
-                                price: '6200',
-                                originPrice: '8880',
+                                price: '2880',
+                                originPrice: '4000',
                                 type: 'fee',
                                 enable: true,
                             }

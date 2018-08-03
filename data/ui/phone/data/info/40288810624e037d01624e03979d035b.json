@@ -36,25 +36,6 @@
       "buyable": true
     },
     {
-      "id": "40288810624e037d01624e03979d035f",
-      "isbn": "d0a07f9c5d5f4ec4a2d63e989590600f",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/d6a15479f0f055c2ed5ee65e8c31b5ef.png",
-      "title": "名师授课",
-      "subTitle": "名校名师权威讲解",
-      "price": "3904",
-      "originPrice": "4880",
-      "type": "video",
-      "preview": {
-        "video": {
-          "id": "z000031",
-          "name": "病史采集和病例分析导学"
-        },
-        "enable": false
-      },
-      "enable": false,
-      "buyable": false
-    },
-    {
       "id": "40288810624e037d01624e03979d035g",
       "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
       "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/2ee481eb37118be8d71b9ba389a2f00b.png",
@@ -78,18 +59,6 @@
       "type": "pdf",
       "enable": true,
       "buyable": true
-    },
-    {
-      "id": "40288810624e037d01624e03979d035i",
-      "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/54a96274a1e2464e0222e6d7226c1d97.png",
-      "title": "在线答疑",
-      "subTitle": "考生与专家实时互动",
-      "price": "0",
-      "originPrice": "0",
-      "type": "bbs",
-      "enable": false,
-      "buyable": false
     }
   ]
 }
