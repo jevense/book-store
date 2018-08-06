@@ -27,7 +27,7 @@
                             </div>
                             <div style="width: 24%;padding: .5rem;" class="imed-button-group">
                                 <template v-if="it.enable">
-                                    <div @click="learn(it.id, it.price)">
+                                    <div @click="learn(it.id, it.originPrice)">
                                         <div class="imed-button">
                                             {{text(it.type)}}
                                         </div>
