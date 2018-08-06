@@ -110,7 +110,6 @@
                 loginInfo: state => state.loginInfo,
                 packageInfo: state => state.packageInfo,
                 config: state => state.config,
-                price: state => state.price,
                 currentId: state => state.currentId,
                 bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
                 combineBought: state => state.packageInfo.combine.combineList.some(id => state.loginInfo.ownList.includes(id)),
@@ -121,14 +120,9 @@
                 console.log('======');
             },
             remainPrice() {
-                let own = this.packageInfo.list.reduce((prev, cur) => {
-                    let reulst = prev
-                    if (this.loginInfo.ownList.includes(cur.id)) {
-                        reulst += parseInt(cur.price)
-                    }
-                    return reulst
-                }, 0)
-                return this.price - own
+                return this.packageInfo.list
+                    .filter(info => !this.loginInfo.ownList.includes(info.id))
+                    .reduce((prev, cur) => prev + parseInt(cur.price), 0)
             },
             redirect(item) {
                 let {id, type, isbn, enable, skillbook, key1, direct, title} = item

@@ -30,7 +30,7 @@
       },
       "type": "examination",
       "enable": true,
-      "buyable": false
+      "buyable": true
     },
     {
       "id": "40288810624e037d01624e03979d0359",
@@ -42,7 +42,7 @@
       "originPrice": "780",
       "type": "video",
       "enable": true,
-      "buyable": false
+      "buyable": true
     },
     {
       "id": "40288810624e037d01624e03979d035a",
@@ -61,7 +61,7 @@
       },
       "type": "examination",
       "enable": true,
-      "buyable": false
+      "buyable": true
     }
   ]
 }

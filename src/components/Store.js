@@ -29,7 +29,6 @@ export default new Vuex.Store({
         pdf: {},
         pdfDetail: {},
         downloadList: [],
-        price: 0,
         payOrder: {},
         paySuccess: {},
     },
@@ -57,9 +56,6 @@ export default new Vuex.Store({
         },
         pdfDetail(state) {
             return state.pdfDetail
-        },
-        price(state) {
-            return state.price
         },
         payOrder(state) {
             return state.payOrder
@@ -100,9 +96,6 @@ export default new Vuex.Store({
         },
         addDownloadList(state, data) {
             state.downloadList.push(data)
-        },
-        price(state, data) {
-            state.price = data
         },
         payOrder(state, data) {
             state.payOrder = data

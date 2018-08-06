@@ -71,7 +71,7 @@
                                 id: '40288810624e037d01624e03979d0357',
                                 cover: require("../../assets/img/exam-category-1.jpg"),
                                 title: '实践技能考试',
-                                price: '1316',
+                                price: '1504',
                                 originPrice: '1880',
                                 type: 'free',
                                 enable: true,
@@ -80,7 +80,7 @@
                                 id: '40288810624e037d01624e03979d035b',
                                 cover: require("../../assets/img/exam-category-2.jpg"),
                                 title: '综合笔试',
-                                price: '3577',
+                                price: '4088',
                                 originPrice: '5110',
                                 type: 'fee',
                                 enable: true,
@@ -95,7 +95,7 @@
                                 id: '40288810624e037d01624e03979d035c',
                                 cover: require("../../assets/img/exam-category-3.jpg"),
                                 title: '实践技能考试',
-                                price: '1316',
+                                price: '1504',
                                 originPrice: '1880',
                                 type: 'free',
                                 enable: true,
@@ -104,7 +104,7 @@
                                 id: '40288810624e037d01624e03979d035d',
                                 cover: require("../../assets/img/exam-category-4.jpg"),
                                 title: '综合笔试',
-                                price: '2880',
+                                price: '3204',
                                 originPrice: '4000',
                                 type: 'fee',
                                 enable: true,
@@ -129,11 +129,10 @@
             },
             learn(id, price) {
                 this.$store.commit('currentId', id)
-                this.$store.commit('price', parseInt(price))
                 let login = this.$store.dispatch('login', {id,})
                 let pkg = this.$store.dispatch('packageInfo', {id,})
                 Promise.all([login, pkg]).then(([loginInfo, packageInfo]) => {
-                    this.$router.push({path: `/exam/${id}`, query: {price}})
+                    this.$router.push({path: `/exam/${id}`})
                 })
             },
             text(type) {
