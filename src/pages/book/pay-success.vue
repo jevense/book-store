@@ -41,6 +41,7 @@
 <script>
     import ImedNav from '../../components/imed-nav'
     import {mapState} from 'vuex'
+    import getQueryString from "../../components/common"
 
     export default {
         name: "book-order",
@@ -58,9 +59,14 @@
         },
         methods: {
             main() {
-                this.$store.dispatch('login', {id: this.currentId}).then(() => {
-                    this.$router.push(`/exam/${this.currentId}`)
-                })
+                let address = getQueryString('address')
+                if (address) {
+                    location.assign(address)
+                } else {
+                    this.$store.dispatch('login', {id: this.currentId}).then(() => {
+                        this.$router.push(`/exam/${this.currentId}`)
+                    })
+                }
             },
         }
     }

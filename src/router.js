@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BookList from './pages/book/book-list'
-import BookOrder from './pages/book/book-order'
 import PaySuccess from './pages/book/pay-success'
 import CourseMain from './pages/course/course-main'
 import Exam from './pages/exam/exam-category'
@@ -21,8 +20,6 @@ Vue.use(VueRouter)
 const routes = [
     {path: '/', redirect: '/exam'},
     {path: '/book', component: BookList},
-    {path: '/book/:id/order', component: BookOrder},
-    {path: '/book/:id/order/pay-success', component: PaySuccess, name: 'pay-success'},
     {path: '/course', component: CourseMain},
     {path: '/exam', component: Exam},
     {path: '/exam/:eid', component: ExamList},
@@ -33,8 +30,9 @@ const routes = [
     {path: '/exam/:eid/examination', component: ExamExamination},
     {path: '/exam/:eid/pdf/:cid', component: ExamPDFCategory},
     {path: '/exam/:eid/pdf/:cid/item/:iid', component: Reader},
-    {path: '/product/:pid', component: ProductDetail},
-    {path: '/product/:pid/order', component: ProductOrder},
+    {path: '/product/:id', component: ProductDetail},
+    {path: '/product/:id/order', component: ProductOrder},
+    {path: '/product/:id/order/pay-success', component: PaySuccess, name: 'pay-success'},
 ]
 
 export default new VueRouter({

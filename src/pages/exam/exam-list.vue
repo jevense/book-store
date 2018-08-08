@@ -168,13 +168,13 @@
                 if (!enable) return false
                 console.log(id)
                 this.$store.dispatch('payOrder', {id}).then(() => {
-                    this.$router.push(`/book/${id}/order`)
+                    this.$router.push(`/product/${id}/order`)
                 })
             },
             buyCombine() {
                 let id = this.packageInfo.combine.id
                 this.$store.dispatch('payOrder', {id,}).then(() => {
-                    this.$router.push(`/book/${id}/order`)
+                    this.$router.push(`/product/${id}/order`)
                 })
             },
             buttonStyle(status) {

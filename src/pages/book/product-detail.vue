@@ -34,11 +34,11 @@
     export default {
         name: "product-detail",
         beforeCreate() {
-            this.$store.dispatch('product', {id: this.$route.params.pid})
-            let query = this.$route.query
-            for (let key in query) {
-                localStorage.setItem(`mvw-bs-${key}`, query[key])
-            }
+            this.$store.dispatch('product', {id: this.$route.params.id})
+            // let query = this.$route.query
+            // for (let key in query) {
+            //     localStorage.setItem(`mvw-bs-${key}`, query[key])
+            // }
         },
         data() {
             return {
@@ -54,7 +54,12 @@
         components: {ImedNav},
         methods: {
             forward() {
-                this.$router.push(`/product/${this.$route.params['pid']}/order`)
+                this.$store.dispatch('payOrder', {id}).then(() => {
+                    this.$router.push({
+                        path: `/product/${this.$route.params['id']}/order`,
+                        // query: {address: this.$route.query['address']}
+                    })
+                })
             }
         }
     }

@@ -140,7 +140,7 @@
                             let resultObj = JSON.parse(result["serviceResult"]);
                             if (resultObj['flag'] === 'true') {
                                 this.$store.dispatch('paySuccess', resultObj['result']).then(() => {
-                                    this.$router.push(`/book/${this.$route.params.id}/order/pay-success`,)
+                                    this.$router.push(`/product/${this.$route.params.id}/order/pay-success`,)
                                 })
                             } else {
                                 console.log(resultObj)

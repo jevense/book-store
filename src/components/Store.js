@@ -257,14 +257,33 @@ export default new Vuex.Store({
                 })
         },
         product(context, data) {
-            Vue.axios.get(`${context.state.config.storeUrl}/${data.id}.json?${Math.random()}`)
+
+            let token = getQueryString('token')
+            let platform = getQueryString('platform')
+            let args = {
+                "serviceModule": "BS-Service",
+                "serviceNumber": "0201000",
+                "token": token,
+                "args": {
+                    "id": data.id,
+                },
+                "TerminalType": "A"
+            }
+            Vue.axios.post(context.state.config.busUrl, encodeURIComponent(JSON.stringify(args)))
                 .then(res => {
-                    context.commit('product', res.data);
-                    return res.data;
-                })
-                .catch(res => {
-                    context.commit('product', {});
-                })
+                    let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
+                    let resultObj = JSON.parse(result["serviceResult"]);
+                    console.log(resultObj)
+                    if (resultObj.flag === "true") {
+                        context.commit('product', res.data);
+                    } else {
+                        console.log(resultObj.error);
+                    }
+                    return resultObj
+                }).catch(res => {
+                console.log(res)
+                context.commit('product', {});
+            })
         },
     }
 })

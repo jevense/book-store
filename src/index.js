@@ -44,7 +44,7 @@ if (typeof Elf !== 'undefined') {
         if (sn === 'MsgOpenSuccess') {	//支付宝、或微信时需通知一下
             let dataJson = JSON.parse(data)
             store.dispatch('paySuccess', {tradeNo: dataJson.tradeNo}).then(res => {
-                router.push(`/book/${res.id}/order/pay-success`,)
+                router.push(`/product/${res.id}/order/pay-success`,)
             })
         } else if (sn === 'MsgUpdateBookState') {
             data = decodeURIComponent(data)
