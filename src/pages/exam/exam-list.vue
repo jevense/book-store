@@ -128,7 +128,8 @@
                 let {id, type, isbn, enable, skillbook, key1, direct, title} = item
                 if (!enable) return false
                 if (type === 'examination') {
-                    let token = getQueryString('token')
+                    // let token = getQueryString('token')
+                    let token = this.$route.query['token']
                     let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
                     console.log(url)
                     skillbook && (url += `&skillbook=1&key1=${key1}`)

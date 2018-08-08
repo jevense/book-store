@@ -6,43 +6,55 @@
                     <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
                 </div>
                 <div class="item-inner">
-                    <div class="imed-item-title">中医科</div>
-                    <div class="imed-item-sub-title"><span style="color: red">2990</span> 阅点</div>
-                    <div class="imed-item-sub-title">作者：医视界</div>
-                    <div class="imed-item-sub-title">图书类型：通关包</div>
-                    <div class="imed-item-sub-title">大小：2M</div>
-                    <div class="imed-item-sub-title">出版机构：医视界</div>
+                    <div class="imed-item-title" v-text="product.name"></div>
+                    <div class="imed-item-sub-title"><span style="color: red" v-text="product.price"></span> 阅点</div>
+                    <div class="imed-item-sub-title">作者：<span v-text="product.author"></span></div>
+                    <div class="imed-item-sub-title">图书类型：<span v-text="product.type"></span></div>
+                    <div class="imed-item-sub-title">出版机构：<span v-text="product.publisher"></span></div>
                 </div>
             </div>
         </div>
         <section>
             <span class="imed-title">简介</span>
-            <article v-html=""></article>
+            <article v-html="product.briefIntroduction"></article>
         </section>
         <footer>
             <a v-if="own" class="button button-fill button-big button-danger">已购买，请到已获得图书列表查看</a>
-            <router-link to="/book/10/order" v-else class="button button-fill button-big button-danger">
+            <a v-else @click="forward" class="button button-fill button-big button-danger">
                 立即购买
-            </router-link>
+            </a>
         </footer>
     </imed-nav>
 </template>
 
 <script>
     import ImedNav from '../../components/imed-nav'
+    import {mapState} from 'vuex'
 
     export default {
-        name: "book-item",
+        name: "product-detail",
+        beforeCreate() {
+            this.$store.dispatch('product', {id: this.$route.params.pid})
+            let query = this.$route.query
+            for (let key in query) {
+                localStorage.setItem(`mvw-bs-${key}`, query[key])
+            }
+        },
         data() {
             return {
                 title: '图书详情',
                 own: false,
             }
         },
+        computed: {
+            ...mapState({
+                product: state => state.product,
+            }),
+        },
         components: {ImedNav},
         methods: {
-            buy() {
-                console.log('=======')
+            forward() {
+                this.$router.push(`/product/${this.$route.params['pid']}/order`)
             }
         }
     }

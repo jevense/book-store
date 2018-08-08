@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BookList from './pages/book/book-list'
-import BookItem from './pages/book/book-item'
 import BookOrder from './pages/book/book-order'
 import PaySuccess from './pages/book/pay-success'
 import CourseMain from './pages/course/course-main'
@@ -14,13 +13,14 @@ import ExamCourseItem from './pages/exam/exam-course-item'
 import ExamExamination from './pages/exam/exam-examination'
 import ExamPDFCategory from './pages/exam/exam-pdf-list'
 import Reader from './pages/reader/reader'
+import ProductDetail from './pages/book/product-detail'
+import ProductOrder from './pages/book/product-order'
 
 Vue.use(VueRouter)
 
 const routes = [
     {path: '/', redirect: '/exam'},
     {path: '/book', component: BookList},
-    {path: '/book/:id', component: BookItem},
     {path: '/book/:id/order', component: BookOrder},
     {path: '/book/:id/order/pay-success', component: PaySuccess, name: 'pay-success'},
     {path: '/course', component: CourseMain},
@@ -33,6 +33,8 @@ const routes = [
     {path: '/exam/:eid/examination', component: ExamExamination},
     {path: '/exam/:eid/pdf/:cid', component: ExamPDFCategory},
     {path: '/exam/:eid/pdf/:cid/item/:iid', component: Reader},
+    {path: '/product/:pid', component: ProductDetail},
+    {path: '/product/:pid/order', component: ProductOrder},
 ]
 
 export default new VueRouter({

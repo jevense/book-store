@@ -31,6 +31,7 @@ export default new Vuex.Store({
         downloadList: [],
         payOrder: {},
         paySuccess: {},
+        product: {},
     },
     getters: {
         config(state) {
@@ -62,6 +63,9 @@ export default new Vuex.Store({
         },
         paySuccess(state) {
             return state.paySuccess
+        },
+        product(state) {
+            return state.product
         },
     },
     mutations: {
@@ -102,6 +106,9 @@ export default new Vuex.Store({
         },
         paySuccess(state, data) {
             state.paySuccess = data
+        },
+        product(state, data) {
+            state.product = data
         },
     },
     actions: {
@@ -247,6 +254,16 @@ export default new Vuex.Store({
                         console.log(resultObj.error);
                     }
                     return resultObj.result
+                })
+        },
+        product(context, data) {
+            Vue.axios.get(`${context.state.config.storeUrl}/${data.id}.json?${Math.random()}`)
+                .then(res => {
+                    context.commit('product', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    context.commit('product', {});
                 })
         },
     }

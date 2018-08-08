@@ -32,6 +32,10 @@
                     const toDepth = to.path.split('/').length
                     this.transitionName = fromDepth <= toDepth ? 'slide-left' : 'slide-right'
                 }
+
+                if (to.name === 'pay-success') {
+
+                }
             }
         }
     }
@@ -103,6 +107,11 @@
 
     .button {
         border-radius: 0;
+    }
+
+    a:not([href]):not([tabindex]) {
+        color: white;
+        text-decoration: none;
     }
 
 </style>

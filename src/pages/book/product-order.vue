@@ -89,7 +89,7 @@
     import getQueryString from '../../components/common'
 
     export default {
-        name: "book-order",
+        name: "product-order",
         data() {
             return {
                 title: '订单',
@@ -113,8 +113,7 @@
             },
             buy(cid) {
                 if (!this.status) return false
-                // let token = getQueryString('token')
-                let token = this.$route.query['token']
+                let token = getQueryString('token')
                 let platform = getQueryString('platform')
                 if (this.payOrder.isAppPay === '0') {
                     this.status = false
