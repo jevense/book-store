@@ -32,6 +32,7 @@ export default new Vuex.Store({
         payOrder: {},
         paySuccess: {},
         product: {},
+        activities:[]
     },
     getters: {
         config(state) {
@@ -66,6 +67,9 @@ export default new Vuex.Store({
         },
         product(state) {
             return state.product
+        },
+        activities(state) {
+            return state.activities
         },
     },
     mutations: {
@@ -109,6 +113,9 @@ export default new Vuex.Store({
         },
         product(state, data) {
             state.product = data
+        },
+        activities(state, data) {
+            state.activities = data
         },
     },
     actions: {
@@ -284,6 +291,16 @@ export default new Vuex.Store({
                 console.log(res)
                 context.commit('product', {});
             })
+        },
+        activities(context, data) {
+            Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/activities/${data.id}.json?${Math.random()}`)
+                .then(res => {
+                    context.commit('activities', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    context.commit('activities', []);
+                })
         },
     }
 })

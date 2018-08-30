@@ -22,10 +22,11 @@ const babel = require('gulp-babel');
 const sprity = require('sprity');
 const server = require('gulp-express');
 const imacss = require('imacss');
-var buffer = require('vinyl-buffer');
-var merge = require('merge-stream');
-var spritesmith = require('gulp.spritesmith');
-var plato = require('plato');
+const buffer = require('vinyl-buffer');
+const merge = require('merge-stream');
+const spritesmith = require('gulp.spritesmith');
+const plato = require('plato');
+const imageResize = require('gulp-image-resize');
 
 // gulp.task('jscompress', function () {
 //     return gulp.src('template/phone/js/**/*.js')
@@ -61,7 +62,7 @@ const DEST = 'template/dist';
 
 gulp.task('useref', function () {
     return gulp.src(['template/phone/index.html', 'template/phone/main.html'])
-        // .pipe(changed(DEST))
+    // .pipe(changed(DEST))
         .pipe(useref())
         .pipe(gulpIf('*.css', csso()))
         // .pipe(gulpIf('*.js', babel()))
@@ -184,4 +185,19 @@ gulp.task('imacss', function () {
             console.error('Transforming images failed: ' + err);
         })
         .pipe(process.stdout);
+});
+
+gulp.task('resize', function () {
+    gulp.src('dist/resize/source/*')
+        .pipe(imageResize({
+            width: 270,
+            // crop: true,
+            // upscale: false
+        })).pipe(imagemin({
+        optimizationLevel: 7, //类型：Number  默认：3  取值范围：0-7（优化等级）
+        progressive: true,   //类型：Boolean 默认：false 无损压缩jpg图片
+        interlaced: true,     //类型：Boolean 默认：false 隔行扫描gif进行渲染
+        multipass: true       //类型：Boolean 默认：false 多次优化svg直到完全优化
+    }))
+        .pipe(gulp.dest('dist/resize/target/*'));
 });

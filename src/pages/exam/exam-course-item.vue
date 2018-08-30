@@ -11,7 +11,10 @@
             />
         </transition>
         <div class="buttons-tab">
-            <div class="tab-link active button">讲义</div>
+            <div class="tab-link active button">
+                <span v-if="$route.query.category">简介</span>
+                <span v-else>讲义</span>
+            </div>
             <div href="#tab2" class="tab-link button"></div>
         </div>
         <div class="content-block">
@@ -36,6 +39,9 @@
         name: "book-order",
         data() {
             let preUrl = 'https://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/'
+            if (this.$route.query.category) {
+                preUrl = 'http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/20180901/'
+            }
             return {
                 preUrl,
                 show: false,
