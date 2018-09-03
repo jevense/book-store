@@ -1,8 +1,173 @@
-{
-  "name": "中医学",
-  "price": "1888",
-  "author": "医视界",
-  "type": "通关包",
-  "publisher": "医视界",
-  "briefIntroduction": "医视界"
-}
+[
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "张勘",
+            "enable": true,
+            "name": "一系列新政助推上海市住培质量提升",
+            "time": "13:30",
+            "video": "09010101"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛一  院长论坛"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "郑金福",
+            "enable": true,
+            "name": "《住院医师规范化培训基地工作指南（草稿）》介绍",
+            "time": "13:30",
+            "video": "09010201"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛二  住培基地管理"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "宋玫",
+            "enable": true,
+            "name": "住培师资能力构建——北京经验",
+            "time": "13:30",
+            "video": "09010401"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛四  师资教学能力建设"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "姜冠潮",
+            "enable": true,
+            "name": "医学模拟中心运行质量评估体系的建立",
+            "time": "13:30",
+            "video": "09010501"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛五  医学模拟教学与应用 "
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "黄虑",
+            "enable": true,
+            "name": "住院医师规范化培训文化建设与探索",
+            "time": "13:30",
+            "video": "09010601"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛六  医学人文与住培"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "中国医师协会、基地代表、 受捐赠基地代表",
+            "enable": true,
+            "name": "《住培手术操作规范视频教学系统》《中国当代医学名家经典手术》项目成果介绍与发布",
+            "time": "13:30",
+            "video": "09010701"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛七  手术带教实践"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "刘楚钊",
+            "enable": true,
+            "name": "香港专科医师培训制度介绍(Introduction to the Medical Specialist Training System in Hong Kong)",
+            "time": "13:30",
+            "video": "09010801"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛八  香港专场"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "耿晓北",
+            "enable": true,
+            "name": "2018年住培评估指标的新特点",
+            "time": "13:30",
+            "video": "09010901"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛九  住培评估与应用"
+  },
+  {
+    "enable": true,
+    "timeLineMap": [
+      {
+        "date": "09月01日",
+        "list": [
+          {
+            "author": "朱学骏",
+            "enable": true,
+            "name": "规范标准操作程序（SOP），加强同质化培训",
+            "time": "13:30",
+            "video": "09011201"
+          }
+        ]
+      }
+    ],
+    "timeLine": true,
+    "title": "分论坛十二  皮肤科住培专题"
+  }
+]

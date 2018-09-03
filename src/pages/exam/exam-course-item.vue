@@ -1,5 +1,5 @@
 <template>
-    <imed-nav :title="$route.query.name">
+    <imed-nav :title="$route.query.name" :left="true">
         <transition name="fade">
             <video-player v-if="show"
                           class="video-player vjs-custom-skin"
@@ -37,10 +37,13 @@
 
     export default {
         name: "book-order",
+        beforeCreate(){
+            this.axios.get(`https://60.205.209.147:5000/statics/activity/video/${this.$route.params.iid}`)
+        },
         data() {
-            let preUrl = 'https://mvw-imed3.oss-cn-beijing.aliyuncs.com/mvw_imed_book/zhiyikaoshi/'
+            let preUrl = 'https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/'
             if (this.$route.query.category) {
-                preUrl = 'http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/20180901/'
+                preUrl = 'https://mall.imed.org.cn/20180901/'
             }
             return {
                 preUrl,
@@ -79,7 +82,7 @@
                         // timeDivider: true,
                         // durationDisplay: true,
                         // remainingTimeDisplay: false,
-                        fullscreenToggle: false,
+                        fullscreenToggle: true,
                         //全屏按钮
                     }
                 }

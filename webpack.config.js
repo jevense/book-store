@@ -103,7 +103,7 @@ module.exports = {
                     options: {
                         limit: '8192',
                         outputPath: 'img',
-                        publicPath: 'http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/ui/phone/img',
+                        publicPath: 'https://mall.imed.org.cn/ui/phone/img',
                     }
                 }]
             }, {

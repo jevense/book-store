@@ -3,32 +3,31 @@
         <div class="accordion-card-header" @click="toggleCollapsed">
             <div class="accordion-card-header-title">
                 <slot name="title"></slot>
+                <div class="accordion-card-header-icon">
+                <span v-if="!usingCustomIcon">
+                    <b-img  :src="require('../../assets/icons/caret.svg')" v-if="showCaret" :class="dropdownIconClasses" :style="iconStyle"/>
+                    <PlusMinus v-if="showPlus || showMinus" :minus="showMinus"/>
+                </span>
+                    <span v-else>
+                    <slot name="icon"></slot>
+                    <slot v-if="isOpen" name="icon-open"></slot>
+                    <slot v-else name="icon-closed"></slot>
+                </span>
+                </div>
             </div>
-            <!--<p class="accordion-card-header-icon">-->
-            <!--<span v-if="!usingCustomIcon" class="icon">-->
-            <!--<Caret v-if="showCaret" :class="dropdownIconClasses" :style="iconStyle"/>-->
-            <!--<PlusMinus v-if="showPlus || showMinus" :minus="showMinus"/>-->
-            <!--</span>-->
-            <!--<span v-else class="icon">-->
-            <!--<slot name="icon"></slot>-->
-            <!--<slot v-if="isOpen" name="icon-open"></slot>-->
-            <!--<slot v-else name="icon-closed"></slot>-->
-            <!--</span>-->
-            <!--</p>-->
         </div>
         <div class="accordion-body" ref="body" :style="slideStyle">
             <div :class="card_content_classes" ref="bodyContent">
                 <slot name="content"></slot>
             </div>
-            <!--<div :class="footerClasses" ref="bodyFooter">-->
-                <!--<slot name="footer"></slot>-->
-            <!--</div>-->
+            <div :class="footerClasses" ref="bodyFooter">
+                <slot name="footer"></slot>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Caret from '../../assets/icons/caret.svg'
     import PlusMinus from './PlusMinus.vue'
 
     // got this from https://stackoverflow.com/a/9090128, tidied it up somewhat
@@ -50,7 +49,6 @@
     export default {
         name: 'bulma-accordion-item',
         components: {
-            Caret,
             PlusMinus
         },
         data() {
@@ -224,6 +222,9 @@
         padding: .5rem;
         border: 1px solid white;
         background-color: #F2F2F2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .caret-down {
@@ -231,6 +232,6 @@
     }
 
     .header-icon {
-        width: 100%;
+        width: 1rem;
     }
 </style>

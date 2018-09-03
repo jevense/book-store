@@ -6,21 +6,21 @@
                     <b-img fluid :src="require('../../assets/img/v4.3.png')"/>
                 </div>
                 <div class="imed-tip">版权申明：视频内容非商业用途</div>
-                <div class="imed-tip">如涉及著作人权益，请联系医视界 400-010-8080</div>
+                <div class="imed-tip">如涉及著作人权益，请联系医视界 400-001-8080</div>
             </div>
             <div class="imed-content">
                 <BulmaAccordion
                         :dropdown="false"
-                        :icon="'custom'"
+                        :icon="'caret'"
                 >
-                    <BulmaAccordionItem v-for="item in activities" v-if="item.enable">
+                    <BulmaAccordionItem v-for="item in activities" :key="item.title" v-if="item.enable">
                         <div slot="title" v-text="item.title"></div>
                         <div slot="content">
                             <div v-if="item.timeLineMap">
                                 <timeline>
-                                    <div v-for="ite in item.timeLineMap">
+                                    <div v-for="ite in item.timeLineMap" :key="ite.date">
                                         <timeline-title v-text="ite.date"></timeline-title>
-                                        <timeline-item bg-color="#9dd8e0" v-for="it in ite.list">
+                                        <timeline-item bg-color="#9dd8e0" v-for="it in ite.list" :key="it.video">
                                             <div v-text="it.time"></div>
                                             <div class="card meeting">
                                                 <div class="meeting-name">
@@ -36,7 +36,7 @@
                                 </timeline>
                             </div>
                             <div v-else>
-                                <div class="card meeting" v-for="it in item.list">
+                                <div class="card meeting" v-for="it in item.list" :key="it.video">
                                     <div class="meeting-name">
                                         <div class="col-33" v-text="it.name"></div>
                                         <div class="col-33" v-text="it.author"></div>
@@ -47,6 +47,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div slot="footer">&nbsp;</div>
                     </BulmaAccordionItem>
                 </BulmaAccordion>
 
@@ -68,6 +69,7 @@
             if (typeof Config !== 'undefined') {
                 Config && this.$store.commit('config', Config)
             }
+            this.axios.get(`https://60.205.209.147:5000/statics/activity/home`)
         },
         created() {
             this.$store.dispatch('activities', {id: "20180901"})
