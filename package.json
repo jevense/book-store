@@ -20,6 +20,8 @@
     "gulp-image-resize": "^0.13.0",
     "pdfjs-dist": "^2.0.489",
     "uuid": "^3.3.2",
+    "video.js": "^7.1.0",
+    "videojs-bug": "^1.0.0-rc.3",
     "vue": "^2.5.16",
     "vue-axios": "^2.1.1",
     "vue-bulma-accordion": "^0.3.5",

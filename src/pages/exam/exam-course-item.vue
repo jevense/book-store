@@ -33,12 +33,12 @@
     import 'video.js/dist/video-js.css'
     // import 'vue-video-player/src/custom-theme.css'
     import {mapState} from 'vuex'
-    import {videoPlayer} from 'vue-video-player/src'
+    import {videojs, videoPlayer} from 'vue-video-player/src'
 
     export default {
         name: "book-order",
-        beforeCreate(){
-            this.axios.get(`https://60.205.209.147:5000/statics/activity/video/${this.$route.params.iid}`)
+        beforeCreate() {
+            this.axios.get(`https://statics.imed.org.cn/statics/activity/video/${this.$route.params.iid}`)
         },
         data() {
             let preUrl = 'https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/'
@@ -56,6 +56,15 @@
         },
         mounted() {
             this.show = true
+            videojs.bug({
+                height: 50,
+                imgSrc: 'http://cdn.teamcococdn.com/image/frame:1/teamcoco_twitter_128x128.png',
+                link: "http://www.teamcoco.com",
+                opacity: 1,
+                padding: '8px',
+                position: 'br',
+                width: 50
+            });
         },
         computed: {
             player() {

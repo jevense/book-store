@@ -69,7 +69,7 @@
             if (typeof Config !== 'undefined') {
                 Config && this.$store.commit('config', Config)
             }
-            this.axios.get(`https://60.205.209.147:5000/statics/activity/home`)
+            this.axios.get(`https://statics.imed.org.cn/statics/activity/home`)
         },
         created() {
             this.$store.dispatch('activities', {id: "20180901"})

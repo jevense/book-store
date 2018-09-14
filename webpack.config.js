@@ -1,6 +1,7 @@
 //定义了一些文件夹的路径
 const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 // const ImageminPlugin = require('imagemin-webpack-plugin')
 
 module.exports = {
@@ -128,7 +129,6 @@ module.exports = {
             title: 'Hello World app',
             // chunks: [],
             template: 'src/assets/index.html',
-        }),
+        })
     ],
-
 };
