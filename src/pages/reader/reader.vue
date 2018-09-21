@@ -1,6 +1,6 @@
 <template>
     <imed-nav :title="showTitle({title:pdfDetail.title, text:pdfDetail.text})">
-        <div class="content imed-reader" style="margin:3rem 0 0 0;">
+        <div class="content imed-reader">
             <!--<div class="imed-title" v-text="showTitle({title:pdfDetail.title, text:pdfDetail.text})"></div>-->
             <div v-for="mod in pdfDetail.content">
                 <div v-if="mod.title||mod.text" class="imed-title" v-html="showTitle(mod)"></div>

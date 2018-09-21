@@ -1,26 +1,28 @@
 <template>
     <imed-nav :title="$route.query.name" :left="true">
-        <transition name="fade">
-            <video-player v-if="show"
-                          class="video-player vjs-custom-skin"
-                          ref="videoPlayer"
-                          :playsinline="true"
-                          :options="playerOptions"
-                          @play="onPlayerPlay"
-                          @pause="onPlayerPause"
-            />
-        </transition>
-        <div class="buttons-tab">
-            <div class="tab-link active button">
-                <span v-if="$route.query.category">简介</span>
-                <span v-else>讲义</span>
+        <div class="content">
+            <transition name="fade">
+                <video-player v-if="show"
+                              class="video-player vjs-custom-skin"
+                              ref="videoPlayer"
+                              :playsinline="true"
+                              :options="playerOptions"
+                              @play="onPlayerPlay"
+                              @pause="onPlayerPause"
+                />
+            </transition>
+            <div class="buttons-tab">
+                <div class="tab-link active button">
+                    <span v-if="$route.query.category">简介</span>
+                    <span v-else>讲义</span>
+                </div>
+                <div href="#tab2" class="tab-link button"></div>
             </div>
-            <div href="#tab2" class="tab-link button"></div>
-        </div>
-        <div class="content-block">
-            <div class="tabs">
-                <div id="tab1" class="tab active">
-                    <div class="content-block imed-content" style="overflow:scroll;" v-html="video">
+            <div class="content-block">
+                <div class="tabs">
+                    <div id="tab1" class="tab active">
+                        <div class="content-block imed-content" style="overflow:scroll;" v-html="video">
+                        </div>
                     </div>
                 </div>
             </div>

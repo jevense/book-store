@@ -1,9 +1,7 @@
 <template>
     <div style="background-color: #F3F3F3">
-        <header class="imed-bar">
-            <a style="width: 0.8rem">&nbsp;</a>
-            <h1 v-text="title"></h1>
-            <a class="icon" style="width: 0.8rem">&nbsp;</a>
+        <header class="bar bar-nav" v-if="bar">
+            <h1 class="title" v-text="title"></h1>
         </header>
         <div style="margin: 0.5rem 0">
             <div style="display: flex;background-color: white;padding: 0.5rem;">
@@ -55,6 +53,7 @@
             ...mapState({
                 paySuccess: state => state.paySuccess,
                 currentId: state => state.currentId,
+                bar: state => state.bar,
             }),
         },
         methods: {

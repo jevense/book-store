@@ -39,6 +39,13 @@ let inst = new Vue({
     components: {App},
 })
 
+if (typeof Config !== 'undefined') {
+    Config && store.commit('config', Config)
+}
+if (top.location !== location) {
+    store.commit('bar', false)
+}
+
 if (typeof Elf !== 'undefined') {
     Elf.AppCallWeb = function (sn, data) {
         if (sn === 'MsgOpenSuccess') {	//支付宝、或微信时需通知一下

@@ -1,13 +1,16 @@
 <template>
     <div>
-        <header class="imed-bar">
+        <header class="bar bar-nav" v-if="bar">
             <router-link to="/exam/123" class="item-content item-link">
-                <div class="icon icon-left"></div>
+                <button class="button pull-left">
+                    <span class="icon icon-left"></span>
+                </button>
             </router-link>
-            <h1 v-text="title"></h1>
+
+            <h1 class="title" v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content" style="margin:3rem 0 0 0;">
+        <div class="content">
             <iframe style="width: 100%; height: 100%;border: 0"
                     src="https://exam.mvwchina.com/pc/student/student.html?token=e5860323ec3044fcb9f2bfea59446efe&platform=ebook&newebook=1&paperId=4028882263b058430163b06c545d0001">
             </iframe>
@@ -16,12 +19,18 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
     export default {
         name: "exam-examination",
         data() {
             return {
                 title: '模拟试题',
             }
+        },
+        computed: {
+            ...mapState({
+                bar: state => state.bar,
+            }),
         },
     }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <imed-nav :title="pdf.name">
-        <div class="content" style="margin:3rem 0 0 0;">
+        <div class="content">
             <div>
                 <div class="imed-category" v-for="item in pdf.list" @click="openPDF(item)">
                     <div>

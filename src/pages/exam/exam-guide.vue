@@ -1,10 +1,13 @@
 <template>
     <div>
-        <header class="imed-bar">
+        <header class="bar bar-nav" v-if="bar">
             <router-link to="/exam/123" class="item-content item-link">
-                <div class="icon icon-left"></div>
+                <button class="button pull-left">
+                    <span class="icon icon-left"></span>
+                </button>
             </router-link>
-            <h1 v-text="title"></h1>
+
+            <h1 class="title" v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content" style="margin:3rem 0 0 0;">
@@ -38,6 +41,7 @@
 
 <script>
     import ImedNav from '../../components/imed-nav'
+    import {mapState} from 'vuex'
 
     export default {
         name: "exam-guide",
@@ -47,6 +51,11 @@
             }
         },
         components: {ImedNav},
+        computed: {
+            ...mapState({
+                bar: state => state.bar,
+            }),
+        },
         methods: {
             search() {
                 console.log('======')

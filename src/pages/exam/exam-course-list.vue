@@ -1,6 +1,6 @@
 <template>
     <imed-nav :title="$route.query.name">
-        <div class="content" style="margin:3rem 0 0 0;">
+        <div class="content">
             <div v-for="item in list">
                 <div style="border: 2px solid #F5F6F6; background-color:#FEFFFF;margin-bottom: .5rem;">
                     <div @click="courseItem(item.courseId,item.name)" class="link">

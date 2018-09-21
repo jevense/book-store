@@ -107,11 +107,17 @@
 
     .button {
         border-radius: 0;
+        border-width: 0;
+        background-color: #F7F7F8;
     }
 
     a:not([href]):not([tabindex]) {
         color: white;
         text-decoration: none;
+    }
+
+    .title {
+        color: #D86467;
     }
 
 </style>

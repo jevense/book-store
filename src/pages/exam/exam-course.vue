@@ -1,6 +1,6 @@
 <template>
     <imed-nav :title="title">
-        <div class="content" style="margin:3rem 0 0 0;">
+        <div class="content">
             <b-container class="imed-item-content">
                 <template v-for="item in list">
                     <b-row>

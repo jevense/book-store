@@ -1,6 +1,6 @@
 <template>
     <imed-nav :title="title" style="background-color: #F3F3F3">
-        <div class="content" style="margin: 3rem 0 2rem 0">
+        <div class="content">
             <div style="margin: 0.5rem 0">
                 <div style="display: flex;background-color: white;padding: 0.5rem;">
                     <div style="min-width: 5rem;width: 5rem;">

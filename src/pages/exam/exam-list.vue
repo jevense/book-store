@@ -1,14 +1,16 @@
 <template>
     <div>
-        <header class="imed-bar">
+        <header class="bar bar-nav" v-if="bar">
             <router-link to="/exam" class="item-content item-link">
-                <div class="icon icon-left"></div>
+                <button class="button pull-left">
+                    <span class="icon icon-left"></span>
+                </button>
             </router-link>
-            <h1 v-text="packageInfo.title"></h1>
+
+            <h1 class="title" v-text="packageInfo.title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content imed-margin-nav"
-             :style="{'margin-bottom': bought?'0':'2.4rem'}">
+        <div class="content imed-margin-nav">
             <div class="imed-content">
                 <div @click="courseItem(packageInfo.banner)" v-if="packageInfo.banner">
                     <b-img fluid :src='packageInfo.banner.cover'/>
@@ -98,10 +100,15 @@
 
 <script>
     import {mapState} from 'vuex'
-    import getQueryString from '../../components/common'
 
     export default {
         name: "book-list",
+        beforeCreate() {
+            let {eid: id} = this.$route.params
+            this.$store.commit('currentId', id)
+            let login = this.$store.dispatch('login', {id,})
+            let pkg = this.$store.dispatch('packageInfo', {id,})
+        },
         data() {
             return {}
         },
@@ -113,6 +120,7 @@
                 currentId: state => state.currentId,
                 bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
                 combineBought: state => state.packageInfo.combine.combineList.some(id => state.loginInfo.ownList.includes(id)),
+                bar: state => state.bar,
             }),
         },
         methods: {
@@ -131,7 +139,6 @@
                     // let token = getQueryString('token')
                     let token = this.$route.query['token']
                     let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
-                    console.log(url)
                     skillbook && (url += `&skillbook=1&key1=${key1}`)
                     WebCallApp("CmdOpenUrl", {url,})
                 } else if (type === 'video') {
@@ -152,7 +159,6 @@
                 }
             },
             isContains(id) {
-                console.log(id)
                 return this.loginInfo.ownList.includes(id)
             },
             courseItem(item) {
@@ -166,7 +172,6 @@
             buy(item) {
                 let {id, buyable: enable} = item
                 if (!enable) return false
-                console.log(id)
                 this.$store.dispatch('payOrder', {id}).then(() => {
                     this.$router.push(`/product/${id}/order`)
                 })
@@ -288,7 +293,7 @@
     }
 
     .imed-margin-nav {
-        margin: 3rem 0 0 0;
+        margin: 0 0 2.4rem 0;
     }
 
     .imed-combine {

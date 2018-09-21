@@ -1,13 +1,14 @@
 <template>
     <div>
-        <header class="imed-bar">
-            <div @click="back">
-                <div class="icon icon-left"></div>
-            </div>
-            <h1 v-text="title"></h1>
+        <header class="bar bar-nav" v-if="bar">
+            <button class="button pull-left" @click="back">
+                <span class="icon icon-left"></span>
+            </button>
+
+            <h1 class="title" v-text="title"></h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content" style="margin:3rem 0 0 0;padding: 0.5rem">
+        <div class="content">
             <template v-for="item in list">
                 <div style="width: 95%; margin: 0 auto .5rem;">
                     <b-img fluid :src='item.cover'/>
@@ -54,11 +55,6 @@
 
     export default {
         name: "exam-guide",
-        created() {
-            if (typeof Config !== 'undefined') {
-                Config && this.$store.commit('config', Config)
-            }
-        },
         data() {
             return {
                 title: '医师资格考试考前辅导',
@@ -118,6 +114,7 @@
         computed: {
             ...mapState({
                 config: state => state.config,
+                bar: state => state.bar,
             }),
         },
         methods: {
@@ -128,12 +125,7 @@
                 WebCallApp("CmdGoBack")
             },
             learn(id, price) {
-                this.$store.commit('currentId', id)
-                let login = this.$store.dispatch('login', {id,})
-                let pkg = this.$store.dispatch('packageInfo', {id,})
-                Promise.all([login, pkg]).then(([loginInfo, packageInfo]) => {
-                    this.$router.push({path: `/exam/${id}`})
-                })
+                this.$router.push({path: `/exam/${id}`})
             },
             text(type) {
                 // return type === 'free' ? '学习' : '购买'
@@ -188,6 +180,8 @@
 
     .content {
         background-color: #F5F5F5;
+        padding: 0.5rem;
     }
+
 
 </style>

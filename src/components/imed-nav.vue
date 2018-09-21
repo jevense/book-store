@@ -1,9 +1,11 @@
 <template>
     <main>
-        <header class="imed-bar" :class="{'imed-bar':true,'imed-bar-left':left}">
-            <div v-if="left" @click="back" class="back">返回</div>
-            <a v-else class="icon icon-left" @click="back"></a>
-            <h1 v-text="title"></h1>
+        <header class="bar bar-nav" v-if="bar">
+            <button class="button pull-left" @click="back">
+                <span v-if="left" style="color:#D86467">返回</span>
+                <span v-else class="icon icon-left"></span>
+            </button>
+            <h1 class="title" v-text="title"></h1>
             <a v-if="rightText" class="icon" v-text="state?'分类':'确定'" @click="showMask"></a>
             <a v-else-if="status" class="icon icon-search"></a>
             <a v-else class="icon" style="width: 0.8rem">&nbsp;</a>
@@ -14,6 +16,9 @@
 </template>
 
 <script>
+
+    import {mapState} from 'vuex'
+
     export default {
         name: "imed-nav",
         props: ['title', 'rightText', 'status', 'left'],
@@ -21,6 +26,11 @@
             return {
                 state: true,
             }
+        },
+        computed: {
+            ...mapState({
+                bar: state => state.bar,
+            }),
         },
         methods: {
             back() {

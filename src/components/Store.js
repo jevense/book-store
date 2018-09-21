@@ -7,20 +7,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         config: {
-            busUrl: 'http://developer.mvwchina.com:8080/bus/services',
-            storeUrl: 'http://localhost:8080/data',
+            busUrl: 'https://services2t.mvwchina.com/services',
+            storeUrl: 'https://mall.imed.org.cn',
             // storeUrl: 'http://192.168.2.3:8080/data',
             // storeUrl: 'http://192.168.2.3:8080/data',
             examUrl: 'https://exam.mvwchina.com',
         },
+        bar: true,
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            // ownList: ['40288810624e037d01624e03979d035h',
-            //     '40288810624e037d01624e03979d035m',
-            //     '40288810624e037d01624e03979d035g',
-            //     '40288810624e037d01624e03979d0359'],
-            ownList: [],
+            ownList: ['40288810624e037d01624e03979d035h',
+                '40288810624e037d01624e03979d035m',
+                '40288810624e037d01624e03979d035g',
+                '40288810624e037d01624e03979d0359'],
+            // ownList: [],
         },//当前用户简要信息
         packageInfo: {
             list: [],
@@ -33,7 +34,7 @@ export default new Vuex.Store({
         payOrder: {},
         paySuccess: {},
         product: {},
-        activities:[]
+        activities: []
     },
     getters: {
         config(state) {
@@ -76,6 +77,9 @@ export default new Vuex.Store({
     mutations: {
         config(state, data) {
             state.config = data
+        },
+        bar(state, data) {
+            state.bar = data
         },
         loginInfo(state, data) {
             let {
@@ -161,7 +165,6 @@ export default new Vuex.Store({
         packageInfo(context, data) {
             Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/info/${data.id}.json?${Math.random()}`)
                 .then(res => {
-                    console.log(res)
                     context.commit('packageInfo', res.data);
                     return res.data;
                 })
@@ -227,7 +230,6 @@ export default new Vuex.Store({
                 .then(res => {
                     let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
                     let resultObj = JSON.parse(result["serviceResult"]);
-                    console.log(resultObj)
                     if (resultObj.flag === "true") {
                         context.commit('payOrder', resultObj.result);
                     } else {
@@ -281,7 +283,6 @@ export default new Vuex.Store({
                 .then(res => {
                     let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
                     let resultObj = JSON.parse(result["serviceResult"]);
-                    console.log(resultObj)
                     if (resultObj.flag === "true") {
                         context.commit('product', res.data);
                     } else {
