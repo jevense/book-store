@@ -108,7 +108,7 @@
     .button {
         border-radius: 0;
         border-width: 0;
-        background-color: #F7F7F8;
+        background-color: transparent;
     }
 
     a:not([href]):not([tabindex]) {
@@ -118,6 +118,14 @@
 
     .title {
         color: #D86467;
+    }
+
+    .imed-nav-title {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #D86467;;
     }
 
 </style>

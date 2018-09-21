@@ -5,7 +5,9 @@
                 <span class="icon icon-left"></span>
             </button>
 
-            <h1 class="title" v-text="title"></h1>
+            <h1 class="title" >
+                <div class="imed-nav-title" v-text="title"></div>
+            </h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content">

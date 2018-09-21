@@ -7,7 +7,9 @@
                 </button>
             </router-link>
 
-            <h1 class="title" v-text="packageInfo.title"></h1>
+            <h1 class="title">
+                <div class="imed-nav-title" v-text="packageInfo.title"></div>
+            </h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content imed-margin-nav">
