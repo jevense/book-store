@@ -43,7 +43,7 @@
         data() {
             let preUrl = 'https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/'
             if (this.$route.query.category) {
-                preUrl = 'https://mall.imed.org.cn/20180901/'
+                preUrl = 'https://video.imed.org.cn/20180901/'
             }
             return {
                 preUrl,
@@ -56,15 +56,6 @@
         },
         mounted() {
             this.show = true
-            videojs.bug({
-                height: 50,
-                imgSrc: 'http://cdn.teamcococdn.com/image/frame:1/teamcoco_twitter_128x128.png',
-                link: "http://www.teamcoco.com",
-                opacity: 1,
-                padding: '8px',
-                position: 'br',
-                width: 50
-            });
         },
         computed: {
             player() {

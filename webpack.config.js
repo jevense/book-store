@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     // mode: 'development',
-    // devtool: "source-map",
+    devtool: "source-map",
     mode: 'production',
     // dev: {
     //     proxyTable: {
