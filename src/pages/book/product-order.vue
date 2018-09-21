@@ -46,7 +46,7 @@
                     <b-img fluid :src="require('../../assets/img/selected.png')"/>
                 </div>
             </section>
-            <!--<template v-if="payOrder.isAppPay === '1' && platform()!=='0'">-->
+            <template v-if="payOrder.isAppPay === '1' && platform()!=='0'">
                 <section @click="changePayType('1')">
                     <div class="imed-title">
                         <b-img fluid :src="require('../../assets/img/zhifubao.png')"/>
@@ -67,7 +67,7 @@
                         <b-img v-else fluid :src="require('../../assets/img/noselected.png')"/>
                     </div>
                 </section>
-            <!--</template>-->
+            </template>
             <section>
                 <div class="imed-title">
                    友情提示：虚拟商品一经售出，无正当理由，概不退款

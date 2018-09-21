@@ -120,7 +120,7 @@
         color: #D86467;
     }
 
-    .imed-nav-title {
+    .title .imed-nav-title {
         width: 80%;
         margin: auto;
         overflow: hidden;

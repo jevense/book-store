@@ -3,36 +3,38 @@
         <header class="bar bar-nav" v-if="bar">
             <h1 class="title" v-text="title"></h1>
         </header>
-        <div style="margin: 0.5rem 0">
-            <div style="display: flex;background-color: white;padding: 0.5rem;">
-                <div style="min-width: 5rem;width: 5rem;">
-                    <b-img fluid :src='paySuccess.cover'/>
-                </div>
-                <div style="font-size: 1rem;margin-left: .5rem">
-                    <div style="font-size: .8em">{{paySuccess.name}}</div>
-                    <div>
-                        <div class="imed-item-sub-title">价格：{{paySuccess.price}}
-                            阅点
+        <div class="content">
+            <div style="margin: 0.5rem 0">
+                <div style="display: flex;background-color: white;padding: 0.5rem;">
+                    <div style="min-width: 5rem;width: 5rem;">
+                        <b-img fluid :src='paySuccess.cover'/>
+                    </div>
+                    <div style="font-size: 1rem;margin-left: .5rem">
+                        <div style="font-size: .8em">{{paySuccess.name}}</div>
+                        <div>
+                            <div class="imed-item-sub-title">价格：{{paySuccess.price}}
+                                阅点
+                            </div>
+                            <div class="imed-item-sub-title">作者：{{paySuccess.author}}</div>
+                            <div class="imed-item-sub-title">类型：通关包</div>
+                            <div class="imed-item-sub-title">出版机构：{{paySuccess.publishingAgency}}</div>
                         </div>
-                        <div class="imed-item-sub-title">作者：{{paySuccess.author}}</div>
-                        <div class="imed-item-sub-title">类型：通关包</div>
-                        <div class="imed-item-sub-title">出版机构：{{paySuccess.publishingAgency}}</div>
                     </div>
                 </div>
             </div>
+            <section>
+                <span class="imed-title">本次购买共消费：{{paySuccess.consumePoint}} 阅点</span>
+            </section>
+            <section>
+                <span class="imed-title">账户余额：{{paySuccess.balance}} 阅点</span>
+            </section>
+            <footer>
+                <a @click="main()"
+                   class="button button-fill button-big button-danger">
+                    <span style="color: white">马上去学习</span>
+                </a>
+            </footer>
         </div>
-        <section>
-            <span class="imed-title">本次购买共消费：{{paySuccess.consumePoint}} 阅点</span>
-        </section>
-        <section>
-            <span class="imed-title">账户余额：{{paySuccess.balance}} 阅点</span>
-        </section>
-        <footer>
-            <a @click="main()"
-               class="button button-fill button-big button-danger">
-                <span style="color: white">马上去学习</span>
-            </a>
-        </footer>
     </div>
 </template>
 
