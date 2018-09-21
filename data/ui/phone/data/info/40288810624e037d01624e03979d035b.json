@@ -4,7 +4,7 @@
   "time": "2018-6-15",
   "people": "1218",
   "banner": {
-    "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/cf60e80f6467489f3d64a87e27c7c13a.png",
+    "cover": "https://mall.imed.org.cn/upload/coverImages/cf60e80f6467489f3d64a87e27c7c13a.png",
     "video": {
       "id": "z000032",
       "name": "综合导学"
@@ -24,7 +24,7 @@
     {
       "id": "40288810624e037d01624e03979d035e",
       "isbn": "2e9d5ed40fa94f9aaa714dcfa832cf27",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/f11a79016911528bad9208d646be43a5.png",
+      "cover": "https://mall.imed.org.cn/upload/coverImages/f11a79016911528bad9208d646be43a5.png",
       "title": "考试题库",
       "subTitle": "精品试卷，全真模拟",
       "price": "1504",
@@ -38,7 +38,7 @@
     {
       "id": "40288810624e037d01624e03979d035g",
       "isbn": "d8a76956f6b14263a8a04e332c2f3c08",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/2ee481eb37118be8d71b9ba389a2f00b.png",
+      "cover": "https://mall.imed.org.cn/upload/coverImages/2ee481eb37118be8d71b9ba389a2f00b.png",
       "title": "考前冲刺课",
       "subTitle": "考前划重点和考点",
       "price": "2304",
@@ -51,7 +51,7 @@
     {
       "id": "40288810624e037d01624e03979d035h",
       "isbn": "2e9d5ed40fa94f9aaa714dcfa832cf27",
-      "cover": "http://mvw-imed3-mall.oss-cn-beijing.aliyuncs.com/upload/coverImages/bdc8e294bc1303a087401a66077da4aa.png",
+      "cover": "https://mall.imed.org.cn/upload/coverImages/bdc8e294bc1303a087401a66077da4aa.png",
       "title": "考试指南",
       "subTitle": "系统梳理知识点、考点",
       "price": "280",
