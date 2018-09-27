@@ -13,7 +13,6 @@ import ExamExamination from './pages/exam/exam-examination'
 import ExamPDFCategory from './pages/exam/exam-pdf-list'
 import Reader from './pages/reader/reader'
 import ProductDetail from './pages/book/product-detail'
-import ProductInfo from './pages/book/product-info'
 import ProductOrder from './pages/book/product-order'
 import ActivityList from './pages/activity/activity-list'
 
@@ -36,7 +35,6 @@ const routes = [
     {path: '/product/:id/order', component: ProductOrder},
     {path: '/product/:id/order/pay-success', component: PaySuccess, name: 'pay-success'},
     {path: '/activity/20180901', component: ActivityList},
-    {path: '/product-info/:id', component: ProductInfo},
 ]
 
 export default new VueRouter({

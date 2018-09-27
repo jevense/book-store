@@ -91,7 +91,9 @@
     export default {
         name: "product-order",
         beforeCreate() {
-            this.$store.dispatch('payOrder', {id: this.$route.params.id, type: this.$route.query.type})
+            let {type, token, platform} = this.$route.query;
+            let {id} = this.$route.params;
+            this.$store.dispatch('payOrder', {id, type, token, platform})
         },
         data() {
             return {

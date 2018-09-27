@@ -87,23 +87,23 @@ gulp.task('bridge', function () {
 //         .pipe(gulp.dest('template/dist/img'))
 // });
 gulp.task('images', function () {
-    return gulp.src('template/phone/img/AD183AAF-D0C9-47ad-A997-D060F01039FD.png')
+    return gulp.src('picture-process/source/*')
         .pipe(cache(imagemin({
             interlaced: true
         })))
         .pipe(imagemin())
-        .pipe(gulp.dest('template/dist/img'))
+        .pipe(gulp.dest('picture-process/imagemin'))
 });
 
 
 gulp.task('sprite', function () {
     // Generate our spritesheet
-    var spriteData = gulp.src('template/phone/img/*.png')
+    var spriteData = gulp.src('picture-process/imagemin/top-menu-*.png')
         .pipe(spritesmith({
-            imgName: 'sprite.png',
-            cssName: 'icon.new.css',
-            imgPath: '../img/sprite.png',
-            // padding: 2,// 每个图片之间的间距，默认为0px
+            imgName: 'sprite-1.png',
+            cssName: 'sprite-1.css',
+            imgPath: '../img/sprite-1.png',
+            padding: 1,// 每个图片之间的间距，默认为0px
         }))
 
     // Pipe image stream through image optimizer and onto disk
@@ -114,12 +114,12 @@ gulp.task('sprite', function () {
             interlaced: true
         })))
         .pipe(imagemin())
-        .pipe(gulp.dest('template/dist/img'));
+        .pipe(gulp.dest('picture-process/target'));
 
     // Pipe CSS stream through CSS optimizer and onto disk
     var cssStream = spriteData.css
     // .pipe(csso())
-        .pipe(gulp.dest('template/dist/css'));
+        .pipe(gulp.dest('picture-process/target/css'));
 
     // Return a merged stream to handle both `end` events
     return merge(imgStream, cssStream);

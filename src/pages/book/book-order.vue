@@ -22,9 +22,6 @@
                      v-html="payOrder.abstracts">
                 </div>
             </div>
-            <!--<section>-->
-            <!--<span class="imed-title">优惠券</span>-->
-            <!--</section>-->
             <section>
                 <span class="imed-title">支付金额</span>
                 <span class="imed-title"><span style="color: red" v-text="payOrder.actualPrice"></span> 阅点</span>

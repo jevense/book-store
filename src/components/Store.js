@@ -19,10 +19,6 @@ export default new Vuex.Store({
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            // ownList: ['40288810624e037d01624e03979d035h',
-            //     '40288810624e037d01624e03979d035m',
-            //     '40288810624e037d01624e03979d035g',
-            //     '40288810624e037d01624e03979d0359'],
             ownList: [],
         },//当前用户简要信息
         packageInfo: {
@@ -223,9 +219,8 @@ export default new Vuex.Store({
                 })
         },
         payOrder(context, data) {
-            let token = getQueryString('token')
-            let platform = getQueryString('platform')
-            let {id, type = 'id'} = data;
+            let {id, token, platform, type = 'id',} = data;
+            console.log(data)
             //TODO 如果是匿名用户提示登录
             let args = {
                 "serviceModule": "BS-Service",
