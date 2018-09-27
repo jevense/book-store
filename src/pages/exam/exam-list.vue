@@ -12,7 +12,7 @@
             </h1>
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
-        <div class="content imed-margin-nav">
+        <div class="content" :class="{'imed-margin-nav':!bought}">
             <div class="imed-content">
                 <div @click="courseItem(packageInfo.banner)" v-if="packageInfo.banner">
                     <b-img fluid :src='packageInfo.banner.cover'/>
@@ -295,7 +295,7 @@
     }
 
     .imed-margin-nav {
-        margin: 0 0 2.4rem 0;
+        margin-bottom: 2.4rem;
     }
 
     .imed-combine {

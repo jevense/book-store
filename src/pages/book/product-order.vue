@@ -70,7 +70,7 @@
             </template>
             <section>
                 <div class="imed-title">
-                   友情提示：虚拟商品一经售出，无正当理由，概不退款
+                    友情提示：虚拟商品一经售出，无正当理由，概不退款
                 </div>
             </section>
         </div>
@@ -90,6 +90,9 @@
 
     export default {
         name: "product-order",
+        beforeCreate() {
+            this.$store.dispatch('payOrder', {id: this.$route.params.id, type: this.$route.query.type})
+        },
         data() {
             return {
                 title: '订单',

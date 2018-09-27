@@ -1,23 +1,26 @@
 <template>
     <imed-nav :title="title">
-        <div class="list-block media-list">
-            <div class="item-content">
-                <div class="item-media">
-                    <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
-                </div>
-                <div class="item-inner">
-                    <div class="imed-item-title" v-text="product.name"></div>
-                    <div class="imed-item-sub-title"><span style="color: red" v-text="product.price"></span> 阅点</div>
-                    <div class="imed-item-sub-title">作者：<span v-text="product.author"></span></div>
-                    <div class="imed-item-sub-title">图书类型：<span v-text="product.type"></span></div>
-                    <div class="imed-item-sub-title">出版机构：<span v-text="product.publisher"></span></div>
+        <div class="content">
+            <div class="list-block media-list">
+                <div class="item-content">
+                    <div class="item-media">
+                        <img src="https://mall.imed.org.cn/upload/coverImages/imed-exam-2018-1.jpg">
+                    </div>
+                    <div class="item-inner">
+                        <div class="imed-item-title" v-text="product.name"></div>
+                        <div class="imed-item-sub-title"><span style="color: red" v-text="product.price"></span> 阅点
+                        </div>
+                        <div class="imed-item-sub-title">作者：<span v-text="product.author"></span></div>
+                        <div class="imed-item-sub-title">图书类型：<span v-text="product.type"></span></div>
+                        <div class="imed-item-sub-title">出版机构：<span v-text="product.publisher"></span></div>
+                    </div>
                 </div>
             </div>
+            <section>
+                <span class="imed-title">简介</span>
+                <article v-html="product.briefIntroduction"></article>
+            </section>
         </div>
-        <section>
-            <span class="imed-title">简介</span>
-            <article v-html="product.briefIntroduction"></article>
-        </section>
         <footer>
             <a v-if="own" class="button button-fill button-big button-danger">已购买，请到已获得图书列表查看</a>
             <a v-else @click="forward" class="button button-fill button-big button-danger">
@@ -35,10 +38,6 @@
         name: "product-detail",
         beforeCreate() {
             this.$store.dispatch('product', {id: this.$route.params.id})
-            // let query = this.$route.query
-            // for (let key in query) {
-            //     localStorage.setItem(`mvw-bs-${key}`, query[key])
-            // }
         },
         data() {
             return {
@@ -54,11 +53,8 @@
         components: {ImedNav},
         methods: {
             forward() {
-                this.$store.dispatch('payOrder', {id}).then(() => {
-                    this.$router.push({
-                        path: `/product/${this.$route.params['id']}/order`,
-                        // query: {address: this.$route.query['address']}
-                    })
+                this.$router.push({
+                    path: `/product/${this.$route.params['id']}/order`,
                 })
             }
         }

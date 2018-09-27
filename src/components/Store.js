@@ -7,8 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         config: {
-            busUrl: 'https://services2t.mvwchina.com/services',
+            // busUrl: 'https://services2t.mvwchina.com/services',
+            busUrl: 'http://192.168.8.143:5005/bus2/services',
             storeUrl: 'https://mall.imed.org.cn',
+            storeApi: 'http://192.168.2.3:8082',
             // storeUrl: 'http://192.168.2.3:8080/data',
             // storeUrl: 'http://192.168.2.3:8080/data',
             examUrl: 'https://exam.mvwchina.com',
@@ -34,6 +36,7 @@ export default new Vuex.Store({
         payOrder: {},
         paySuccess: {},
         product: {},
+        productInfo: {},
         activities: []
     },
     getters: {
@@ -69,6 +72,9 @@ export default new Vuex.Store({
         },
         product(state) {
             return state.product
+        },
+        productInfo(state) {
+            return state.productInfo
         },
         activities(state) {
             return state.activities
@@ -118,6 +124,9 @@ export default new Vuex.Store({
         },
         product(state, data) {
             state.product = data
+        },
+        productInfo(state, data) {
+            state.productInfo = data
         },
         activities(state, data) {
             state.activities = data
@@ -216,12 +225,15 @@ export default new Vuex.Store({
         payOrder(context, data) {
             let token = getQueryString('token')
             let platform = getQueryString('platform')
+            let {id, type = 'id'} = data;
+            //TODO 如果是匿名用户提示登录
             let args = {
                 "serviceModule": "BS-Service",
                 "serviceNumber": "0201101",
                 "token": token,
                 "args": {
-                    "bookId": data.id,
+                    "bookId": id,
+                    "type": type,
                     "platform": platform,
                 },
                 "TerminalType": "A"
@@ -293,6 +305,18 @@ export default new Vuex.Store({
                 console.log(res)
                 context.commit('product', {});
             })
+        },
+        productInfo(context, data) {
+
+            Vue.axios.get(`${context.state.config.storeApi}/product?isbn=${data.isbn}`)
+                .then(res => {
+                    context.commit('productInfo', res.data);
+                    return res.data;
+                })
+                .catch(res => {
+                    console.log(res)
+                    // context.commit('packageInfo', {});
+                })
         },
         activities(context, data) {
             Vue.axios.get(`${context.state.config.storeUrl}/ui/phone/data/activities/${data.id}.json?${Math.random()}`)
