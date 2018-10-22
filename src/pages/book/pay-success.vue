@@ -64,7 +64,8 @@
                 if (address) {
                     location.assign(address)
                 } else {
-                    this.$store.dispatch('login', {id: this.currentId}).then(() => {
+                    let {token, platform} = this.$route.query
+                    this.$store.dispatch('login', {id: this.currentId, token, platform}).then(() => {
                         this.$router.push(`/exam/${this.currentId}`)
                     })
                 }

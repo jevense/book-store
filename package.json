@@ -19,6 +19,8 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "gulp-image-resize": "^0.13.0",
     "pdfjs-dist": "^2.0.489",
+    "rxjs": "^6.3.3",
+    "rxjs-compat": "^6.3.3",
     "uuid": "^3.3.2",
     "video.js": "^7.1.0",
     "videojs-bug": "^1.0.0-rc.3",
@@ -27,6 +29,7 @@
     "vue-bulma-accordion": "^0.3.5",
     "vue-cute-timeline": "^1.2.5",
     "vue-router": "^3.0.1",
+    "vue-rx": "^6.0.1",
     "vue-video-player": "^5.0.2",
     "vuex": "^3.0.1",
     "wc-loading": "^1.2.6"

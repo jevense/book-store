@@ -1,0 +1,81 @@
+{
+  "title": "视频考试",
+  "list": [
+    {
+      "id": "cd1f6bb3f63b43f08dde6f5f20529805",
+      "isbn": "cd1f6bb3f63b43f08dde6f5f20529805",
+      "cover": "https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/007114.jpg",
+      "title": "体表良性肿物切除术 皮下肿物切除术",
+      "subTitle": "",
+      "price": "99999",
+      "originPrice": "99999",
+      "author":"李俊",
+      "unit":"首都医科大学附属友谊医院",
+      "skillbook": true,
+      "video": {
+        "id": "007114",
+        "name": "体表良性肿物切除术 皮下肿物切除术"
+      },
+      "key1": "2",
+      "enable": true,
+      "buyable": false
+    },
+    {
+      "id": "79faef1724df464da3d9ec278a27e0cd",
+      "isbn": "79faef1724df464da3d9ec278a27e0cd",
+      "cover": "https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/007193.jpg",
+      "title": "穿脱隔离衣",
+      "subTitle": "",
+      "author":"刘玲",
+      "unit":"北京大学第一医院",
+      "price": "99999",
+      "originPrice": "99999",
+      "skillbook": true,
+      "key1": "2",
+      "video": {
+        "id": "007193",
+        "name": "穿脱隔离衣"
+      },
+      "enable": true,
+      "buyable": false
+    },
+    {
+      "id": "a1c1a723cd2e465a8fb8ce88f150e5f9",
+      "isbn": "a1c1a723cd2e465a8fb8ce88f150e5f9",
+      "cover": "https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/007298.jpg",
+      "title": "胸腔闭式引流术",
+      "subTitle": "",
+      "author":"李浩",
+      "unit":"首都医科大学附属友谊医院",
+      "price": "99999",
+      "originPrice": "99999",
+      "skillbook": true,
+      "key1": "2",
+      "video": {
+        "id": "007298",
+        "name": "胸腔闭式引流术"
+      },
+      "enable": true,
+      "buyable": false
+    },
+    {
+      "id": "724a3da5da73406d8333820e8ff0170d",
+      "isbn": "724a3da5da73406d8333820e8ff0170d",
+      "cover": "https://imed3.imed.org.cn/mvw_imed_book/zhiyikaoshi/007193.jpg",
+      "title": "留置导尿术",
+      "subTitle": "",
+      "author":"陈飞",
+      "unit":"首都医科大学附属友谊医院",
+      "price": "99999",
+      "originPrice": "99999",
+      "skillbook": true,
+      "key1": "2",
+      "video": {
+        "id": "007193",
+        "name": "留置导尿术"
+      },
+      "enable": true,
+      "buyable": false
+    }
+  ]
+}

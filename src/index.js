@@ -9,6 +9,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'wc-loading/style.css'
 import Loading from 'wc-loading'
+import "./global"
+import VueRx from 'vue-rx';
+
 // import animate from 'animate.css'
 
 // Vue.use(animate)
@@ -30,8 +33,9 @@ axios.defaults.baseURL = 'https://api.example.com'
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
 Vue.use(Loading)
+Vue.use(VueRx);
 
-let inst = new Vue({
+global.inst = new Vue({
     el: '#content',
     store,
     template: '<App/>',
@@ -44,24 +48,4 @@ if (typeof Config !== 'undefined') {
 }
 if (top.location !== location) {
     store.commit('bar', false)
-}
-
-if (typeof Elf !== 'undefined') {
-    Elf.AppCallWeb = function (sn, data) {
-        if (sn === 'MsgOpenSuccess') {	//支付宝、或微信时需通知一下
-            let dataJson = JSON.parse(data)
-            store.dispatch('paySuccess', {tradeNo: dataJson.tradeNo}).then(res => {
-                router.push(`/product/${res.id}/order/pay-success`,)
-            })
-        } else if (sn === 'MsgUpdateBookState') {
-            data = decodeURIComponent(data)
-            data = JSON.parse(data)
-            console.log(data)
-            store.commit('addDownloadList', data.isbn)
-            WebCallApp("CmdOpenPDFBook", {isbn: data.isbn})
-            inst.$loading.hide()
-        } else {
-            console.log(sn + data)
-        }
-    }
 }

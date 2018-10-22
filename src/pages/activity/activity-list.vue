@@ -62,6 +62,7 @@
     import BulmaAccordion from '../../components/accordion/BulmaAccordion.vue'
     import BulmaAccordionItem from '../../components/accordion/BulmaAccordionItem.vue'
     import {Timeline, TimelineItem, TimelineTitle} from 'vue-cute-timeline'
+    import {WebCallApp} from "../../global"
 
     export default {
         name: 'activity-list',

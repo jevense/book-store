@@ -9894,6 +9894,10 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
+rxjs-compat@^6.3.3:
+  version "6.3.3"
+  resolved "https://registry.npmjs.org/rxjs-compat/-/rxjs-compat-6.3.3.tgz#2ab3b9ac0dac0c073749d55fef9c03ea1df2045c"
+
 rxjs@^5.5.2:
   version "5.5.12"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-5.5.12.tgz#6fa61b8a77c3d793dbaf270bee2f43f652d741cc"
@@ -9903,6 +9907,12 @@ rxjs@^5.5.2:
 rxjs@^6.1.0:
   version "6.3.2"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.3.2.tgz#6a688b16c4e6e980e62ea805ec30648e1c60907f"
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.3.3:
+  version "6.3.3"
+  resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   dependencies:
     tslib "^1.9.0"
 
@@ -11945,6 +11955,10 @@ vue-loader@^14.2.2:
 vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
+
+vue-rx@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/vue-rx/-/vue-rx-6.0.1.tgz#4e4e9234339cbfa4e1968d67595cfe00293c6edc"
 
 vue-style-loader@^4.0.1:
   version "4.1.2"

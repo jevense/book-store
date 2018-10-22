@@ -54,6 +54,7 @@
 <script>
     import ImedNav from '../../components/imed-nav'
     import {mapState} from 'vuex'
+    import {WebCallApp} from "../../global"
 
     export default {
         name: "exam-guide",

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import getQueryString from './common'
+import {WebCallApp} from "../global"
 
 Vue.use(Vuex)
 
@@ -19,7 +20,12 @@ export default new Vuex.Store({
         currentId: "",
         loginInfo: {
             remainPrice: 0,
-            ownList: [],
+            ownList: [
+                // 'cd1f6bb3f63b43f08dde6f5f20529805',
+                // '79faef1724df464da3d9ec278a27e0cd',
+                // 'a1c1a723cd2e465a8fb8ce88f150e5f9',
+                // '724a3da5da73406d8333820e8ff0170d',
+            ],
         },//当前用户简要信息
         packageInfo: {
             list: [],
@@ -33,7 +39,8 @@ export default new Vuex.Store({
         paySuccess: {},
         product: {},
         productInfo: {},
-        activities: []
+        activities: [],
+        appVersion: {token: '', platform: ''},
     },
     getters: {
         config(state) {
@@ -74,6 +81,9 @@ export default new Vuex.Store({
         },
         activities(state) {
             return state.activities
+        },
+        appVersion(state) {
+            return state.appVersion
         },
     },
     mutations: {
@@ -127,25 +137,27 @@ export default new Vuex.Store({
         activities(state, data) {
             state.activities = data
         },
+        appVersion(state, data) {
+            state.appVersion = data
+        },
     },
     actions: {
         login(context, data) {
-            let token = getQueryString('token')
-            let platform = getQueryString('platform')
             let args = {
                 "serviceModule": "BS-Service",
                 "serviceNumber": "getBuyedExam",
-                "token": token,
+                "token": data.token,
                 "args": {
-                    "token": token,
+                    "token": data.token,
                     "packageId": data.id,
-                    "platform": platform,
+                    "platform": data.platform,
                 },
                 "TerminalType": "A"
             }
-            Vue.axios.post(context.state.config.busUrl, encodeURIComponent(JSON.stringify(args)))
+
+            Vue.axios.post(context.state.config.busUrl, JSON.stringify(args))
                 .then(res => {
-                    let result = JSON.parse(decodeURIComponent(res.data.replace(/\+/g, '%20')));
+                    let result = JSON.parse(decodeURIComponent(res.data));
                     if (!result["opFlag"] || result["opFlag"] === "false") {
                         if (result["errorMessage"].indexOf("E012-") >= 0) {
                             WebCallApp("UserLogout", {logoutType: "E012"});
@@ -156,6 +168,7 @@ export default new Vuex.Store({
                         //登录成功，保存当前用户信息到 state 里面，以便其他组建获取
                         let resultObj = JSON.parse(result["serviceResult"]);
                         if (resultObj['flag'] === 'true') {
+                            console.log(resultObj.result)
                             context.commit('loginInfo', resultObj.result);
                         } else {
                             console.log(resultObj['error'])

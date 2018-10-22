@@ -87,6 +87,7 @@
     import {mapState} from 'vuex'
     import ImedNav from '../../components/imed-nav'
     import getQueryString from '../../components/common'
+    import {WebCallApp} from "../../global"
 
     export default {
         name: "product-order",
@@ -157,10 +158,10 @@
 
                 } else {
                     if (platform === "0") {
-                        window.webkit.messageHandlers["WebCallApp"].postMessage(JSON.stringify({
+                        WebCallApp({
                             command: "openRechargeView",
                             args: {}
-                        }));
+                        });
                     } else if (platform === "2") {
                         alert("对不起，暂不支持PC支付购买，请到手机端支付购买");
                     } else {
@@ -174,7 +175,7 @@
                                 discountId: ''
                             }
                         };
-                        Elf.WebCallApp(JSON.stringify(appCallData));
+                        WebCallApp(appCallData);
                     }
 
                 }

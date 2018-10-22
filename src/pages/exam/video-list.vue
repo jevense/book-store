@@ -1,42 +1,18 @@
 <template>
     <div>
         <header class="bar bar-nav" v-if="bar">
-            <router-link to="/exam" class="item-content item-link">
-                <button class="button pull-left">
-                    <span class="icon icon-left"></span>
-                </button>
-            </router-link>
+            <button class="button pull-left" @click="back">
+                <span class="icon icon-left"></span>
+            </button>
 
             <h1 class="title">
                 <div class="imed-nav-title" v-text="packageInfo.title"></div>
             </h1>
+
             <a class="icon" style="width: 0.8rem">&nbsp;</a>
         </header>
         <div class="content" :class="{'imed-margin-nav':!bought}">
-            <div class="imed-content">
-                <div @click="courseItem(packageInfo.banner)" v-if="packageInfo.banner">
-                    <b-img fluid :src='packageInfo.banner.cover'/>
-                </div>
-                <div style="padding: 0.7rem;" v-text="packageInfo.introduce"></div>
-                <div class="imed-tips">
-                    <div style=" border-right: 2px solid #F9F9F9;">
-                        <div>
-                            <b-img :src='require("../../assets/img/time.png")'/>
-                        </div>
-                        <div style="color: #868686;">&nbsp;上线时间：</div>
-                        <div>{{packageInfo.time}}</div>
-                    </div>
-                    <div>
-                        <div>
-                            <b-img fluid :src='require("../../assets/img/people.png")'/>
-                        </div>
-                        <div style="color: #868686;">&nbsp;学习人数：</div>
-                        <div>{{packageInfo.people}}</div>
-                    </div>
-                </div>
-            </div>
             <div class="imed-content" style="margin-top: .5rem;">
-                <div class="imed-title" v-text="packageInfo.subTitle"></div>
                 <div class="imed-item-content">
                     <template v-for="item in packageInfo.list">
                         <div class="imed-group">
@@ -54,23 +30,12 @@
                                 </div>
                             </div>
                             <div style="width: 20%;padding: .25rem;" class="imed-button-group">
-                                <div v-if="item.preview"
-                                     @click="courseItem(item.preview)"
-                                >
-                                    <div :class="buttonStyle(item.preview.enable)">
-                                        试看
-                                    </div>
-                                </div>
                                 <template v-if="isContains(item.id)">
-                                    <div v-if="item.guide"
-                                         @click="courseItem(item.guide)"
-                                    >
-                                        <div :class="buttonStyle(item.guide.enable)">
-                                            导学
-                                        </div>
-                                    </div>
-                                    <div @click="redirect(item)">
+                                    <div @click="courseItem(item)">
                                         <div :class="buttonStyle(item.enable)">学习</div>
+                                    </div>
+                                    <div @click="exam(item)">
+                                        <div :class="buttonStyle(item.enable)">考试</div>
                                     </div>
                                 </template>
                                 <template v-else>
@@ -85,18 +50,6 @@
                 </div>
             </div>
         </div>
-        <footer v-if="!bought" style="display: flex;">
-            <div @click="buy({id:$route.params.eid, buyable:true})"
-                 style="flex-grow:1"
-                 class="button button-fill button-big">
-                全部购买（{{remainPrice()}}阅点）
-            </div>
-            <div v-if="packageInfo.combine && !combineBought" @click="buyCombine"
-                 class="button button-fill button-big"
-                 style="flex-grow:1;background-color: #FB9437">
-                指南+题库({{packageInfo.combine.price}}阅点)
-            </div>
-        </footer>
     </div>
 </template>
 
@@ -105,9 +58,12 @@
     import {WebCallApp} from "../../global"
 
     export default {
-        name: "book-list",
+        name: "video-list",
         beforeCreate() {
-            let {eid: id} = this.$route.params
+            if (typeof Config !== 'undefined') {
+                Config && this.$store.commit('config', Config)
+            }
+            let {vid: id} = this.$route.params
             let {token, platform} = this.$route.query
             this.$store.commit('currentId', id)
             let login = this.$store.dispatch('login', {id, token, platform})
@@ -123,7 +79,6 @@
                 config: state => state.config,
                 currentId: state => state.currentId,
                 bought: state => state.packageInfo.list.every(item => state.loginInfo.ownList.includes(item.id)),
-                combineBought: state => state.packageInfo.combine.combineList.some(id => state.loginInfo.ownList.includes(id)),
                 bar: state => state.bar,
             }),
         },
@@ -131,36 +86,12 @@
             search() {
                 console.log('======');
             },
-            remainPrice() {
-                return this.packageInfo.list
-                    .filter(info => !this.loginInfo.ownList.includes(info.id))
-                    .reduce((prev, cur) => prev + parseInt(cur.price), 0)
-            },
-            redirect(item) {
-                let {id, type, isbn, enable, skillbook, key1, direct, title} = item
-                if (!enable) return false
-                if (type === 'examination') {
-                    // let token = getQueryString('token')
-                    let token = this.$route.query['token']
-                    let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
-                    skillbook && (url += `&skillbook=1&key1=${key1}`)
-                    WebCallApp("CmdOpenUrl", {url,})
-                } else if (type === 'video') {
-                    if (direct) {
-                        this.$store.dispatch('videos', {id,}).then(() => {
-                            this.$router.push({path: `/exam/123/course/${id}`, query: {name: title}})
-                        })
-                    } else {
-                        let {eid} = this.$route.params
-                        this.$router.push(`/exam/${eid}/course`)
-                    }
-                } else if (type === 'pdf') {
-                    this.$store.dispatch('pdf', {id,}).then(() => {
-                        this.$router.push(`/exam/${this.$route.params.eid}/pdf/${id}`)
-                    })
-                } else if (type === 'bbs') {
-
-                }
+            exam(item) {
+                let {isbn, skillbook, key1} = item
+                let token = this.$route.query['token']
+                let url = `${this.config.examUrl}/pc/student/student.html?token=${token}&platforms=ebook&newebook=1&packageId=${isbn}`
+                skillbook && (url += `&skillbook=1&key1=${key1}`)
+                WebCallApp("CmdOpenUrl", {url,})
             },
             isContains(id) {
                 return this.loginInfo.ownList.includes(id)
@@ -180,17 +111,14 @@
                     this.$router.push(`/product/${id}/order`)
                 })
             },
-            buyCombine() {
-                let id = this.packageInfo.combine.id
-                this.$store.dispatch('payOrder', {id,}).then(() => {
-                    this.$router.push(`/product/${id}/order`)
-                })
-            },
             buttonStyle(status) {
                 return {
                     'imed-button': true,
                     'imed-button-disable': !status
                 }
+            },
+            back() {
+                WebCallApp("CmdGoBack")
             },
         }
     }

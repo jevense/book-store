@@ -15,6 +15,7 @@ import Reader from './pages/reader/reader'
 import ProductDetail from './pages/book/product-detail'
 import ProductOrder from './pages/book/product-order'
 import ActivityList from './pages/activity/activity-list'
+import VideoList from './pages/exam/video-list'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,7 @@ const routes = [
     {path: '/product/:id/order', component: ProductOrder},
     {path: '/product/:id/order/pay-success', component: PaySuccess, name: 'pay-success'},
     {path: '/activity/20180901', component: ActivityList},
+    {path: '/video/:vid', component: VideoList},
 ]
 
 export default new VueRouter({
